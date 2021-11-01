@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	input,div button { display:block; margin:10px; }
+	#userInfo { width:200px; height:108px; }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	window.onload = function(){
+		document.querySelector('#btn1').onclick = viewCoinInfo;
+		document.querySelector('#btn2').addEventListener('click',viewSubInfo);
+		$('button').eq(3).on('click',getHTML);
+		$('button').first().on('click',login);
+		$('button').eq(4).on('click',getmt);
+		$('button').eq(5).on('click',getJson);
+		$('button').eq(6).on('click',getJspByGet);
+		$('button').eq(7).on('click',getJspByPost);
+		$('button').eq(8).on('click',getJspByAjax);
+	}
+	
+	function getJspByAjax(){
+		var url = 'bb.jsp';
+		var data = {"id":"llunar2","pw":3333};
+		$.ajax({
+			url:url,
+			data:data,
+			type:"get",
+			success:function(responseData){
+				$('#here').html(responseData);
+				var obj = $.parseJSON(responseData);
+				$('#here').append(obj.address);
+			},
+			fail:function(message){
+				$('#here').html(message);
+			}
+		});
+	}
+	
+	function getJspByPost(){
+		var url = 'bb.jsp';
+		var data = {"id":"gkswl412","pw":1234};
+		$.post(url,data,function(responseData){
+			console.log(typeof(responseData));
+			$('#here').html(responseData);
+			var obj = $.parseJSON(responseData);
+			console.log(typeof(obj));
+			$('#here').append(obj.id);
+		});
+	}
+	
+	function getJspByGet(){
+		var url = 'bb.jsp';
+		var data = {"id":"gkswl412","pw":1234};
+		$.get(url,data,function(responseData){
+			console.log(typeof(responseData));
+			$('#here').html(responseData);
+			var obj = $.parseJSON(responseData);
+			console.log(typeof(obj));
+			$('#here').append(obj.id);
+		});
+	}
+	
+	function getJson(){
+		var url = '../../day08/subInfo.json';
+		$.get(url,function(responseData){
+			$('#here').html(makeTable(responseData));
+		});
+	}
+	
+	function getmt(){
+		var url = 'login.jsp';
+		var data = {id:$('#userid').val(),pw:$('#userpw').val()};
+		$.get(url,data,function(responseData){
+			$('#here').html(responseData);
+		});
+	}
+	
+	function login(){
+		$('#here').load('login.jsp',
+				{id:$('#userid').val(),pw:$('#userpw').val()},
+				function(){ alert('환영합니다'); });
+	}
+	function getHTML(){
+		$('#here').load('../../day10/1.html');
+	}
+	
+	function viewSubInfo(){
+		var xhr = new XMLHttpRequest();
+		var url = '../../day08/subInfo.json';
+		xhr.open('get',url,true);
+		xhr.send();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var subInfoObject = JSON.parse(xhr.responseText);
+				var output = makeTable(subInfoObject);
+				here.innerHTML = output;
+			}
+		}
+	}
+	
+	function makeTable(obj){
+		var result= '<table border=1><tr>';
+		for(let key in obj.DESCRIPTION){
+			result += '<th>' + obj.DESCRIPTION[key] + '</th>';
+		}
+		result += '</tr>';
+		for(let i in obj.DATA){
+			result += '<tr>';
+			for(let key in obj.DATA[i]){
+				result += '<td>' + obj.DATA[i][key] + '</td>';
+			}
+			result += '</tr>';
+		}
+		result += '</table>';
+		return result;
+	}
+	
+	function viewCoinInfo(){
+		var xhr = new XMLHttpRequest();
+		var url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?"+
+				"serviceKey=7N1ck9BJoJ79alkE4apYfS4bLQ9%2BfmVbi01uunVJc9YbXbzk4sffi7I3GCI%2FIJKhrRJDpum0tie6cz0st3wIvw%3D%3D" + 
+				"&numOfRows=10&pageSize=10&pageNo=1&MobileOS=ETC&" +
+				"MobileApp=AppTest&arrange=P&listYN=Y&areaCode=1&sigunguCode=1&_type=json";
+		xhr.open('get',url,true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				console.log(xhr.responseText);
+				//var output = makeTable2(coinInfoObject);
+				//here.innerHTML = output;
+			}
+		}
+		xhr.send();
+	}
+	
+	function makeTable2(obj){
+		var result = '<table border=1><tr><td>코인명</td>';
+		for(let key in obj.data['BTC']){
+			result += '<th>' + key + '</th>';
+		}
+		result += '</tr>';
+		for(let i in obj.data){
+			result += '<tr><th>' + i + '</th>';
+			for(let key in obj.data[i]){
+				result += '<td>' + obj.data[i][key] + '</td>';
+			}
+			result += '</tr>';
+		}
+		result += '</table>';
+		return result;
+	}
+</script>
+</head>
+<body>
+	<h1>Tiger dot com</h1>
+	<div id='userInfo'>
+		<input type='text' id='userid' name='userid' placeholder='아이디'>
+		<input type='password' id='userpw' name='userpw' placeholder='비밀번호'>
+		<button type='submit'>로그인</button>
+	</div>
+	<hr>
+	<button id='btn1'>코인 정보</button>
+	<button id='btn2'>지하철 정보</button>
+	<button>get..html</button>
+	<button>get</button>
+	<button>get..json</button>
+	<button>get..jsp(get)</button>
+	<button>get..jsp(post)</button>
+	<button>ajax</button>
+	<button>빗썸API사용하기</button>
+	<hr>
+	<div id='here'></div>
+</body>
+</html>
