@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,7 +126,18 @@
 </div>
 
 <div style="text-align:center">
-	${searchList}
+	<ul style="list-style:none">
+	<c:forEach var="item" items="${searchList}" varStatus="vs">
+		<li>
+			<div style="position:absolute">
+				<a href="#"><img src="${item.photo_url}" style="width:635px; height:317.5px; position:absolute; display:block"></a>
+			</div>
+			<div style="position:absolute">
+				${item.cottage_name}
+			</div>
+		</li>	
+	</c:forEach>
+	</ul>
 </div>
 
 <footer style="line-height:18px; font-size:12px; color:gray; position:absolute; width:100%">
