@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.anakin.reservation.Service.ReservationService;
- 
-@WebServlet("/reservation/selectAllReservation") // ***** ServletMappingName is selectAllReservation.
+
+//서블릿 기본위치는 app까지  /aa **************************************************************
+//jsp, html : port번호까지  ***************************************************************
+@WebServlet("/selectAllReservation") // ***** ServletMappingName is selectAllReservation.
 public class ReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,14 +26,6 @@ public class ReservationServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("reservation.jsp");
-		rd.forward(request, response);
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +36,7 @@ public class ReservationServlet extends HttpServlet {
 		String para = request.getParameter("submit");
 		ReservationService service = new ReservationService();
 		request.setAttribute("reservationList", service.selectAllReservation());
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/selectAllReservationResult.jsp"); // with / absolute
+		RequestDispatcher rd = request.getRequestDispatcher("reservation/jsp/selectAllReservationResult.jsp"); // with / absolute
 		rd.forward(request, response);
 	}
 
