@@ -13,7 +13,7 @@ public class CottageDAO {
 	
 	public int CottageInsert(CottageVO ct) {
 		int result = 0;
-		String sql= "insert into cattage values(?,?,?,?,?,?) "+ "commit;";
+		String sql= "insert into cattage values(?,?,?,?,?,?) ";
 		Connection conn= DBUtil.dbConnect();
 		PreparedStatement st = null;
 		try {
@@ -35,7 +35,8 @@ public class CottageDAO {
 	
 	public List<CottageVO> selectAllByManager_id(int manager_id) {
 		System.out.println("selectAllCottageByManager_id sql문 실행 함수");
-		String sql= "select * from cottage where Manager_id = ? "+ "commit;";
+		String sql= "select cottage_id, cottage_name, cottage_location, cottage_phone_number, cottage_description, cottage_cat "
+				+ "from cottage where Manager_id = ? ";
 		List<CottageVO> cottagelist = new ArrayList<>();
 		Connection conn= DBUtil.dbConnect();
 		PreparedStatement pr = null;
@@ -48,6 +49,7 @@ public class CottageDAO {
 				cottagelist.add(new CottageVO(rs.getString(1),rs.getInt(2),rs.getString(3),
 						rs.getString(4),rs.getString(5),rs.getString(6)));
 			}
+			conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -58,13 +60,13 @@ public class CottageDAO {
 	
 	public int CottageUpdate(CottageVO ct) {
 		System.out.println("CottageUpdate sql문 실행 함수");
-		String sql= "update from cottage "
+		String sql= "update cottage "
 				+ "set manager_id=?, "
 				+ "cottage_name=?, "
 				+ "cottage_phone_number=?, "
 				+ "cottage_location=?, "
 				+ "cottage_description=? "
-				+ "where cottage_id = ?"+ "commit;";
+				+ "where cottage_id = ?";
 		int result = 0;
 		Connection conn= DBUtil.dbConnect();
 		PreparedStatement st = null;
@@ -88,7 +90,7 @@ public class CottageDAO {
 	public int CottageDelete(int cottage_id) {
 		System.out.println("CottageDelete sql문 실행 함수");
 		int result = 0;
-		String sql= "delete from cottage where cottage_id = ?"+ "commit;";
+		String sql= "delete from cottage where cottage_id = ?";
 		Connection conn= DBUtil.dbConnect();
 		PreparedStatement pr = null;
 		ResultSet rs = null;

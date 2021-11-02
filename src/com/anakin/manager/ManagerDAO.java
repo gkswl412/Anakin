@@ -18,9 +18,7 @@ public class ManagerDAO {
 		String sql= "insert into manager values (?,?,?,?,?)";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
-		
 		try {
-			
 			st = conn.prepareStatement(sql);
 			st.setString(1, m.getManager_id());
 			st.setString(2, m.getManager_pw());
@@ -73,21 +71,22 @@ public class ManagerDAO {
 		return x;
 	}
 	
-	public List<ManagerVO> CheckID(String manager_id) {
-		System.out.println("ID 중복 체크");
+	
+	public List<ManagerVO> IDCheck(String manager_id) {
+		System.out.println("ID 체크");
 		List<ManagerVO> mlist = null;
-		String sql= "select manager_id from manager where manager_id = '?'";
+		String sql = "select * from manager where manager_id = ? ";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement pr = null;
 		ResultSet rs = null;
 		try {
 			pr = conn.prepareStatement(sql);
-			pr.setString(1,manager_id);
+			pr.setString(1, manager_id);
 			rs = pr.executeQuery();
-			System.out.println(rs);
-			if(rs.next()) {
+			while (rs.next()) {
 				mlist = new ArrayList<ManagerVO>();
 				mlist.add(makeSt1(rs));
+				System.out.println(mlist);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,7 +95,8 @@ public class ManagerDAO {
 		}
 		return mlist;
 	}
-
+	
+	
 	public List<ManagerVO> selectAllByManager_ID(String manager_id) {
 		System.out.println("selectAllByManager_ID sql문 실행 함수");
 		String sql= "select * from manager where manager_id=?";

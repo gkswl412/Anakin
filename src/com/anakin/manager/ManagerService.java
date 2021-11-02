@@ -23,8 +23,11 @@ public class ManagerService {
 		return dao.ManagerDelete(manager_id);
 	}
 	
-	public List<ManagerVO> CheckID(String manager_id) {
-		return dao.CheckID(manager_id);
+	/*
+	 * public int IDCheck(String manager_id) { return dao.IDCheck(manager_id); }
+	 */
+	public List<ManagerVO> IDCheck(String manager_id) {
+		return dao.IDCheck(manager_id);
 	}
 	
 	public int ManagerLoginCheck(String manager_id, String manager_pw) {

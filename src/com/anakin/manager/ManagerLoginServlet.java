@@ -15,26 +15,42 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class ManagerServlet
  */
-@WebServlet("/manager/jsp/managerinsert]")
+@WebServlet("/managerlogin")
 public class ManagerLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		RequestDispatcher rd = request.getRequestDispatcher("managerinsert.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("manager/jsp/managerlogin.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("utf-8");
-				
+
 		String mid = request.getParameter("manager_id");
 		String mpw = request.getParameter("manager_pw");
 		
-			
-		RequestDispatcher rd = request.getRequestDispatcher("manager.jsp");
-		rd.forward(request, response);
+		ManagerService ms = new ManagerService();
+		int check = ms.ManagerLoginCheck(mid, mpw);
+		HttpSession session = request.getSession();
+		if(check==1){
+				session.setAttribute("manager_id", mid);
+				response.sendRedirect("managerinfo");
+			}else{
+				if(check==0){
+					System.out.println("비밀번호 입력 실패");
+					request.setAttribute("message", "비밀번호가 잘못 되었습니다.");
+					RequestDispatcher rd;
+					rd = request.getRequestDispatcher("manager/jsp/result.jsp");
+					rd.forward(request, response);
+				}else{
+					System.out.println("아이디 확인 해주세요.");
+					request.setAttribute("message", "아이디를 확인 해주세요.");
+					RequestDispatcher rd;
+					rd = request.getRequestDispatcher("manager/jsp/result.jsp");
+					rd.forward(request, response);
+				}
+			}
 		
 	}
 }

@@ -28,7 +28,6 @@
 				RequestDispatcher rd;
 				rd = request.getRequestDispatcher("result.jsp");
 				rd.forward(request, response);
-				
 			}
 		}
 %>
