@@ -10,22 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/managerinsert.go")
+@WebServlet("/managerinsert")
 public class ManagerInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * RequestDispatcher rd = request.getRequestDispatcher("managerinsert.jsp");
-		 * rd.forward(request, response);
-		 */
+		RequestDispatcher rd = request.getRequestDispatcher("manager/jsp/managerinsert.jsp");
+		rd.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("서블릿 도착");
 		ManagerService service = new ManagerService();
 		String mid = request.getParameter("manager_id");
-		String mpw = request.getParameter("manager_pw1");		
+		String mpw = request.getParameter("manager_pw");		
 		String mname = request.getParameter("manager_name");
 		String mphone = request.getParameter("manager_phone");
 		String memail = request.getParameter("manager_email");
@@ -33,10 +31,7 @@ public class ManagerInsertServlet extends HttpServlet {
 		int result = service.ManagerInsertService(m);
 		request.setAttribute("message", result>0?"입력 성공":"입력 실패");
 		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("jsp/result.jsp");
+		rd = request.getRequestDispatcher("manager/jsp/result.jsp");
 		rd.forward(request, response);
-		
 	}
-
-	
 }
