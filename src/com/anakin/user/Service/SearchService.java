@@ -9,4 +9,7 @@ public class SearchService {
 	public List<SearchResultVO> selectByArea(SearchConditionVO scVO){
 		return dao.selectByArea(scVO);
 	}
+	public List<SearchResultVO> sortCottageList(SearchConditionVO scVO, String whatSort) {
+		return dao.sortCottageList(scVO, whatSort);
+	}
 }

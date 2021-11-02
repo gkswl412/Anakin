@@ -65,8 +65,7 @@
 	    });
 	   }
 	  });
-
-
+	  
 	 });
   </script>
   
@@ -104,39 +103,41 @@
   
   
 <div class="container-fluid">
-
-	
 	<div class="container mt-3">
-	  <form style="margin-top:300px; text-align:center; padding:20px; display:block" method="get" action="/RentalCottageManager/user/search">
-	  	<div>
-			<select class="form-select form-select-lg" style="display:inline; width:300px" name="sido" id="sido" required="required"></select>
-			<select class="form-select form-select-lg" style="display:inline; width:300px" name="gugun" id="gugun" required="required"></select>
-			<select class="form-select form-select-lg" style="display:inline; width:300px" name="focus" required="required">
-				<option>숙박</option>
-				<option>관광</option>
-			</select>
-		</div>
-		<div style="margin-top:20px">
-		check in: <input type="date" name="checkinDate" required="required"> check out: <input type="date" name="checkoutDate" required="required">
-		</div>
-		<button type="submit" class="btn btn-primary btn-block" style="width:50%; margin-top:30px; padding:10px">숙소 검색</button>
-	  </form>      
+		<form style="margin-top:100px; text-align:center; padding:20px; display:block" method="get" action="/Anakin/user/search">
+		  	<div>
+				<select class="form-select form-select-lg" style="display:inline; width:300px" name="sido" id="sido" required="required"></select>
+				<select class="form-select form-select-lg" style="display:inline; width:300px" name="gugun" id="gugun" required="required"></select>
+				<select class="form-select form-select-lg" style="display:inline; width:300px" name="focus" id="focus" required="required">
+					<option>숙박</option>
+					<option>관광</option>
+				</select>
+			</div>
+			<div style="margin-top:20px">
+				check in: <input type="date" name="checkinDate" required="required" value="${scVO.checkinDate}"> check out: <input type="date" name="checkoutDate" required="required" value="${scVO.checkoutDate}"><br>
+				<button type="submit" class="btn btn-primary btn-block" style="width:50%; margin:30px 0 30px 0; padding:10px">숙소 검색</button>
+			</div>
+		</form>
+		<form style="text-align:center; padding:20px; display:block" method="post" action="/Anakin/user/search">
+			<div>
+				<button type="submit" class="btn btn-secondary" name="sort">낮은 가격 순</button>
+				<button type="submit" class="btn btn-secondary" name="sort">높은 가격 순</button>
+				<button type="submit" class="btn btn-secondary" name="sort">리뷰 많은 순</button>
+			</div>
+		</form>    
 	</div>
-	
 </div>
 
-<div style="text-align:center">
+<div>
 	<ul style="list-style:none">
-	<c:forEach var="item" items="${searchList}" varStatus="vs">
-		<li>
-			<div style="position:absolute">
-				<a href="#"><img src="${item.photo_url}" style="width:635px; height:317.5px; position:absolute; display:block"></a>
-			</div>
-			<div style="position:absolute">
-				${item.cottage_name}
-			</div>
-		</li>	
-	</c:forEach>
+		<c:forEach var="item" items="${searchList}" varStatus="vs">
+			<li>
+				<div style="border:solid 1px lightgray; width:43%; height:350px; margin:0 auto; overflow:hidden">
+					<strong><span style="position:absolute; font-size:27px; color:white; background-color:hsla(0, 0%, 0%, 0.3); padding:5px">${item.cottage_name}</span></strong>
+					<a href="#"><img src="${item.photo_url}" style="width:100%; height:100%; object-fit:cover; text-align:center"></a>
+				</div>
+			</li>
+		</c:forEach>
 	</ul>
 </div>
 
