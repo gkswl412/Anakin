@@ -1,6 +1,7 @@
 package com.anakin.user.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.List;
 
@@ -32,15 +33,11 @@ public class CottageTourlistSearchServlet extends HttpServlet {
 		System.out.println(sido + gugun + focus + checkinDate + checkoutDate);
 		
 		SearchConditionVO scVO = new SearchConditionVO(sido,gugun,focus,checkinDate,checkoutDate);
-		HttpSession session = request.getSession();
-		session.setAttribute("scVO", scVO);
 		
 		SearchService searchService = new SearchService();
 		List<SearchResultVO> searchList = searchService.selectByArea(scVO);
+		HttpSession session = request.getSession();
 		session.setAttribute("searchList", searchList);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/searchResult.jsp");
-		rd.forward(request, response);
 		
 	}
 

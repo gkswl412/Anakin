@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+	div {text-align:center; margin:30px}
+  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -13,10 +19,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
   
-  <script>
-  $('document').ready(function() {
-	  var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
-	   var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+<script>
+	$(function() {
+		var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
+	   	var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
 	    var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
 	    var area3 = ["대덕구","동구","서구","유성구","중구"];
 	    var area4 = ["광산구","남구","동구",     "북구","서구"];
@@ -33,39 +39,72 @@
 	    var area15 = ["거제시","김해시","마산시","밀양시","사천시","양산시","진주시","진해시","창원시","통영시","거창군","고성군","남해군","산청군","의령군","창녕군","하동군","함안군","함양군","합천군"];
 	    var area16 = ["서귀포시","제주시","남제주군","북제주군"];
 
-	  
+	  	// 시/도 선택 박스 초기화
 
-	  // 시/도 선택 박스 초기화
-
-	  $("select[name^=sido]").each(function() {
-	   $selsido = $(this);
-	   $.each(eval(area0), function() {
+	  	$("select[name^=sido]").each(function() {
+	   	$selsido = $(this);
+	   	$.each(eval(area0), function() {
 	    $selsido.append("<option value='"+this+"'>"+this+"</option>");
-	   });
-	   $selsido.next().append("<option value=''>구/군 선택</option>");
-	  });
+	   	});
+	   	$selsido.next().append("<option value=''>구/군 선택</option>");
+	  	});
 
+	  	// 시/도 선택시 구/군 설정
+
+	  	$("select[name^=sido]").change(function() {
+	   	var area = "area" + $("option", $(this)).index($("option:selected", $(this))); // 선택지역의 구군 Array
+	   	var $gugun = $(this).next(); // 선택영역 군구 객체
+	   	$("option",$gugun).remove(); // 구군 초기화
+
+	   	if(area == "area0")
+	    	$gugun.append("<option value=''>구/군 선택</option>");
+	   	else {
+	    	$.each(eval(area), function() {
+	     	$gugun.append("<option value='"+this+"'>"+this+"</option>");
+	    	});
+	   	}
+	  	});
 	  
+	  	//숙소찾기 버튼 클릭시 함수 호출
+	  	
+	  	$("#selectBtn").on('click',getCottageListByAjax);
 
-	  // 시/도 선택시 구/군 설정
-
-	  $("select[name^=sido]").change(function() {
-	   var area = "area" + $("option", $(this)).index($("option:selected", $(this))); // 선택지역의 구군 Array
-	   var $gugun = $(this).next(); // 선택영역 군구 객체
-	   $("option",$gugun).remove(); // 구군 초기화
-
-	   if(area == "area0")
-	    $gugun.append("<option value=''>구/군 선택</option>");
-	   else {
-	    $.each(eval(area), function() {
-	     $gugun.append("<option value='"+this+"'>"+this+"</option>");
-	    });
-	   }
-	  });
-
-
-	 });
-  </script>
+	 	});
+	
+	//숙박리스트 Ajax로 가져오는 함수 구현
+	function getCottageListByAjax(){
+		var url = "/Anakin/user/search";
+		var data = {"sido":$("#sido").val(),
+					"gugun":$("#gugun").val(),
+					"focus":$("#focus").val(),
+					"checkinDate":$("#checkinDate").val(),
+					"checkoutDate":$("#checkoutDate").val()
+					}
+		$.ajax({
+				url:url,
+				data:data,
+				type:"get",
+				success:function(){
+					$('#here').html(
+						`<ul style="list-style:none">
+							<c:forEach var="item" items="${searchList}" varStatus="vs">
+								<li>
+									<div style="border:solid 1px lightgray; width:43%; height:350px; margin:0 auto; overflow:hidden">
+										<strong><span style="position:absolute; font-size:27px; color:white; background-color:hsla(0, 0%, 0%, 0.3); padding:5px">${item.cottage_name}</span></strong>
+										<a href="#"><img src="${item.photo_url}" style="width:100%; height:100%; object-fit:cover; text-align:center"></a>
+									</div>
+								</li>
+							</c:forEach>
+						</ul>`
+							);	
+				},
+				fail:function(message){
+					$('#here').html(message);
+				}
+			});
+	}
+	  
+</script>
   
 </head>
 <body>
@@ -101,28 +140,30 @@
   
 <div class="container-fluid">
 
-	<div style="text-align:center">
+	<div>
 		<img src="/Anakin/user/images/main.png" style="width:65%; height:40%; border-radius:10px; margin-top:100px">
 	</div>
-	
-	<div class="container mt-3">
-	  <form style="text-align:center; padding:20px; display:block" method="get" action="user/search">
-	  	<div>
-			<select class="form-select form-select-lg" style="display:inline; width:300px" name="sido" id="sido" required="required"></select>
-			<select class="form-select form-select-lg" style="display:inline; width:300px" name="gugun" id="gugun" required="required"></select>
-			<select class="form-select form-select-lg" style="display:inline; width:300px" name="focus" required="required">
-				<option>숙박</option>
-				<option>관광</option>
-			</select>
+	  
+	<div>
+		<select class="form-select form-select-lg" style="display:inline; width:300px" name="sido" id="sido" required="required"></select>
+		<select class="form-select form-select-lg" style="display:inline; width:300px" name="gugun" id="gugun" required="required"></select>
+		<select class="form-select form-select-lg" style="display:inline; width:300px" name="focus" id="focus" required="required">
+			<option>숙박</option>
+			<option>관광</option>
+		</select>
+		<div>
+		<b>check in:</b> <input type="date" name="checkinDate" id="checkinDate" required="required"> <b>check out:</b> <input type="date" name="checkoutDate" id="checkoutDate" required="required">
 		</div>
-		<div style="margin-top:20px">
-		check in: <input type="date" name="checkinDate" required="required"> check out: <input type="date" name="checkoutDate" required="required">
-		</div>
-		<button type="submit" class="btn btn-primary btn-block" style="width:50%; margin-top:30px; padding:10px">숙소 검색</button>
-	  </form>      
+		<button id="selectBtn" class="btn btn-primary btn-block" style="width:50%; padding:10px">숙소 검색</button>
 	</div>
-	
+		
+	<div id="here">
+		여기출력
+	</div>       
 </div>
+	
+
+
 
 <footer style="line-height:18px; font-size:12px; color:gray; position:absolute; width:100%">
 		<div style="margin-top:100px; height:400px; width:100%; text-align:center; background-color:rgb(240, 240, 240); display:inline-block; padding-top:80px">
@@ -151,8 +192,3 @@
 
 </body>
 </html>
-
-
-
-
-
