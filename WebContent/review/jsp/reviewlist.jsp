@@ -12,7 +12,8 @@
 </head>
 <body>
 <h1>리뷰</h1>
-<a href="reviewinserttest.jsp">리뷰작성</a>
+<a href="write">리뷰작성</a>
+
 <br>
 
 
@@ -24,6 +25,7 @@
     <td>내용</td>
     <td>작성날짜</td>
     <td>삭제<td>
+    <td>수정<td>
   </tr>
 
 
@@ -34,7 +36,12 @@
 	    <td>${rev.review_title }</td>
 	    <td>${rev.review_description }</td>
 	    <td>${rev.review_date }</td>
-	    <td><a href="reviewdelete.jsp">삭제</a><td>
+	    <td><a href="delete?reviewid=${rev.review_id}">삭제</a><td>
+	    <td><a href="delete?reviewid=${rev.review_id}">삭제</a><td>
+	    
+	    
+	   <%--  <td><a href="update?reviewid=${rev.review_id}">수정</a><td> --%>
+	    
 	  </tr>
 </c:forEach>
 

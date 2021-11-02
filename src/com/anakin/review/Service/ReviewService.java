@@ -17,7 +17,11 @@ public class ReviewService {
 		return dao.selectList();
 	}
 	
-
+	public ReviewVO  SelectById(int reviewid) {
+		return dao.selectById(reviewid);
+	}
+	
+	
 	public int InsertReview(ReviewVO rev) {
 		return dao.InsertReview(rev);
 	}
@@ -35,5 +39,16 @@ public class ReviewService {
 		
 		
 	}
+	
+	
+	public  int CommentReview(ReviewVO rev) {
+		
+		return dao.CommentReview(rev);
+		
+		
+	}
+	
+	
+	
 	
 }

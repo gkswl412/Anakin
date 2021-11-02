@@ -22,19 +22,22 @@ import util.DateUtil;
 public class ReviewInsertservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("jsp/reviewinsert.jsp");
+		rd.forward(request, response);
+	}
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.setCharacterEncoding("utf-8");
 		ReviewVO rev = makerev(request);
+		System.out.println(rev);
 		ReviewService service = new ReviewService();
 		int result = service.InsertReview(rev);
 		request.setAttribute("message", result > 0 ? "성공" : "실패");
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("jsp/reviewtest.jsp");
-		rd.forward(request, response);
+		response.sendRedirect("list");
 	}
 
 

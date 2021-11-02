@@ -31,7 +31,7 @@ public class ReviewListServlet extends HttpServlet {
 	      ReviewService service = new ReviewService();
 	      List<ReviewVO> reviewlist = service.SelectList();
 	      request.setAttribute("reviewlist", reviewlist);
-		  RequestDispatcher rd = request.getRequestDispatcher("jsp/reviewtest.jsp");
+		  RequestDispatcher rd = request.getRequestDispatcher("jsp/reviewlist.jsp");
      	  rd.forward(request, response);
 
 		
