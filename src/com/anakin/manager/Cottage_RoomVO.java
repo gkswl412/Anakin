@@ -14,6 +14,10 @@ public class Cottage_RoomVO {
 	String room_status;
 	String room_description;
 	int room_count;
+	
+	public Cottage_RoomVO() {}
+	
+	
 	public Cottage_RoomVO(int cottage_id, int room_id, String room_name, int room_occupancy, int room_standard_price,
 			int room_holyday_price, int room_peak_season_price, int room_tv_count, int room_bathroom_count,
 			String room_balcony_option, String room_status, String room_description, int room_count) {
