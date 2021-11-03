@@ -6,6 +6,7 @@ public class SearchResultVO {
 	String cottage_cat="";
 	String cottage_location= "";
 	String photo_url="";
+	int availableRoomCount=0;
 	int price=0;
 	double cottage_longitude_X=0;
 	double cottage_latitude_Y=0;
@@ -14,7 +15,7 @@ public class SearchResultVO {
 	public SearchResultVO() {}
 	
 	public SearchResultVO(int cottage_id, String cottage_name, String cottage_cat, String cottage_location,
-			String photo_url, int price, double cottage_longitude_X, double cottage_latitude_Y,
+			String photo_url,int availableRoomCount,int price, double cottage_longitude_X, double cottage_latitude_Y,
 			int reviewCount) {
 		super();
 		this.cottage_id = cottage_id;
@@ -22,12 +23,13 @@ public class SearchResultVO {
 		this.cottage_cat = cottage_cat;
 		this.cottage_location = cottage_location;
 		this.photo_url = photo_url;
+		this.availableRoomCount = availableRoomCount;
 		this.price = price;
 		this.cottage_longitude_X = cottage_longitude_X;
 		this.cottage_latitude_Y = cottage_latitude_Y;
 		this.reviewCount = reviewCount;
 	}
-
+	
 	public int getCottage_id() {
 		return cottage_id;
 	}
@@ -67,12 +69,21 @@ public class SearchResultVO {
 	public void setPhoto_url(String photo_url) {
 		this.photo_url = photo_url;
 	}
+	
 
-	public int price() {
+	public int getAvailableRoomCount() {
+		return availableRoomCount;
+	}
+
+	public void setAvailableRoomCount(int availableRoomCount) {
+		this.availableRoomCount = availableRoomCount;
+	}
+
+	public int getPrice() {
 		return price;
 	}
 
-	public void price(int price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
@@ -105,9 +116,10 @@ public class SearchResultVO {
 		StringBuilder builder = new StringBuilder();
 		builder.append("SearchResultVO [cottage_id=").append(cottage_id).append(", cottage_name=").append(cottage_name)
 				.append(", cottage_cat=").append(cottage_cat).append(", cottage_location=").append(cottage_location)
-				.append(", photo_url=").append(photo_url).append(", room_standard_price=").append(price)
-				.append(", cottage_longitude_X=").append(cottage_longitude_X).append(", cottage_latitude_Y=")
-				.append(cottage_latitude_Y).append(", reviewCount=").append(reviewCount).append("]");
+				.append(", photo_url=").append(photo_url).append(", availableRoomCount=").append(availableRoomCount)
+				.append(", price=").append(price).append(", cottage_longitude_X=").append(cottage_longitude_X)
+				.append(", cottage_latitude_Y=").append(cottage_latitude_Y).append(", reviewCount=").append(reviewCount)
+				.append("]");
 		return builder.toString();
 	}
 	
