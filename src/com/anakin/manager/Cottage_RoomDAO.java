@@ -45,7 +45,7 @@ public class Cottage_RoomDAO {
 
 	public List<Cottage_RoomVO> selectAllByCottage_id(int cottage_id) {
 		System.out.println("selectAllByCottage_id sql문 실행 함수");
-		String sql= "select * from Cottage_Room where cottage_id = ? "+ "commit;";
+		String sql= "select * from Cottage_Room where cottage_id = ? ";
 		List<Cottage_RoomVO> Cottage_Roomlist = new ArrayList<>();
 		Connection conn= DBUtil.dbConnect();
 		PreparedStatement pr = null;

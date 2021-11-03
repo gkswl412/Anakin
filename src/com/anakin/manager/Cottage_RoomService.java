@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Cottage_RoomService {
 
-	Cottage_RoomDAO dao;
+	Cottage_RoomDAO dao = new Cottage_RoomDAO();
 	
 	public int Cottage_RoomInsertService(Cottage_RoomVO cr) {
 		return dao.Cottage_RoomInsert(cr);

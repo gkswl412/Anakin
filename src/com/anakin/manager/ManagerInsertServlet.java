@@ -20,7 +20,7 @@ public class ManagerInsertServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("¼­ºí¸´ µµÂø");
+		request.setCharacterEncoding("utf-8");
 		ManagerService service = new ManagerService();
 		String mid = request.getParameter("manager_id");
 		String mpw = request.getParameter("manager_pw");		

@@ -37,9 +37,11 @@ public class ManagerDAO {
 		return result;
 	}
 	
+	// 아이디와 페스워드말고 다른 것까지 session에 저장하여 다른 기능을 구현하기 위한 방안을 생각 하자...!!
+	
 	public int ManagerLoginCheck(String manager_id, String manager_pw) {
 		System.out.println("로그인 체크");
-		String sql= "select manager_pw from manager where manager_id = ?";
+		String sql= "select * from manager where manager_id = ?";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		ResultSet rs = null;
