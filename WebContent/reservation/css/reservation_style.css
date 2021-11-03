@@ -1,0 +1,10 @@
+@charset "EUC-KR";
+
+.Reservation_info_box{
+	position: absolute;
+	top: 1000px;
+	width: 150px;
+    height: 150px;
+    background: #bcbcbc;
+    border: 1px solid #bcbcbc;
+}
