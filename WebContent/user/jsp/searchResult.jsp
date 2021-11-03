@@ -8,6 +8,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
+<style>
+	span{display:inline-block}
+</style>
 <script>
 	$(function(){
 		$('#lowprice').on('click',f1);
@@ -114,8 +117,15 @@
 	<ul style="list-style:none">
 		<c:forEach var="item" items="${searchList}" varStatus="vs">
 			<li>
-				<div style="border:solid 1px lightgray; width:43%; height:350px; margin:0 auto; overflow:hidden">
-					<strong><span style="position:absolute; font-size:27px; color:white; background-color:hsla(0, 0%, 0%, 0.3); padding:5px">${item.cottage_name}</span></strong>
+				<div style="border:solid 1px lightgray; width:43%; height:280px; margin:0 auto; overflow:hidden">
+					<div style="margin:140px 0 0 15px; position:absolute; text-align:left; padding:0">
+						<strong><span style="font-size:15px; color:white; background-color:gray; padding:2px">${item.cottage_cat}</span></strong><br>
+						<strong><span style="font-size:29px; color:white; background-color:hsla(0, 0%, 0%, 0.3)">${item.cottage_name}</span></strong><br>
+						<strong><span style="font-size:18px; color:orange; background-color:hsla(0, 0%, 0%, 0.7)">리뷰(${item.reviewCount})</span></strong>
+						<strong><span style="margin-left: 80px; font-size:19px; color:white; background-color:hsla(0, 0%, 0%, 0.3)">${item.availableRoomCount}</span></strong><br>
+						<strong><span style="font-size:19px; color:white; background-color:hsla(0, 0%, 0%, 0.3)">${item.cottage_location}</span></strong>
+						<strong><span style="margin-left: 80px; font-size:19px; color:white; background-color:hsla(0, 0%, 0%, 0.3)">${item.price}</span></strong>
+					</div>
 					<a href="#"><img src="${item.photo_url}" style="width:100%; height:100%; object-fit:cover; text-align:center"></a>
 				</div>
 			</li>
