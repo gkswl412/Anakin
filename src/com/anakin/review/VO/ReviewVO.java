@@ -11,12 +11,17 @@ public class ReviewVO {
   String review_description;
   String review_comment;
   int reservation_id;
+  int cottage_id;
   
  public ReviewVO() {};
   
   
+
+ 
+ 
+
 public ReviewVO(int review_id, String review_title, String review_pw, String review_writer, Date review_date,
-		String review_description, String review_comment, int reservation_id) {
+		String review_description, String review_comment, int reservation_id, int cottage_id) {
 	super();
 	this.review_id = review_id;
 	this.review_title = review_title;
@@ -26,7 +31,12 @@ public ReviewVO(int review_id, String review_title, String review_pw, String rev
 	this.review_description = review_description;
 	this.review_comment = review_comment;
 	this.reservation_id = reservation_id;
+	this.cottage_id = cottage_id;
 }
+
+
+
+
 
 
 public int getReview_id() {
@@ -109,6 +119,19 @@ public void setReservation_id(int reservation_id) {
 }
 
 
+public int getCottage_id() {
+	return cottage_id;
+}
+
+public void setCottage_id(int cottage_id) {
+	this.cottage_id = cottage_id;
+}
+
+
+
+
+
+
 @Override
 public String toString() {
 	StringBuilder builder = new StringBuilder();
@@ -116,24 +139,14 @@ public String toString() {
 			.append(", review_pw=").append(review_pw).append(", review_writer=").append(review_writer)
 			.append(", review_date=").append(review_date).append(", review_description=").append(review_description)
 			.append(", review_comment=").append(review_comment).append(", reservation_id=").append(reservation_id)
-			.append("]");
+			.append(", cottage_id=").append(cottage_id).append("]");
 	return builder.toString();
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
   
   
   
