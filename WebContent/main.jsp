@@ -84,19 +84,8 @@
 				url:url,
 				data:data,
 				type:"get",
-				success:function(){
-					$('#here').html(
-						`<ul style="list-style:none">
-							<c:forEach var="item" items="${searchList}" varStatus="vs">
-								<li>
-									<div style="border:solid 1px lightgray; width:43%; height:350px; margin:0 auto; overflow:hidden">
-										<strong><span style="position:absolute; font-size:27px; color:white; background-color:hsla(0, 0%, 0%, 0.3); padding:5px">${item.cottage_name}</span></strong>
-										<a href="#"><img src="${item.photo_url}" style="width:100%; height:100%; object-fit:cover; text-align:center"></a>
-									</div>
-								</li>
-							</c:forEach>
-						</ul>`
-							);	
+				success:function(responseData){
+					$("#here").html(responseData)
 				},
 				fail:function(message){
 					$('#here').html(message);
