@@ -7,6 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<form name="" method="post"> 
+	<table>
+		<tr>
+			<td colspan="2" align="center"><b>비밀번호 확인</b></td>
+		</tr>
+		<tr>
+			<td align="center">비밀번호</td>
+			<td>
+				<input type="text" name="review_pw" size="15" autofocus="autofocus">
+			</td>
+		</tr>
+		<tr>
+			    <td colspan="2" align="center">
+				<input type="submit" value="확인" > 
+			</td>
+		</tr>
+	</table>
+</form>
 </body>
 </html>

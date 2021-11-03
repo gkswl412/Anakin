@@ -24,8 +24,13 @@
     <td>제목</td>
     <td>내용</td>
     <td>작성날짜</td>
+    <td>답변</td>
+    <td>답변작성<td>
+    
+    
     <td>삭제<td>
     <td>수정<td>
+ 
   </tr>
 
 
@@ -36,11 +41,12 @@
 	    <td>${rev.review_title }</td>
 	    <td>${rev.review_description }</td>
 	    <td>${rev.review_date }</td>
+	     <td>${rev.review_comment }</td>
+	    <td><a href="comment?reviewid=${rev.review_id}">답변</a><td>
 	    <td><a href="delete?reviewid=${rev.review_id}">삭제</a><td>
-	    <td><a href="delete?reviewid=${rev.review_id}">삭제</a><td>
+	    <td><a href="update?reviewid=${rev.review_id}">수정</a><td>
 	    
 	    
-	   <%--  <td><a href="update?reviewid=${rev.review_id}">수정</a><td> --%>
 	    
 	  </tr>
 </c:forEach>
