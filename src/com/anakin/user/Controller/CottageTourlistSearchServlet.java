@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.anakin.user.Service.SearchService;
 import com.anakin.user.VO.SearchConditionVO;
@@ -27,6 +28,8 @@ public class CottageTourlistSearchServlet extends HttpServlet {
 		System.out.println(sido + gugun + focus + checkinDate + checkoutDate);
 		
 		SearchConditionVO scVO = new SearchConditionVO(sido,gugun,focus,checkinDate,checkoutDate);
+		HttpSession session = request.getSession();
+		session.setAttribute("scVO", scVO);
 		
 		SearchService searchService = new SearchService();
 		List<SearchResultVO> searchList = searchService.selectByArea(scVO);
