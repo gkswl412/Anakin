@@ -17,33 +17,33 @@ import com.anakin.review.VO.ReviewVO;
 /**
  * Servlet implementation class ReviewUpdate
  */
-@WebServlet("/review/updateGet")
-public class ReviewUpdate extends HttpServlet {
+@WebServlet("/review/updatePost")
+public class ReviewUpdate2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ReviewService service = new ReviewService();
-		int reviewid = Integer.parseInt(request.getParameter("reviewid"));
-		request.setAttribute("rev", service.SelectById(reviewid));
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/reviewupdate.jsp");
-		rd.forward(request, response);
-	}
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		ReviewService service = new ReviewService();
+//		int reviewid = Integer.parseInt(request.getParameter("reviewid"));
+//		request.setAttribute("rev", service.SelectById(reviewid));
+//		RequestDispatcher rd = request.getRequestDispatcher("jsp/reviewupdate.jsp");
+//		rd.forward(request, response);
+//	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	/*
-	 * protected void doPost(HttpServletRequest request, HttpServletResponse
-	 * response) throws ServletException, IOException {
-	 * 
-	 * request.setCharacterEncoding("utf-8"); ReviewVO rev = makerev(request);
-	 * ReviewService service = new ReviewService(); int result =
-	 * service.UpdateReview(rev); request.setAttribute("message", result > 0 ? "성공"
-	 * : "실패"); response.sendRedirect("list");
-	 * 
-	 * }
-	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
+		ReviewVO rev = makerev(request);
+		ReviewService service = new ReviewService();
+		int result = service.UpdateReview(rev);
+	    request.setAttribute("message", result > 0 ? "성공" : "실패");
+		response.sendRedirect("list");
+		
+	}
+
 
 	private ReviewVO makerev(HttpServletRequest request) {
 		int reviewid = Integer.parseInt(request.getParameter("review_id"));
