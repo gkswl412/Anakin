@@ -104,7 +104,7 @@
 		</div>
 		<div class="Room_info_sub_details_box">
 			<p>
-				<strong>방 갯수</strong>
+				<strong>방 갯수</strong> 
 			</p>
 			<p>
 				<strong>화장실 숫자</strong>

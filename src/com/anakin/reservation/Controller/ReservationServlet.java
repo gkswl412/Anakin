@@ -1,6 +1,9 @@
 package com.anakin.reservation.Controller;
 
 import java.io.IOException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.anakin.reservation.Service.ReservationService;
+import com.anakin.reservation.Service.CottageRoomService;
+import com.anakin.reservation.VO.CottageVO;
+import com.anakin.reservation.VO.CottageRoomVO;
 
-//서블릿 기본위치는 app까지  /aa **************************************************************
-//jsp, html : port번호까지  ***************************************************************
-@WebServlet("/selectAllReservation") // ***** ServletMappingName is selectAllReservation.
+
+/**
+ * Servlet implementation class ReservationServlet
+ */
+@WebServlet("/reservation") // search result list(park) -> ReservationServlet -> reservation.jsp
 public class ReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,18 +32,32 @@ public class ReservationServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("SelectAllReservation doPost...."); // test code.
+		// there should be interface between searchlist and this servlet
+		String cottageName = request.getParameter("cottageName"); // from searchResult
+		String roomName = request.getParameter("roomName");
+//		Date checkInDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("checkInDate"));
+//		Date checkOutDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("checkOutDate"));
 		
-		request.setCharacterEncoding("utf-8");
-		String para = request.getParameter("submit");
-		ReservationService service = new ReservationService();
-		request.setAttribute("reservationList", service.selectAllReservation());
-		RequestDispatcher rd = request.getRequestDispatcher("reservation/jsp/selectAllReservationResult.jsp"); // with / absolute
+		int price;
+		int roomCount;
+		int bathroomCount;
+		String balconyOption;
+		int tvCount;
+		String description;
+
+		CottageRoomService roomService = new CottageRoomService();
+		CottageRoomVO roomVO = roomService.selectRoomByNamesService(cottageName, roomName);
+		
+		request.setAttribute("Room_standard_price", roomVO.getRoom_standard_price());
+		request.setAttribute("Room_count", roomVO.getRoom_count());
+		request.setAttribute("Room_bathroom_count", roomVO.getRoom_bathroom_count());
+		request.setAttribute("Room_balcony_option", roomVO.getRoom_balcony_option());
+		request.setAttribute("Room_tv_count", roomVO.getRoom_tv_count());
+		request.setAttribute("Room_description", roomVO.getRoom_description());
+		
+		RequestDispatcher rd = request.getRequestDispatcher("jsp/reservation.jsp");
 		rd.forward(request, response);
 	}
 

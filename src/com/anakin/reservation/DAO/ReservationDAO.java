@@ -15,12 +15,12 @@ import util.DBUtil;
 public class ReservationDAO {
 	
 	// ansi standard sql----------------------------------------------------------------------------
-	static final String SQL_INSERT = "insert into RESERVATION " + "values(?,?,?,?,?,?,?,?)";
-	static final String SQL_SELECT_ALL = "select * from RESERVATION";
-	static final String SQL_SELECT_BY_ID = "select * from RESERVATION where RESERVATION_ID=?";
+	static final String INSERT_RESERVATION = "insert into RESERVATION " + "values(?,?,?,?,?,?,?,?);";
+	static final String SELECT_ALL_RESERVATION = "select * from RESERVATION;";
+	static final String SELECT_RESERVATION_BY_ID = "select * from RESERVATION where RESERVATION_ID=?;";
 	//static final String SQL_SELECT_BY_NAME = "select * from RESERVATION where DEPARTMENT_NAME=?";
 	//static final String SQL_SELECT_BY_LOC = "select * from RESERVATION where LOCATION_ID=?";
-	static final String SQL_UPDATE = "update RESERVATION set " +
+	static final String UPDATE_RESERVATION = "update RESERVATION set " +
 			"COTTAGE_ID=?, " +
 			"ROOM_Id=?, " +
 			"USER_NAME=?, " +
@@ -28,8 +28,8 @@ public class ReservationDAO {
 			"RESERVATION_CHECKIN_DATE=?, " +
 			"RESERVATION_CHECKOUT_DATE=?, " +
 			"RESERVATION_people_count=? " +
-			"where RESERVATION_id=?";
-	static final String SQL_DELETE = "delete from RESERVATION where RESERVATION_ID=?";
+			"where RESERVATION_id=? commit;";
+	static final String DELETE_RESERVATION = "delete from RESERVATION where RESERVATION_ID=?;";
 	
 	// Create methods---------------------------------------------------------------------------------------
 	public int insertReservation(ReservationVO reservation) {
@@ -37,7 +37,7 @@ public class ReservationDAO {
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(SQL_INSERT);
+			st = conn.prepareStatement(INSERT_RESERVATION);
 			st.setInt(1, reservation.getReservation_id());
 			st.setInt(2, reservation.getCottage_id());
 			st.setInt(3, reservation.getRoom_id());
@@ -82,7 +82,7 @@ public class ReservationDAO {
 		
 		try {
 			st = conn.createStatement();
-			rs= st.executeQuery(SQL_SELECT_ALL);
+			rs= st.executeQuery(SELECT_ALL_RESERVATION);
 			
 			while(rs.next()) {
 				reservationList.add(makeReservation(rs));
@@ -103,7 +103,7 @@ public class ReservationDAO {
 		ResultSet rs = null;
 		
 		try {
-			st = conn.prepareStatement(SQL_SELECT_BY_ID);
+			st = conn.prepareStatement(SELECT_RESERVATION_BY_ID);
 			st.setInt(1,  reservation_id);
 			rs = st.executeQuery();
 			
@@ -125,7 +125,7 @@ public class ReservationDAO {
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(SQL_UPDATE);
+			st = conn.prepareStatement(UPDATE_RESERVATION);
 			//reservation id is the primary key.
 			st.setInt(1, reservation.getCottage_id());
 			st.setInt(2, reservation.getRoom_id());
@@ -152,7 +152,7 @@ public class ReservationDAO {
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(SQL_DELETE);
+			st = conn.prepareStatement(DELETE_RESERVATION);
 			st.setInt(1, reservation_id);
 			result = st.executeUpdate();
 			conn.commit();
