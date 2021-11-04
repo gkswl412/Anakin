@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	<form action="comment"  method="post">
@@ -17,26 +22,24 @@
 
 	
 	
-		<table style="border: solid 1px gray; padding:2px; width:500px" >
-	<tr>
-		<td colspan="2" align="center"><b>답변</b></td>
-	</tr>
-	<tr>
-		<td align="center">내용</td>
-		<td><textarea name="review_comment" cols="50" rows="10"></textarea></td>
-	</tr>
-    <tr>
-		<td colspan="2" align="center">
-			<input type="submit" value="작성 완료">
-		</td>
-	</tr>
 	
-	 </table>
+	
+	
+	<div class="container">
+  <h2>답변 작성</h2>
+
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" rows="5" name="review_comment"></textarea>
+      <input type="submit" value="작성 완료">
+    </div>
+  
+</div>
+	
+	
 	</form>
-
-
-
-
+	
+	
 
 
 </body>

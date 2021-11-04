@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="update"  method="post">
+<form action="updatePost"  method="post">
 
 	<input type="hidden" name="review_id" size="15" value="${rev.review_id}">
 	
