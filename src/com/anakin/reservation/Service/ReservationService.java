@@ -35,7 +35,7 @@ public class ReservationService {
 	
 	//delete
 	public int deleteReservationById(int reservation_id) {
-		System.out.println();
+		System.out.println("delete Reservation service execute.");
 		return dao.deleteReservationById(reservation_id);
 	}
 	
