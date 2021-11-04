@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
 <style>
-	span{display:inline-block}
+	span{display:inline-block; color:white; background-color:hsla(0, 0%, 0%, 0.3)}
+	#sortBtn button{border-radius:4px; padding:5px; border:1px solid rgba(0,0,0,0.28);
+	color:rgba(0,0,0,0.28); background-color:rgba(250, 250, 250, 0.6)}
 </style>
 <script>
 	$(function(){
@@ -17,6 +20,8 @@
 		$('#highprice').on('click',f2);
 		$('#manyreview').on('click',f3);
 		$('#littlereview').on('click',f4);
+		$('img').on('click',f5);
+		$('img').on('mouseenter',f6);
 	})
 	
 	function f1(){
@@ -33,7 +38,8 @@
 				data:data,
 				type:"post",
 				success:function(responseData){
-					$("#here").html(responseData)
+					$("#here").html(responseData);
+					$('#lowprice').css({"color":"#0d6efd","border":"1px solid #0d6efd"});
 				},
 				fail:function(message){
 					$('#here').html(message);
@@ -55,7 +61,8 @@
 				data:data,
 				type:"post",
 				success:function(responseData){
-					$("#here").html(responseData)
+					$("#here").html(responseData);
+					$('#highprice').css({"color":"#0d6efd","border":"1px solid #0d6efd"});
 				},
 				fail:function(message){
 					$('#here').html(message);
@@ -77,7 +84,8 @@
 				data:data,
 				type:"post",
 				success:function(responseData){
-					$("#here").html(responseData)
+					$("#here").html(responseData);
+					$('#manyreview').css({"color":"#0d6efd","border":"1px solid #0d6efd"});
 				},
 				fail:function(message){
 					$('#here').html(message);
@@ -99,12 +107,21 @@
 				data:data,
 				type:"post",
 				success:function(responseData){
-					$("#here").html(responseData)
+					$("#here").html(responseData);
+					$('#littlereview').css({"color":"#0d6efd","border":"1px solid #0d6efd"});
 				},
 				fail:function(message){
 					$('#here').html(message);
 				}
 			});
+	}
+	
+	function f5(){
+		$('form').submit();
+	}
+	
+	function f6(){
+		$(this).css("cursor","pointer");
 	}
 </script>
 <body>
@@ -117,17 +134,50 @@
 	<ul style="list-style:none">
 		<c:forEach var="item" items="${searchList}" varStatus="vs">
 			<li>
+			<form method="get" action="user/cottageDetail">
+					<input type="hidden" value="${item.cottage_id}" name="cottage_id">
+					<input type="hidden" value="${item.cottage_cat}" name="cottage_cat">
+					<input type="hidden" value="${item.cottage_name}" name="cottage_name">
+					<input type="hidden" value="${item.reviewCount}" name="reviewCount">
+					<input type="hidden" value="${item.cottage_location}" name="cottage_location">
+					<input type="hidden" value="${item.photo_url}" name="photo_url">
+					<input type="hidden" value="${scVO.checkinDate}" name="checkInDate">
+					<input type="hidden" value="${scVO.checkinDate}" name="checkOutDate">
+					<input type="hidden" value="${item.cottage_longitude_x}" name="cottage_longitude_x">
+					<input type="hidden" value="${item.cottage_latitude_y}" name="cottage_latitude_y">
 				<div style="border:solid 1px lightgray; width:43%; height:280px; margin:0 auto; overflow:hidden">
-					<div style="margin:140px 0 0 15px; position:absolute; text-align:left; padding:0">
+					<div style="margin:140px 0 0 15px; position:absolute; text-align:left; padding:0; display:inline-block">
 						<strong><span style="font-size:15px; color:white; background-color:gray; padding:2px">${item.cottage_cat}</span></strong><br>
-						<strong><span style="font-size:29px; color:white; background-color:hsla(0, 0%, 0%, 0.3)">${item.cottage_name}</span></strong><br>
-						<strong><span style="font-size:18px; color:orange; background-color:hsla(0, 0%, 0%, 0.7)">리뷰(${item.reviewCount})</span></strong>
-						<strong><span style="margin-left: 80px; font-size:19px; color:white; background-color:hsla(0, 0%, 0%, 0.3)">${item.availableRoomCount}</span></strong><br>
-						<strong><span style="font-size:19px; color:white; background-color:hsla(0, 0%, 0%, 0.3)">${item.cottage_location}</span></strong>
-						<strong><span style="margin-left: 80px; font-size:19px; color:white; background-color:hsla(0, 0%, 0%, 0.3)">${item.price}</span></strong>
+						<strong><span style="font-size:29px">${item.cottage_name}</span></strong><br>
+						<strong><span style="font-size:18px; color:orange; background-color:hsla(0, 0%, 0%, 0.7)">리뷰(${item.reviewCount})</span></strong><br>
+						<strong><span style="font-size:19px">${item.cottage_location}</span></strong><br>
 					</div>
-					<a href="#"><img src="${item.photo_url}" style="width:100%; height:100%; object-fit:cover; text-align:center"></a>
+					<div style="margin:210px 0 0 450px; position:absolute; text-align:left; padding:0; display:inline-block">
+						<strong><span style="font-size:15px">
+							<c:choose>
+								<c:when test="${item.availableRoomCount==0}">
+									업소에 직접 문의
+								</c:when>
+								<c:otherwise>
+									남은 객실 ${item.availableRoomCount}
+								</c:otherwise>
+							</c:choose>
+						</span></strong><br>
+						
+						<strong><span style="font-size:25px">
+							<c:choose>
+								<c:when test="${item.price==0}">
+									<p style="font-size:15px">가격정보 알 수 없음</p>
+								</c:when>
+								<c:otherwise>
+									<fmt:formatNumber value="${item.price}" pattern="#,###" />원
+								</c:otherwise>
+							</c:choose>
+						</span></strong>
+					</div>
+					<img src="${item.photo_url}" style="width:100%; height:100%; object-fit:cover; text-align:center">
 				</div>
+			</form>
 			</li>
 		</c:forEach>
 	</ul>
