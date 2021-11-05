@@ -14,7 +14,7 @@ import com.anakin.user.VO.SearchConditionVO;
 import util.DBUtil;
 
 public class GetRoomInfoDAO {
-	public List<Cottage_roomVO> selectRoomByCottageId(int cottage_id, SearchConditionVO scVO){
+	public List<Cottage_roomVO> selectRoomByCottageId(SearchConditionVO scVO, int cottage_id){
 		List<Cottage_roomVO> roomList = new ArrayList<>();
 		String sql = "select * from cottage_room where room_id not in \r\n"
 				+ "(select room_id from reservation where reservation_checkin_date between ? and ? \r\n"
@@ -36,13 +36,27 @@ public class GetRoomInfoDAO {
 			st.setInt(5, cottage_id);
 			rs = st.executeQuery();
 			while(rs.next()) {
-				
+				Cottage_roomVO room = new Cottage_roomVO();
+				room.setCottage_id(rs.getInt(1));
+				room.setRoom_id(rs.getInt(2));
+				room.setRoom_name(rs.getString(3));
+				room.setRoom_occupancy(rs.getInt(4));
+				room.setRoom_standard_price(rs.getInt(5));
+				room.setRoom_holiday_price(rs.getInt(6));
+				room.setRoom_peak_season_price(rs.getInt(7));
+				room.setRoom_tv_count(rs.getInt(8));
+				room.setRoom_bathroom_count(rs.getInt(9));
+				room.setBalcony_option(rs.getString(10));
+				room.setRoom_status(rs.getString(11));
+				room.setRoom_description(rs.getString(12));
+				room.setRoom_count(rs.getInt(13));
+				roomList.add(room);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.dbClose(conn, st, rs);
 		}
-		return null;
+		return roomList;
 	}
 }

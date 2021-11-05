@@ -85,13 +85,14 @@
 				data:data,
 				type:"get",
 				success:function(responseData){
-					$("#here").html(responseData)
+					$("#here").html(responseData);
 				},
 				fail:function(message){
 					$('#here').html(message);
 				}
 			});
 	}
+	
 	  
 </script>
   
@@ -154,8 +155,8 @@
 
 
 
-<footer style="line-height:18px; font-size:12px; color:gray; position:absolute; width:100%">
-		<div style="margin-top:100px; height:400px; width:100%; text-align:center; background-color:rgb(240, 240, 240); display:inline-block; padding-top:80px">
+<footer style="line-height:18px; font-size:12px; color:gray; position:absolute; width:100%; margin-left:0; margin-bottom:0">
+		<div style="margin:100px 0 0 0; height:400px; width:100%; text-align:center; background-color:rgb(240, 240, 240); display:inline-block; padding-top:80px">
 			<ul style="list-style:none; padding-left:0">
 				<li style="display:inline"><a style="text-decoration:none; font-size:12px; color:gray" href="">팀소개<span style="width:24px; display:inline-block; text-align:center; background-color:rgb(240, 240, 240); color:gray !important">|</span></a></li>
 				<li style="display:inline"><a style="text-decoration:none; font-size:12px; color:gray" href="">이용약관<span style="width:24px; display:inline-block; text-align:center; background-color:rgb(240, 240, 240); color:gray; !important">|</span></a></li>
