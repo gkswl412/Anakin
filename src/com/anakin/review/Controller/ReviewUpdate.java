@@ -26,8 +26,10 @@ public class ReviewUpdate extends HttpServlet {
 		ReviewService service = new ReviewService();
 		int reviewid = Integer.parseInt(request.getParameter("reviewid"));
 		request.setAttribute("rev", service.SelectById(reviewid));
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/reviewupdate.jsp");
-		rd.forward(request, response);
+		
+		  RequestDispatcher rd = request.getRequestDispatcher("jsp/reviewupdate.jsp");
+		  rd.forward(request, response);
+		
 	}
 
 	/**
@@ -44,7 +46,9 @@ public class ReviewUpdate extends HttpServlet {
 	 * 
 	 * }
 	 */
-
+	
+	
+	/*
 	private ReviewVO makerev(HttpServletRequest request) {
 		int reviewid = Integer.parseInt(request.getParameter("review_id"));
 		String review_title = request.getParameter("review_title");
@@ -66,7 +70,7 @@ public class ReviewUpdate extends HttpServlet {
 		return rev;
 		
 		
-	}
+	}*/
 	
 		
 		
