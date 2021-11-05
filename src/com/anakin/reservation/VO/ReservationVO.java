@@ -1,12 +1,13 @@
 package com.anakin.reservation.VO;
 
+import java.security.SecureRandom;
 import java.sql.Date;
 
 public class ReservationVO {
 
-	private int reservation_id; // = getCottage_id() + getRoom_id() + (int)System.currentTimeMillis();
+	private long reservation_id;
 	private int cottage_id;// : number(10) - foreign key
-	private int room_id;// : number(10) - foreign key
+	private long room_id;// : number(10) - foreign key
 	private String user_name;// : varchar2(20) - not null
 	private String user_phone_number;// : varchar2(15) - not null, unique
 	private Date reservation_chekin_date;// : date - not null
@@ -17,9 +18,10 @@ public class ReservationVO {
 		super();
 	}
 	
-	public ReservationVO(int reservation_id, int cottage_id, int room_id, String user_name, String user_phone_number,
+	public ReservationVO(int cottage_id, long room_id, String user_name, String user_phone_number,
 			Date reservation_chekin_date, Date reservation_checkout_date, int reservation_people_count) {
 		super();
+		//this.reservation_id = getRandomPassword(1);
 		this.cottage_id = cottage_id;
 		this.room_id = room_id;
 		this.user_name = user_name;
@@ -29,7 +31,7 @@ public class ReservationVO {
 		this.reservation_people_count = reservation_people_count;
 	}
 
-	public int getReservation_id() {
+	public long getReservation_id() {
 		return reservation_id;
 	}
 
@@ -37,7 +39,7 @@ public class ReservationVO {
 		return cottage_id;
 	}
 
-	public int getRoom_id() {
+	public long getRoom_id() {
 		return room_id;
 	}
 
@@ -60,8 +62,8 @@ public class ReservationVO {
 	public int getReservation_people_count() {
 		return reservation_people_count;
 	}
-
-	public void setReservation_id(int reservation_id) {
+	
+	public void setReservation_id(long reservation_id) {
 		this.reservation_id = reservation_id;
 	}
 	
@@ -103,6 +105,12 @@ public class ReservationVO {
 				.append(reservation_checkout_date).append(", reservation_people_count=")
 				.append(reservation_people_count).append("]");
 		return builder.toString();
+	}
+	
+	public long getRandomPassword() {
+		final long MAGIC = 86400000L;
+		long currentTime = new java.util.Date().getTime();
+		return currentTime/MAGIC;
 	}
 	
 }

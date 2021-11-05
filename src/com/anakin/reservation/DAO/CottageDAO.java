@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.anakin.reservation.VO.CottageRoomVO;
 import com.anakin.reservation.VO.CottageVO;
 
 import util.DBUtil;
@@ -15,20 +16,25 @@ public class CottageDAO {
 	
 	public static final String SELECT_COTTAGE_BY_NAME = "select * from COTTAGE where COTTAGE_NAME=?;";
 	
-	public int SELECT_COTTAGE_BY_NAME(String cottageName) {
-		int result = 0;
+	public CottageVO selectCottageByName(String cottageName) {
+		
+		CottageVO cottage = null;
 		Connection conn= DBUtil.dbConnect();
-		PreparedStatement st = null;
+		PreparedStatement pr = null;
+		ResultSet rs = null;
 		try {
-			st = conn.prepareStatement(SELECT_COTTAGE_BY_NAME);
-			st.setString(1, cottageName);
-			result = st.executeUpdate();
-			conn.commit();
+			pr = conn.prepareStatement(SELECT_COTTAGE_BY_NAME);
+			pr.setString(1, cottageName);
+			rs = pr.executeQuery();
+			while(rs.next()) {
+				cottage = new CottageVO(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DBUtil.dbClose(conn, st, null);
+			DBUtil.dbClose(conn, pr, null);
 		}
-		return result;
-	} 
+		return cottage;
+	}
+	
 }
