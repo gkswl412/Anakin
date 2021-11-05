@@ -15,7 +15,7 @@ import util.DBUtil;
 public class ReservationDAO {
 	
 	// ansi standard sql----------------------------------------------------------------------------
-	static final String INSERT_RESERVATION = "insert into RESERVATION " + "values(?,?,?,?,?,?,?,?);";
+	static final String INSERT_RESERVATION = "insert into RESERVATION " + "values(?,?,?,?,?,?,?);";
 	static final String SELECT_ALL_RESERVATION = "select * from RESERVATION;";
 	static final String SELECT_RESERVATION_BY_ID = "select * from RESERVATION where RESERVATION_ID=?;";
 	//static final String SQL_SELECT_BY_NAME = "select * from RESERVATION where DEPARTMENT_NAME=?";
@@ -38,14 +38,14 @@ public class ReservationDAO {
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(INSERT_RESERVATION);
-			st.setInt(1, reservation.getReservation_id());
-			st.setInt(2, reservation.getCottage_id());
-			st.setInt(3, reservation.getRoom_id());
-			st.setString(4, reservation.getUser_name());
-			st.setString(5, reservation.getUser_phone_number());
-			st.setDate(6, reservation.getReservation_checkin_date());
-			st.setDate(7, reservation.getReservation_checkout_date());
-			st.setInt(8, reservation.getReservation_people_count());
+			
+			st.setInt(1, reservation.getCottage_id());
+			st.setLong(2, reservation.getRoom_id());
+			st.setString(3, reservation.getUser_name());
+			st.setString(4, reservation.getUser_phone_number());
+			st.setDate(5, reservation.getReservation_checkin_date());
+			st.setDate(6, reservation.getReservation_checkout_date());
+			st.setInt(7, reservation.getReservation_people_count());
 
 			result = st.executeUpdate();
 			conn.commit();
@@ -60,8 +60,8 @@ public class ReservationDAO {
 	
 	// makeReservation from sql ---------------------------------------------------------------------
 	private ReservationVO makeReservation(ResultSet rs) throws SQLException {
-		ReservationVO reservation = new ReservationVO(); // 8 member variables.
-		reservation.setReservation_id(rs.getInt("Reservation_id"));
+		ReservationVO reservation = new ReservationVO(); // 7 member variables.
+		reservation.setReservation_id(rs.getLong("Reservation_id"));
 		reservation.setCottage_id(rs.getInt("Cottage_id"));
 		reservation.setRoom_id(rs.getInt("Room_id"));
 		reservation.setUser_name(rs.getString("User_name"));
@@ -128,7 +128,7 @@ public class ReservationDAO {
 			st = conn.prepareStatement(UPDATE_RESERVATION);
 			//reservation id is the primary key.
 			st.setInt(1, reservation.getCottage_id());
-			st.setInt(2, reservation.getRoom_id());
+			st.setLong(2, reservation.getRoom_id());
 			st.setString(3, reservation.getUser_name());
 			st.setString(4, reservation.getUser_phone_number());
 			st.setDate(5, reservation.getReservation_checkin_date());
