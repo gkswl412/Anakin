@@ -21,7 +21,7 @@ public class ReviewDAO {
 	//¸®ºä¸®½ºÆ®
 	public List<ReviewVO> selectList() {
 		List<ReviewVO> reviewlist = new ArrayList<>();
-		String sql = "select * from review";
+		String sql = "select * from review order by 2";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		ResultSet rs = null;
