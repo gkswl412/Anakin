@@ -33,6 +33,7 @@ public class ReservationServlet extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("utf-8");
 		//**********get variables from client**********
 		int cottageId = Integer.parseInt(request.getParameter("cottageId"));
 		String cottageName = request.getParameter("cottageName"); // from searchResult
@@ -62,7 +63,7 @@ public class ReservationServlet extends HttpServlet {
 
 		
 		//**********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/reservation.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservation.jsp");
 		rd.forward(request, response);
 	}
 

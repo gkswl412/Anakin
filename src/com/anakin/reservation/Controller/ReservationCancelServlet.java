@@ -35,6 +35,8 @@ public class ReservationCancelServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.setCharacterEncoding("utf-8");
 		//**********get variables from client**********
 		String cottageName = request.getParameter("cottageName");
 		String roomName = request.getParameter("roomName");

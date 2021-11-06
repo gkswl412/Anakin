@@ -67,14 +67,12 @@
 			</form>
 		</div>
 		-->
-		<div class="User_info_box">
+		<div class="User_info_box" style="margin-top:150px">
 			<form style="text-align: center; padding: 20px; display: block"
-				method="get" action="reservationConfirm">
+				method="post" action="reservationConfirm">
 				
 				<input type="hidden" name="cottageId" value="${cottageId}">
-				<input type="hidden" name="roomId" value="${roomVO.getRoom_id()}">
-				<input type="hidden" name="cottageName" value="${cottageName}">
-				<input type="hidden" name="roomName" value="${roomVO.getRoom_name()}">
+				<input type="hidden" name="roomId" value="${roomVO.room_id}">
 				<input type="hidden" name="checkInDate" value="${checkInDate}">
 				<input type="hidden" name="checkOutDate" value="${checkOutDate}">
 				<input type="hidden" name="price" value="${price}">
@@ -83,6 +81,7 @@
 				이름 : <input type="text" name="user_name" required="required">
 				전화번호 : <input type="text" name="user_phone_number" required="required">
 				입실인원 수 : <input type="number" name="reservation_people_count" required="required">
+				예약 세부사항 : <input type="text" name="reservation_description">
 				
 				<input type="submit" value="Submit">
 			</form>
@@ -96,7 +95,7 @@
 				<strong>펜션 이름</strong> ${cottageName}
 			</p>
 			<p>
-				<strong>객실 이름</strong> ${roomVO.getRoom_name()}
+				<strong>객실 이름</strong> ${roomVO.room_name}
 			</p>
 			<p>
 				<strong>체크인 날짜</strong> ${checkInDate}
@@ -105,25 +104,25 @@
 				<strong>체크아웃 날짜</strong> ${checkOutDate}
 			</p>
 			<p>
-				<strong>가격</strong> <%-- 기간별 가격차별 --%>
+				<strong>가격</strong> ${price}
 			</p>
 			
 		</div>
 		<div class="Room_info_sub_details_box">
 			<p>
-				<strong>방 갯수</strong> ${roomVO.getRoom_count()}
+				<strong>방 갯수</strong> ${roomVO.room_count}
 			</p>
 			<p>
-				<strong>화장실 숫자</strong> ${roomVO.getRoom_bathroom_count()}
+				<strong>화장실 숫자</strong> ${roomVO.room_bathroom_count}
 			</p>
 			<p>
-				<strong>발코니 여부</strong> ${roomVO.getRoom_balcony_option()}
+				<strong>발코니 여부</strong> ${roomVO.room_balcony_option}
 			</p>
 			<p>
-				<strong>TV 갯수</strong> ${roomVO.getRoom_tv_count()}
+				<strong>TV 갯수</strong> ${roomVO.room_tv_count}
 			</p>
 			<p>
-				<strong>추가 정보</strong> ${roomVO.getRoom_description()}
+				<strong>추가 정보</strong> ${roomVO.room_description}
 			</p>
 		</div>
 	</div>

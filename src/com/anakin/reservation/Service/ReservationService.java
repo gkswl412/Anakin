@@ -7,7 +7,7 @@ import com.anakin.reservation.VO.ReservationVO;
 
 public class ReservationService {
 	
-	ReservationDAO dao;
+	ReservationDAO dao = new ReservationDAO();
 	
 	// insert
 	public int insertReservationService(ReservationVO reservationVO) {

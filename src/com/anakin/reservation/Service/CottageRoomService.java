@@ -5,7 +5,7 @@ import com.anakin.reservation.VO.CottageRoomVO;
 
 public class CottageRoomService {
 
-	CottageRoomDAO room_DAO;
+	CottageRoomDAO room_DAO = new CottageRoomDAO();
 	
 	public CottageRoomVO selectRoomByNamesService(String cottage_name, String room_name) {
 		System.out.println("insertReservation execute.");

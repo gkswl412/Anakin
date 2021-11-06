@@ -2,9 +2,32 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/reservation/css/reservation_style.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<title>예약 내용 확인</title>
+
 </head>
 <body>
 
@@ -34,28 +57,35 @@
 	</nav>
 
 
-	<div class="Reservation_result_box">
+	<div class="Reservation_result_box" style="margin-top:150px">
 		<p>
-			<strong>예약자 이름</strong> ${integratedVO.getUser_name()}
+			<strong>예약 결과</strong>
 		</p>
 		<p>
-			<strong>예약 번호</strong> ${integratedVO.getReservation_id}
+			<strong>예약자 이름</strong> ${integratedVO.user_name}
 		</p>
 		<p>
-			<strong>펜션 이름</strong> ${integratedVO.getCottage_name}
+			<strong>예약 번호</strong> ${integratedVO.reservation_id}
 		</p>
 		<p>
-			<strong>방 이름</strong> ${integratedVO.getRoom_name}
+			<strong>펜션 이름</strong> ${integratedVO.cottage_name}
 		</p>
 		<p>
-			<strong>체크인 날짜</strong> ${integratedVO.getReservation_chekin_date}
+			<strong>방 이름</strong> ${integratedVO.room_name}
 		</p>
 		<p>
-			<strong>체크아웃 날짜</strong> ${integratedVO.getReservation_checkout_date}
+			<strong>체크인 날짜</strong> ${integratedVO.reservation_chekin_date}
+		</p>
+		<p>
+			<strong>체크아웃 날짜</strong> ${integratedVO.reservation_checkout_date}
 		</p>
 		<p>
 			<strong>가격</strong> ${price}
 		</p>
+		<p>
+			<a href="http://localhost:9999/Anakin/">메인 화면으로 돌아가기</a>
+		</p>
+
 
 	</div>
 

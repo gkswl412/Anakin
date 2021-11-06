@@ -5,7 +5,7 @@ import com.anakin.reservation.VO.CottageVO;
 
 public class CottageService {
 
-	CottageDAO cottageDAO;
+	CottageDAO cottageDAO = new CottageDAO();
 	
 	public CottageVO selectCottageByNamesService(String cottage_name) {
 		return cottageDAO.selectCottageByName(cottage_name);
