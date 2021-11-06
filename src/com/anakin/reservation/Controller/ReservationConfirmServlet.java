@@ -66,6 +66,7 @@ public class ReservationConfirmServlet extends HttpServlet {
 		request.setAttribute("integratedVO", integratedVO);
 		request.setAttribute("price", price);
 		
+		
 		//**********forward to next page in server**********
 		RequestDispatcher rd = request.getRequestDispatcher("reservation/jsp/reservationCheck.jsp");
 		rd.forward(request, response);
