@@ -110,7 +110,7 @@
       <a class="nav-link" href="#" style="font-size:25px; margin:15px">내 예약 정보</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="managerlogin" style="font-size:25px; margin:15px">I'm Manager</a>
+      <a class="nav-link" href="/Anakin/managerlogin" style="font-size:25px; margin:15px">I'm Manager</a>
     </li>
 
     <!-- Dropdown -->

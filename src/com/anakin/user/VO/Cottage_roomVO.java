@@ -14,12 +14,13 @@ public class Cottage_roomVO {
 	String room_status;
 	String room_description;
 	int room_count;
+	String room_photo_url;
 	
 	public Cottage_roomVO() {}
 	
 	public Cottage_roomVO(int cottage_id, int room_id, String room_name, int room_occupancy, int room_standard_price,
 			int room_holiday_price, int room_peak_season_price, int room_tv_count, int room_bathroom_count,
-			String balcony_option, String room_status, String room_description, int room_count) {
+			String balcony_option, String room_status, String room_description, int room_count, String room_photo_url) {
 		super();
 		this.cottage_id = cottage_id;
 		this.room_id = room_id;
@@ -34,6 +35,7 @@ public class Cottage_roomVO {
 		this.room_status = room_status;
 		this.room_description = room_description;
 		this.room_count = room_count;
+		this.room_photo_url = room_photo_url;
 	}
 
 	public int getCottage_id() {
@@ -140,6 +142,14 @@ public class Cottage_roomVO {
 		this.room_count = room_count;
 	}
 
+	public String getRoom_photo_url() {
+		return room_photo_url;
+	}
+
+	public void setRoom_photo_url(String room_photo_url) {
+		this.room_photo_url = room_photo_url;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -150,7 +160,7 @@ public class Cottage_roomVO {
 				.append(", room_tv_count=").append(room_tv_count).append(", room_bathroom_count=")
 				.append(room_bathroom_count).append(", balcony_option=").append(balcony_option).append(", room_status=")
 				.append(room_status).append(", room_description=").append(room_description).append(", room_count=")
-				.append(room_count).append("]");
+				.append(room_count).append(", room_photo_url=").append(room_photo_url).append("]");
 		return builder.toString();
 	}
 	
