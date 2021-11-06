@@ -59,7 +59,7 @@
 		$('#reservation').css({"border-bottom":"0px solid","color":"#0000006F"});
 		var url = "/Anakin/review/list";
 		var data = {
-					"cottage_id":"${cottageDetailInfo.cottage_id}"
+					"cottage_id":${cottageDetailInfo.cottage_id}
 				   	}
 		$.ajax({
 			url:url,
