@@ -15,7 +15,7 @@ import util.DBUtil;
 public class ReservationDAO {
 	
 	// ansi standard sql----------------------------------------------------------------------------
-	static final String INSERT_RESERVATION = "insert into RESERVATION " + "values(?,?,?,?,?,?,?);";
+	static final String INSERT_RESERVATION = "insert into RESERVATION values(?,?,?,?,?,?,?,?,?);";
 	static final String SELECT_ALL_RESERVATION = "select * from RESERVATION;";
 	static final String SELECT_RESERVATION_BY_ID = "select * from RESERVATION where RESERVATION_ID=?;";
 	static final String UPDATE_RESERVATION = "update RESERVATION set " +
@@ -24,7 +24,7 @@ public class ReservationDAO {
 			"where RESERVATION_id=?;";
 	static final String DELETE_RESERVATION = "delete from RESERVATION where RESERVATION_ID=?;";
 	
-	// Create methods---------------------------------------------------------------------------------------
+	// Create methods (insert into DB) ----------------------------------------------------------------
 	public int insertReservation(ReservationVO reservation) {
 		int result = 0;  //insert°Ç¼ö
 		Connection conn = DBUtil.dbConnect();
@@ -32,13 +32,25 @@ public class ReservationDAO {
 		try {
 			st = conn.prepareStatement(INSERT_RESERVATION);
 			
-			st.setInt(1, reservation.getCottage_id());
-			st.setLong(2, reservation.getRoom_id());
-			st.setString(3, reservation.getUser_name());
-			st.setString(4, reservation.getUser_phone_number());
-			st.setString(5, reservation.getReservation_checkin_date());
-			st.setString(6, reservation.getReservation_checkout_date());
-			st.setInt(7, reservation.getReservation_people_count());
+			System.out.println(reservation.getReservation_id());
+			System.out.println(reservation.getCottage_id());
+			System.out.println(reservation.getRoom_id());
+			System.out.println(reservation.getUser_name());
+			System.out.println(reservation.getUser_phone_number());
+			System.out.println(reservation.getReservation_checkin_date());
+			System.out.println(reservation.getReservation_checkout_date());
+			System.out.println(reservation.getReservation_people_count());
+			System.out.println(reservation.getReservation_description());
+			
+			st.setLong(1, reservation.getReservation_id());
+			st.setInt(2, reservation.getCottage_id());
+			st.setLong(3, reservation.getRoom_id());
+			st.setString(4, reservation.getUser_name());
+			st.setString(5, reservation.getUser_phone_number());
+			st.setString(6, reservation.getReservation_checkin_date());
+			st.setString(7, reservation.getReservation_checkout_date());
+			st.setInt(8, reservation.getReservation_people_count());
+			st.setString(9, reservation.getReservation_description());
 
 			result = st.executeUpdate();
 			conn.commit();

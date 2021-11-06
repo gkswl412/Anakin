@@ -34,11 +34,11 @@ public class ReservationConfirmServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("utf-8");
+		
 		//**********get variables from client**********
 		int cottageId = Integer.parseInt(request.getParameter("cottageId"));
 		long roomId = Integer.parseInt(request.getParameter("roomId"));
-		String cottageName = request.getParameter("cottageName");
-		String roomName = request.getParameter("roomName");
 		String checkInDate = request.getParameter("checkInDate");
 		String checkOutDate = request.getParameter("checkOutDate");
 		int price = Integer.parseInt(request.getParameter("price"));
@@ -46,7 +46,7 @@ public class ReservationConfirmServlet extends HttpServlet {
 		String userName = request.getParameter("user_name");
 		String userPhoneNumber = request.getParameter("user_phone_number");
 		int reservationPeopleCount = Integer.parseInt(request.getParameter("reservation_people_count"));
-		
+		String reservationDescription = request.getParameter("reservation_description");
 		
 		//**********declare variable in server**********
 		ReservationVO reservationVO = null;
@@ -56,7 +56,8 @@ public class ReservationConfirmServlet extends HttpServlet {
 		IntegratedService integratedService = new IntegratedService();
 		
 		//**********do business logic in server**********
-		reservationVO = new ReservationVO(cottageId, roomId, userName, userPhoneNumber, checkInDate, checkOutDate, reservationPeopleCount);
+		reservationVO = new ReservationVO(reservationId, cottageId, roomId, userName, userPhoneNumber, checkInDate, checkOutDate, reservationPeopleCount, reservationDescription);
+		System.out.println("reservationVO created");
 		reservationService.insertReservationService(reservationVO);
 		
 		integratedVO = integratedService.selectIntegratedByReservationIdService(reservationId);
@@ -68,7 +69,7 @@ public class ReservationConfirmServlet extends HttpServlet {
 		
 		
 		//**********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("reservation/jsp/reservationCheck.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationCheck.jsp");
 		rd.forward(request, response);
 	}
 
