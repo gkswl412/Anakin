@@ -21,7 +21,7 @@ public class ReviewDAO {
 	//府轰府胶飘
 	public List<ReviewVO> selectList(int cottage_id) {
 		List<ReviewVO> reviewlist = new ArrayList<>();
-		String sql = "select * from review where cottage_id=? order by 2";
+		String sql = "select * from review where cottage_id=? ";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -139,8 +139,8 @@ public class ReviewDAO {
 	//府轰累己
 	public int InsertReview(ReviewVO rev) {
 		int result = 0;  
-		String sql=" insert into review(review_id,review_title,review_pw,review_writer,review_date,review_description)"
-				+ " values(review_id_seq.nextval,?,?,?,sysdate,?)";
+		String sql=" insert into review(review_id,review_title,review_pw,review_writer,review_date,review_description,cottage_id)"
+				+ " values(review_id_seq.nextval,?,?,?,sysdate,?,?)";
 				
 		
 		
@@ -154,7 +154,7 @@ public class ReviewDAO {
 			st.setString(2, rev.getReview_pw());
 			st.setString(3, rev.getReview_writer());
 			st.setString(4, rev.getReview_description());
-			
+			st.setInt(5, rev.getCottage_id());
 		 
 	
 			result = st.executeUpdate();

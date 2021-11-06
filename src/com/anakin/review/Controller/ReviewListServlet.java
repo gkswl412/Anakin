@@ -27,7 +27,9 @@ public class ReviewListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
-		 int cottage_id = Integer.valueOf(request.getParameter("cottage_id"));
+		
+		 int cottage_id = Integer.parseInt(request.getParameter("cottage_id"));
+
 	      ReviewService service = new ReviewService();
 	      List<ReviewVO> reviewlist = service.SelectList(cottage_id);
 	   request.setAttribute("reviewlist", reviewlist);

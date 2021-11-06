@@ -12,7 +12,7 @@
 <h1>리뷰 작성</h1>
 	<form action="write"  method="post">
 	
-	
+	<input type="hidden" name="cottage_id" value="${cottage_id}">
 	<table style="border: solid 1px gray; padding:2px; width:500px" >
 	<tr>
 		<td colspan="2" align="center"><b>글을 적어주세요</b></td>

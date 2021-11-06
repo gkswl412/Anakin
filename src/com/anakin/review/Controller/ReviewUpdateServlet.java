@@ -18,7 +18,7 @@ import com.anakin.review.VO.ReviewVO;
  * Servlet implementation class ReviewUpdate
  */
 @WebServlet("/review/updateGet")
-public class ReviewUpdate extends HttpServlet {
+public class ReviewUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
