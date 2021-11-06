@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.anakin.user.Service.GetRoomInfoService;
 import com.anakin.user.VO.Cottage_roomVO;
@@ -51,7 +52,8 @@ public class CottageDetailServlet extends HttpServlet {
 		GetRoomInfoService service = new GetRoomInfoService();
 		List<Cottage_roomVO> roomList = service.selectRoomByCottageId(scVO, cottage_id);
 		roomList = service.selectRoomByCottageId(scVO, cottage_id);
-		request.setAttribute("roomList", roomList);
+		HttpSession session = request.getSession();
+		session.setAttribute("roomList", roomList);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("jsp/cottageDetailInfo.jsp");
 		rd.forward(request, response);
