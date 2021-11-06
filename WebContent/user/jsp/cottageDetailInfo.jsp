@@ -29,19 +29,19 @@
 		$(this).css({"border-bottom":"2px solid #0d6efd","color":"#0d6efd"});
 		$('#cottageInfo').css({"border-bottom":"0px solid","color":"#0000006F"});
 		$('#review').css({"border-bottom":"0px solid","color":"#0000006F"});
-		var url = "/Anakin/user/roomListAndDescription"
+		var url = "/Anakin/user/roomListAndDescription";
 		var data = {
-					"roomList":${roomList}
+					"roomList":"${roomList}"
 					}
 		$.ajax({
 			url:url,
 			data:data,
 			type:"get",
 			success: function(responseData){
-				$('here').html(responseData);
+				$('#here').html(responseData);
 			},
 			fail: function(message){
-				$('here').html(responseData);
+				$('#here').html(message);
 			}
 		});
 	}
@@ -58,7 +58,7 @@
 		$('#reservation').css({"border-bottom":"0px solid","color":"#0000006F"});
 		var url = "/Anakin/review/list";
 		var data = {
-					"cottage_id":${cottageDetailInfo.cottage_id}
+					"cottage_id":"${cottageDetailInfo.cottage_id}"
 				   	}
 		$.ajax({
 			url:url,
