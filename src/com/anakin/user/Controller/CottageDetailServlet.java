@@ -33,16 +33,16 @@ public class CottageDetailServlet extends HttpServlet {
 		String cottage_cat = request.getParameter("cottage_cat");
 		String cottage_name = request.getParameter("cottage_name");
 		String reviewCount = request.getParameter("reviewCount");
+		int rcount = 0;
+		rcount = Integer.parseInt(reviewCount);
 		if(reviewCount==null) {
 			reviewCount="";
 		}
-		int rcount = 0;
 		if(!reviewCount.equals("")) {
 			 rcount = Integer.parseInt(reviewCount);
 		}else {
 			rcount=0;
 		}
-		rcount = Integer.parseInt(reviewCount);
 		String cottage_location = request.getParameter("cottage_location");
 		String photo_url = request.getParameter("photo_url");
 		double cottage_longitude_x = Double.valueOf(request.getParameter("cottage_longitude_x"));
