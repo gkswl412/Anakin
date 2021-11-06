@@ -35,7 +35,7 @@ public class SelectAllReservationServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String para = request.getParameter("submit");
 		ReservationService service = new ReservationService();
-		request.setAttribute("reservationList", service.selectAllReservation());
+		request.setAttribute("reservationList", service.selectAllReservationService());
 		RequestDispatcher rd = request.getRequestDispatcher("reservation/jsp/selectAllReservationResult.jsp"); // with / absolute
 		rd.forward(request, response);
 	}

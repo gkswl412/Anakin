@@ -19,13 +19,15 @@ import util.DateUtil;
  * Servlet implementation class ReviewInsertservlet
  */
 @WebServlet("/review/write")
-public class ReviewInsertservlet extends HttpServlet {
+public class ReviewInsertservlet extends HttpServlet { 
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("jsp/reviewinsert.jsp");
-		rd.forward(request, response);
+		/*
+		 * RequestDispatcher rd; 
+		 * rd = request.getRequestDispatcher("jsp/reviewinsert.jsp");
+		 * rd.forward(request,response);
+		 */
 	}
 	
 
@@ -37,7 +39,11 @@ public class ReviewInsertservlet extends HttpServlet {
 		ReviewService service = new ReviewService();
 		int result = service.InsertReview(rev);
 		request.setAttribute("message", result > 0 ? "성공" : "실패");
-		response.sendRedirect("list");
+		 response.sendRedirect("/Anakin/user/cottageDetail");
+			/*
+			 * RequestDispatcher rd = request.getRequestDispatcher("../user/cottageDetail");
+			 * rd.forward(request, response);
+			 */
 	}
 
 
@@ -47,6 +53,7 @@ public class ReviewInsertservlet extends HttpServlet {
 		String review_pw = request.getParameter("review_pw");
 		String review_writer= request.getParameter("review_writer");
 		String review_description = request.getParameter("review_description");
+		int cottage_id =Integer.parseInt( request.getParameter("cottage_id"));
 		
 		ReviewVO rev = new ReviewVO();
 	
@@ -54,6 +61,8 @@ public class ReviewInsertservlet extends HttpServlet {
 		rev.setReview_pw(review_pw);
 		rev.setReview_writer(review_writer);
 		rev.setReview_description(review_description);
+		rev.setCottage_id(cottage_id);
+		
 		return rev;
 		
 		

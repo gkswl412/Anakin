@@ -1,9 +1,72 @@
 @charset "UTF-8";
-tr{
+
+h1{
+	
+	text-align: center;
+	
+}
+
+.modal-title{
+	
+	float:center;
+}
+
+a{
 	
 	text-align: left;
 	
 }
 
 
+.box{
+	
+	padding:10px;
+	width:700px; /* 너비 */
+      height:200px; /* 높이 */
+      margin:0 auto; 
+ padding: 0 auto;
+   text-align: left;
+	}
+	
+.box2{
+	
+		width:760px; /* 너비 */
+      height:120px; /* 높이 */
+    margin:0 auto; 
+   padding: 0 auto;
 
+	}
+	
+.centent{
+	
+		width:760px; /* 너비 */
+      height:90px; /* 높이 */
+    margin:0 auto; 
+  padding: 0 auto;
+
+	}
+	
+		
+		
+.button{
+
+	float: right;
+	}
+	
+.media-heading{
+	
+	 font-weight: 600;
+	font-size: 140%;
+	}
+	
+.media-heading2{
+	
+	 font-weight: 300;
+	 	 font-size: 120%;
+	 	   margin:0 auto; 
+  padding: 0 auto;
+  
+}
+	
+	
+	

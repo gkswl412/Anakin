@@ -11,7 +11,7 @@ import util.DBUtil;
 
 public class CottageRoomDAO {
 	
-	public static final String SELECT_COTTAGE_ROOM_BY_NAMES = "select * from COTTAGE_ROOM where COTTAGE_NAME=? and ROOM_NAME=?";
+	public static final String SELECT_COTTAGE_ROOM_BY_NAMES_WITH_JOIN = "select * from cottage_room inner join cottage using (cottage_id) where COTTAGE_NAME=? and ROOM_NAME=?";
 
 	public CottageRoomVO selectRoomByNames(String room_name, String cottage_name) {
 		
@@ -20,12 +20,12 @@ public class CottageRoomDAO {
 		PreparedStatement pr = null;
 		ResultSet rs = null;
 		try {
-			pr = conn.prepareStatement(SELECT_COTTAGE_ROOM_BY_NAMES);
+			pr = conn.prepareStatement(SELECT_COTTAGE_ROOM_BY_NAMES_WITH_JOIN);
 			pr.setString(1, room_name);
 			pr.setString(2, cottage_name);
 			rs = pr.executeQuery(); // execute sql
 			while(rs.next()) {
-				cottage_room = new CottageRoomVO(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),
+				cottage_room = new CottageRoomVO(rs.getInt(1),rs.getLong(2),rs.getString(3),rs.getInt(4),
 						rs.getInt(5),rs.getInt(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getString(10),
 						rs.getString(11),rs.getString(12),rs.getInt(13));
 			}
@@ -37,4 +37,6 @@ public class CottageRoomDAO {
 		}
 		return cottage_room;
 	}
+	
+	
 }

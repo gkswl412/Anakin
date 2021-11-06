@@ -22,14 +22,15 @@ import com.anakin.review.Service.ReviewService;
 public class ReviewDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
+	
+	  protected void doGet(HttpServletRequest request, HttpServletResponse
+	  response) throws ServletException, IOException {
+	  
 	/*
-	 * protected void doGet(HttpServletRequest request, HttpServletResponse
-	 * response) throws ServletException, IOException {
-	 * 
-	 * 
 	 * RequestDispatcher rd = request.getRequestDispatcher("jsp/reviewdelete.jsp");
 	 * rd.forward(request, response); }
 	 */
+	  }
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String review_pw = request.getParameter("review_pw");
@@ -37,11 +38,11 @@ public class ReviewDeleteServlet extends HttpServlet {
 		ReviewService service = new ReviewService();
 		
 		 request.setAttribute("message", service.DeleteReview(review_pw)>0?"삭제성공":"삭제실패");
-		 response.sendRedirect("list");
+		 response.sendRedirect("/Anakin/user/cottageDetail");
+		 
 		
 		
 		
 	}
-
 
 }

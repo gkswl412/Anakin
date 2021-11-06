@@ -25,7 +25,7 @@
 	   	var area1 = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
 	    var area2 = ["계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
 	    var area3 = ["대덕구","동구","서구","유성구","중구"];
-	    var area4 = ["광산구","남구","동구",     "북구","서구"];
+	    var area4 = ["광산구","남구","동구", "북구","서구"];
 	    var area5 = ["남구","달서구","동구","북구","서구","수성구","중구","달성군"];
 	    var area6 = ["남구","동구","북구","중구","울주군"];
 	    var area7 = ["강서구","금정구","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구","기장군"];
@@ -85,13 +85,14 @@
 				data:data,
 				type:"get",
 				success:function(responseData){
-					$("#here").html(responseData)
+					$("#here").html(responseData);
 				},
 				fail:function(message){
 					$('#here').html(message);
 				}
 			});
 	}
+	
 	  
 </script>
   
@@ -109,7 +110,7 @@
       <a class="nav-link" href="#" style="font-size:25px; margin:15px">내 예약 정보</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="managerlogin" style="font-size:25px; margin:15px">I'm Manager</a>
+      <a class="nav-link" href="/Anakin/managerlogin" style="font-size:25px; margin:15px">I'm Manager</a>
     </li>
 
     <!-- Dropdown -->
@@ -154,8 +155,8 @@
 
 
 
-<footer style="line-height:18px; font-size:12px; color:gray; position:absolute; width:100%">
-		<div style="margin-top:100px; height:400px; width:100%; text-align:center; background-color:rgb(240, 240, 240); display:inline-block; padding-top:80px">
+<footer style="line-height:18px; font-size:12px; color:gray; position:absolute; width:100%; margin-left:0; margin-bottom:0">
+		<div style="margin:100px 0 0 0; height:400px; width:100%; text-align:center; background-color:rgb(240, 240, 240); display:inline-block; padding-top:80px">
 			<ul style="list-style:none; padding-left:0">
 				<li style="display:inline"><a style="text-decoration:none; font-size:12px; color:gray" href="">팀소개<span style="width:24px; display:inline-block; text-align:center; background-color:rgb(240, 240, 240); color:gray !important">|</span></a></li>
 				<li style="display:inline"><a style="text-decoration:none; font-size:12px; color:gray" href="">이용약관<span style="width:24px; display:inline-block; text-align:center; background-color:rgb(240, 240, 240); color:gray; !important">|</span></a></li>

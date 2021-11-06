@@ -1,21 +1,21 @@
 package com.anakin.reservation.VO;
 
 public class CottageRoomVO {
-	int cottage_id;
-	int room_id;
-	String room_name;
-	int room_occupancy;
-	int room_standard_price;
-	int room_holyday_price;
-	int room_peak_season_price;
-	int room_tv_count;
-	int room_bathroom_count;
-	String room_balcony_option;
-	String room_status;
-	String room_description;
-	int room_count;
+	private int cottage_id;
+	private long room_id;
+	private String room_name;
+	private int room_occupancy;
+	private int room_standard_price;
+	private int room_holyday_price;
+	private int room_peak_season_price;
+	private int room_tv_count;
+	private int room_bathroom_count;
+	private String room_balcony_option;
+	private String room_status;
+	private String room_description;
+	private int room_count;
 	
-	public CottageRoomVO(int cottage_id, int room_id, String room_name, int room_occupancy, int room_standard_price,
+	public CottageRoomVO(int cottage_id, long room_id, String room_name, int room_occupancy, int room_standard_price,
 			int room_holyday_price, int room_peak_season_price, int room_tv_count, int room_bathroom_count,
 			String room_balcony_option, String room_status, String room_description, int room_count) {
 		super();
@@ -39,10 +39,10 @@ public class CottageRoomVO {
 	public void setCottage_id(int cottage_id) {
 		this.cottage_id = cottage_id;
 	}
-	public int getRoom_id() {
+	public long getRoom_id() {
 		return room_id;
 	}
-	public void setRoom_id(int room_id) {
+	public void setRoom_id(long room_id) {
 		this.room_id = room_id;
 	}
 	public String getRoom_name() {

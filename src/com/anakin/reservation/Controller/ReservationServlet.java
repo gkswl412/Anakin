@@ -13,14 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.anakin.reservation.Service.CottageRoomService;
-import com.anakin.reservation.VO.CottageVO;
 import com.anakin.reservation.VO.CottageRoomVO;
 
 
 /**
  * Servlet implementation class ReservationServlet
  */
-@WebServlet("/reservation") // search result list(park) -> ReservationServlet -> reservation.jsp
+@WebServlet("/reservation") 
 public class ReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,33 +30,40 @@ public class ReservationServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// there should be interface between searchlist and this servlet
+		request.setCharacterEncoding("utf-8");
+		//**********get variables from client**********
+		int cottageId = Integer.parseInt(request.getParameter("cottageId"));
 		String cottageName = request.getParameter("cottageName"); // from searchResult
 		String roomName = request.getParameter("roomName");
-//		Date checkInDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("checkInDate"));
-//		Date checkOutDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("checkOutDate"));
+		String checkInDate = request.getParameter("checkInDate");
+		String checkOutDate = request.getParameter("checkOutDate");
+		int price = Integer.parseInt(request.getParameter("price"));
 		
-		int price;
-		int roomCount;
-		int bathroomCount;
-		String balconyOption;
-		int tvCount;
-		String description;
+		
+		//**********declare variable in server**********
+		CottageRoomService roomService;
+		CottageRoomVO roomVO;
+		
+		
+		//**********do business logic in server**********
+		roomService = new CottageRoomService();
+		roomVO = roomService.selectRoomByNamesService(cottageName, roomName);
+		
+		
+		//**********set variables for client in server**********
+		request.setAttribute("cottageId", cottageId);
+		request.setAttribute("cottageName", cottageName);
+		request.setAttribute("roomVO", roomVO);
+		request.setAttribute("checkInDate", checkInDate);
+		request.setAttribute("checkOutDate", checkOutDate);
+		request.setAttribute("price", price);
 
-		CottageRoomService roomService = new CottageRoomService();
-		CottageRoomVO roomVO = roomService.selectRoomByNamesService(cottageName, roomName);
 		
-		request.setAttribute("Room_standard_price", roomVO.getRoom_standard_price());
-		request.setAttribute("Room_count", roomVO.getRoom_count());
-		request.setAttribute("Room_bathroom_count", roomVO.getRoom_bathroom_count());
-		request.setAttribute("Room_balcony_option", roomVO.getRoom_balcony_option());
-		request.setAttribute("Room_tv_count", roomVO.getRoom_tv_count());
-		request.setAttribute("Room_description", roomVO.getRoom_description());
-		
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/reservation.jsp");
+		//**********forward to next page in server**********
+		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservation.jsp");
 		rd.forward(request, response);
 	}
 

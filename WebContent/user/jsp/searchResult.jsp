@@ -117,7 +117,7 @@
 	}
 	
 	function f5(){
-		$('form').submit();
+		$(this).parent().parent().submit();
 	}
 	
 	function f6(){
@@ -134,7 +134,7 @@
 	<ul style="list-style:none">
 		<c:forEach var="item" items="${searchList}" varStatus="vs">
 			<li>
-			<form method="get" action="user/cottageDetail">
+			<form method="post" action="user/cottageDetail">
 					<input type="hidden" value="${item.cottage_id}" name="cottage_id">
 					<input type="hidden" value="${item.cottage_cat}" name="cottage_cat">
 					<input type="hidden" value="${item.cottage_name}" name="cottage_name">
@@ -143,8 +143,8 @@
 					<input type="hidden" value="${item.photo_url}" name="photo_url">
 					<input type="hidden" value="${scVO.checkinDate}" name="checkInDate">
 					<input type="hidden" value="${scVO.checkinDate}" name="checkOutDate">
-					<input type="hidden" value="${item.cottage_longitude_x}" name="cottage_longitude_x">
-					<input type="hidden" value="${item.cottage_latitude_y}" name="cottage_latitude_y">
+					<input type="hidden" value="${item.cottage_longitude_X}" name="cottage_longitude_x">
+					<input type="hidden" value="${item.cottage_latitude_Y}" name="cottage_latitude_y">
 				<div style="border:solid 1px lightgray; width:43%; height:280px; margin:0 auto; overflow:hidden">
 					<div style="margin:140px 0 0 15px; position:absolute; text-align:left; padding:0; display:inline-block">
 						<strong><span style="font-size:15px; color:white; background-color:gray; padding:2px">${item.cottage_cat}</span></strong><br>
