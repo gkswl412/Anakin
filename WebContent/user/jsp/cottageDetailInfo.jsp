@@ -29,7 +29,21 @@
 		$(this).css({"border-bottom":"2px solid #0d6efd","color":"#0d6efd"});
 		$('#cottageInfo').css({"border-bottom":"0px solid","color":"#0000006F"});
 		$('#review').css({"border-bottom":"0px solid","color":"#0000006F"});
-		$
+		var url = "/Anakin/user/roomListAndDescription"
+		var data = {
+					"roomList":${roomList}
+					}
+		$.ajax({
+			url:url,
+			data:data,
+			type:"get",
+			success: function(responseData){
+				$('here').html(responseData);
+			},
+			fail: function(message){
+				$('here').html(responseData);
+			}
+		});
 	}
 	
 	function f2(){
@@ -123,7 +137,7 @@
 	  			<c:forEach var="item" items="${roomList}">
 		  			<div style="margin-bottom:20px; border:1px solid rgba(0,0,0,0.08); height:300px; padding:20px; border-radius:5px">
 		  				<div style="width:48%; height:100%; margin:0; float:left">
-							<img src="${contextPath}/uploadFolder/room.jpg" style="width:100%; height:100%; object-fit:cover; text-align:center">
+							<img src="${contextPath}/${item.room_photo_url}" style="width:100%; height:100%; object-fit:cover; text-align:center">
 		  				</div>
 		  				<div style="width:4%; height:100%; margin:0; float:left">
 		  				</div>
