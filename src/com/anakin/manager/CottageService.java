@@ -19,4 +19,8 @@ public class CottageService {
 	public int CottageDeleteService(int cottage_id) {
 		return dao.CottageDelete(cottage_id);
 	}
+	
+	public CottageVO selectByCottage_id(int Cottage_id) {
+		return dao.selectByCottage_id(Cottage_id);
+	}
 }

@@ -7,18 +7,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
-#p {text-overflow:ellipsis;}
+<style>
+#p {overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  width: 100px;
+  height: 20px;}
 </style>
-<title>${manager_id}님의Window</title>
-
+<title>${mlist.manager_name}님의Window</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	<h1>${manager_id}님환영합니다.</h1>
+	<h1>${mlist.manager_name}님 환영합니다.</h1>
 	<%@ include file="logout.jsp" %>
-	<h3>${manager_id}의Cottage ${mlist.manager_name}</h3>
+	<h3>${mlist.manager_name}의Cottage </h3>
 	
 	<table >
 		<tr>
@@ -42,13 +45,17 @@
 		</tr>
 		<c:forEach items="${cottagelist}" var="cot">
 		<tr>
-			<td id="cid"><a href="roomlist?manager_id=${manager_id}&cottage_id=${cot.cottage_id}&cottage_name=${cot.cottage_name}">${cot.cottage_id}</a></td>
+			<td><a href="roomlist?manager_id=${manager_id}&cottage_id=${cot.cottage_id}&cottage_name=${cot.cottage_name}">${cot.cottage_id}</a></td>
 			<td>${cot.cottage_name}</td>
 			<td>${cot.cottage_location}</td>
 			<td>${cot.cottage_phone_number}</td>
 			<td id="p">${cot.cottage_description}</td>
 			<td>${cot.cottage_cat}</td>
-			<td><button onclick="call2(${cot.cottage_id})">수정</button></td>
+			<td><form action="cotupdata" method="get">
+			<input type="hidden" name="cottage_id" value="${cot.cottage_id }">
+			<input type="hidden" name="manager_id" value="${mlist.manager_id}">
+			<input type="submit" value="수정">
+			</form></td>
 			<td><button onclick="call1(${cot.cottage_id})">삭제</button></td>
 		</tr>
 		</c:forEach>
@@ -57,9 +64,6 @@
 function call1(cottage_id){
 	location.href="cotdelete?cottage_id="+cottage_id;
 	
-}
-function call2(cottage_id){
-	location.href="cotupdata?cottage_id="+cottage_id;
 }
 </script>
 </body>

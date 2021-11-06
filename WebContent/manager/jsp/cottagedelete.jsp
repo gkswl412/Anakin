@@ -13,7 +13,7 @@
 </head>
 <body>
 <form action="cotdelete"  method="post">
-<h2>${manager_id}님 <br>
+<h2>${mlist.manager_name}님 <br>
 <input type="hidden" name="cottage_id" value="${param.cottage_id}">${param.cottage_id}코드의 Cottage를 삭제 합니까?</h2>
 <table>
 <tr>

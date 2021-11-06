@@ -5,9 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Cottage방 등록 화면</title>
-
 </head>
-
 <body>
 	<h1>${room.room_name}방 수정</h1>
 	<!-- <input type="text" id="loginid" palceholder="아이디"> -->
@@ -20,7 +18,6 @@
 		<input type="hidden" name="room_id" value="${room.room_id}">
 		<input type="text" name="cottage_name" value="${cottage_name }">
 		<table>
-		
 			<tr>
 				<td>Room이름:</td>
 				<td><input type="text" name="room_name" value="${room.room_name}" required="required"></td>
