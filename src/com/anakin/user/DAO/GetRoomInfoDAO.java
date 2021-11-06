@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.anakin.user.VO.Cottage_photoVO;
 import com.anakin.user.VO.Cottage_roomVO;
 import com.anakin.user.VO.SearchConditionVO;
 
@@ -59,4 +60,5 @@ public class GetRoomInfoDAO {
 		}
 		return roomList;
 	}
+	
 }
