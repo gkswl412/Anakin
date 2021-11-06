@@ -51,6 +51,7 @@ public class GetRoomInfoDAO {
 				room.setRoom_status(rs.getString(11));
 				room.setRoom_description(rs.getString(12));
 				room.setRoom_count(rs.getInt(13));
+				room.setRoom_photo_url(rs.getString(14));
 				roomList.add(room);
 			}
 		} catch (SQLException e) {

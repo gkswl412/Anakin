@@ -42,6 +42,21 @@
 		$(this).css({"border-bottom":"2px solid #0d6efd","color":"#0d6efd"});
 		$('#cottageInfo').css({"border-bottom":"0px solid","color":"#0000006F"});
 		$('#reservation').css({"border-bottom":"0px solid","color":"#0000006F"});
+		var url = "/Anakin/review/list";
+		var data = {
+					"cottage_id":${cottageDetailInfo.cottage_id}
+				   	}
+		$.ajax({
+			url:url,
+			data:data,
+			type:"get",
+			success:function(responseData){
+				$("#here").html(responseData);
+			},
+			fail:function(message){
+				$('#here').html(message);
+			}
+		});
 	}
 	
 </script>
@@ -61,7 +76,7 @@
       <a class="nav-link" href="#" style="font-size:25px; margin:15px">내 예약 정보</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="managerlogin" style="font-size:25px; margin:15px">I'm Manager</a>
+      <a class="nav-link" href="/Anakin/managerlogin" style="font-size:25px; margin:15px">I'm Manager</a>
     </li>
 
     <!-- Dropdown -->
