@@ -51,6 +51,24 @@
 		$(this).css({"border-bottom":"2px solid #0d6efd","color":"#0d6efd"});
 		$('#reservation').css({"border-bottom":"0px solid","color":"#0000006F"});
 		$('#review').css({"border-bottom":"0px solid","color":"#0000006F"});
+		var url = "/Anakin/user/roomListAndDescription";
+		var data = {
+					"cottage_id":${cottageDetailInfo.cottage_id},
+					"x":${cottageDetailInfo.cottage_longitude_X},
+					"y":${cottageDetailInfo.cottage_latitude_Y},
+					"cottage_name":"${cottageDetailInfo.cottage_name}"
+					}
+		$.ajax({
+			url:url,
+			data:data,
+			type:"post",
+			success:function(responseData){
+				$('#here').html(responseData);
+			},
+			fail:function(message){
+				$('#here').html(message);
+			}
+		});
 	}
 	
 	function f3(){

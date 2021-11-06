@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.anakin.user.VO.CottageVO;
 import com.anakin.user.VO.SearchConditionVO;
 import com.anakin.user.VO.SearchResultVO;
 
@@ -178,6 +179,29 @@ public class SearchDAO {
 			DBUtil.dbClose(conn, st, rs);
 		}
 		return searchList;
+	}
+	
+	public String selectCottageDescriptionByCottageId(int cottage_id) {
+		String description = "";
+		String sql = "select cottage_description from cottage where cottage_id = ?";
+		
+		Connection conn = DBUtil.dbConnect();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
+		try {
+			st = conn.prepareStatement(sql);
+			st.setInt(1, cottage_id);
+			rs = st.executeQuery();
+			while(rs.next()) {
+				description = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(conn, st, rs);
+		}
+		return description;
 	}
 	
 }

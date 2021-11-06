@@ -12,4 +12,8 @@ public class SearchService {
 	public List<SearchResultVO> sortCottageList(SearchConditionVO scVO, String whatSort) {
 		return dao.sortCottageList(scVO, whatSort);
 	}
+	
+	public String selectCottageDescriptionByCottageId(int cottage_id) {
+		return dao.selectCottageDescriptionByCottageId(cottage_id);
+	}
 }
