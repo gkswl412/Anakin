@@ -65,10 +65,12 @@
 									</div>
 								</div>	
 								<form action="/Anakin/reservation" method="post">
-									<input type="hidden" value="${cottageDetailInfo.cottage_id}" name="cottageName">
+									<input type="hidden" value="${cottageDetailInfo.cottage_name}" name="cottageName">
 									<input type="hidden" value="${item.room_name}" name="roomName">
 									<input type="hidden" value="${scVO.checkinDate}" name="checkInDate">
 									<input type="hidden" value="${scVO.checkoutDate}" name="checkOutDate">
+									<input type="hidden" value="${item.room_standard_price}" name="price">
+									<input type="hidden" value="${cottageDetailInfo.cottage_id}" name="cottageId">
 									<button id="selectBtn" class="btn btn-primary btn-block" style="width:100%; padding:7px">예약</button>
 								</form>
 		  					</div>
