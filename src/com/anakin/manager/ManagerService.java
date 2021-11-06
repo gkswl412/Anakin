@@ -11,10 +11,10 @@ public class ManagerService {
 		return dao.ManagerInsert(m);
 	}
 	
-	public List<ManagerVO> selectAllByManager_IDService(String manager_id) {
+	public ManagerVO selectAllByManager_ID(String manager_id) {
 		return dao.selectAllByManager_ID(manager_id);
 	}
-	
+		
 	public int ManagerUpdate(ManagerVO m) {
 		return dao.ManagerUpdate(m);
 	}

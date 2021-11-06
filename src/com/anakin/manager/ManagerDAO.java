@@ -74,7 +74,6 @@ public class ManagerDAO {
 	
 	
 	public List<ManagerVO> IDCheck(String manager_id) {
-		System.out.println("ID 체크");
 		List<ManagerVO> mlist = null;
 		String sql = "select * from manager where manager_id = ? ";
 		Connection conn = DBUtil.dbConnect();
@@ -98,10 +97,10 @@ public class ManagerDAO {
 	}
 	
 	
-	public List<ManagerVO> selectAllByManager_ID(String manager_id) {
+	public ManagerVO selectAllByManager_ID(String manager_id) {
 		System.out.println("selectAllByManager_ID sql문 실행 함수");
 		String sql= "select * from manager where manager_id=?";
-		List<ManagerVO> Managerlist = new ArrayList<>();
+		ManagerVO managerlist = null;
 		Connection conn= DBUtil.dbConnect();
 		PreparedStatement st = null;
 		ResultSet rs= null;
@@ -110,15 +109,19 @@ public class ManagerDAO {
 			st.setString(1, manager_id);
 			rs= st.executeQuery();
 			while(rs.next()) {
-				Managerlist.add(new ManagerVO(rs.getString(1),rs.getString(2),rs.getString(3),
-						rs.getString(4),rs.getString(5)));
+				managerlist = new ManagerVO();
+				managerlist.setManager_id(rs.getString(1));
+				managerlist.setManager_pw(rs.getString(2));
+				managerlist.setManager_name(rs.getString(3));
+				managerlist.setManager_phone(rs.getString(4));
+				managerlist.setManager_email(rs.getString(5));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBUtil.dbClose(conn, st, rs);
 		}
-		return Managerlist;
+		return managerlist;
 	}
 	
 	public int ManagerUpdate(ManagerVO m) {
@@ -140,6 +143,7 @@ public class ManagerDAO {
 			st.setString(3, m.getManager_phone());
 			st.setString(4, m.getManager_email());
 			result = st.executeUpdate();
+			conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

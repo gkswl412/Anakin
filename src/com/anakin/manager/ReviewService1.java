@@ -1,24 +1,27 @@
-package com.anakin.review.Service;
+package com.anakin.manager;
 
 import java.util.List;
 
-import com.anakin.review.ReviewDAO;
 import com.anakin.review.VO.ReviewVO;
 
 
 
-public class ReviewService {
+public class ReviewService1 {
  
-	ReviewDAO dao= new ReviewDAO();
+	ReviewDAO1 dao= new ReviewDAO1();
 	
 	
 	
-	public List<ReviewVO> SelectList(int cottage_id) {
+	public List<ReviewVO1> SelectList(int cottage_id) {
 		return dao.selectList(cottage_id);
 	}
 	
 	public ReviewVO  SelectById(int reviewid) {
 		return dao.selectById(reviewid);
+	}
+	
+	public int UpdateReview1(ReviewVO1 r) {
+		return dao.UpdateReview1(r);
 	}
 	
 	

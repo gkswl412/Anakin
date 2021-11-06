@@ -1,10 +1,9 @@
-package com.anakin.review;
+package com.anakin.manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,14 +13,14 @@ import util.DBUtil;
 
 
 
-public class ReviewDAO {
+public class ReviewDAO1 {
    
 	
 	
 	//府轰府胶飘
-	public List<ReviewVO> selectList(int cottage_id) {
-		List<ReviewVO> reviewlist = new ArrayList<>();
-		String sql = "select * from review where cottage_id=? order by 1 desc ";
+	public List<ReviewVO1> selectList(int cottage_id) {
+		List<ReviewVO1> reviewlist = new ArrayList<>();
+		String sql = "select * from review where cottage_id=? order by 1 desc";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -30,7 +29,7 @@ public class ReviewDAO {
 			st.setInt(1, cottage_id);
 			rs = st.executeQuery();
 			while (rs.next()) {
-				ReviewVO review = new ReviewVO();
+				ReviewVO1 review = new ReviewVO1();
 				review.setReview_id(rs.getInt(1));
 				review.setReview_title(rs.getString(2));
 				review.setReview_pw(rs.getString(3));
@@ -40,12 +39,6 @@ public class ReviewDAO {
 				review.setReservation_id(rs.getInt(7));
 				review.setReview_comment(rs.getString(8));
 				review.setCottage_id(rs.getInt(9));
-				
-				
-				
-				
-				
-				
 				reviewlist.add(review);
 			}
 		} catch (SQLException e) {
@@ -111,7 +104,7 @@ public class ReviewDAO {
 	public int UpdateReview(ReviewVO rev) {
 		int result = 0;  
 		String sql="update review set review_title=?,review_pw=?,review_writer=?,review_description=?"
-				 + " where review_id=?"; 
+				 + "where review_id=?"; 
 
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
@@ -121,7 +114,6 @@ public class ReviewDAO {
 			st.setString(2, rev.getReview_pw());
 			st.setString(3, rev.getReview_writer());
 			st.setString(4, rev.getReview_description());
-		
 			st.setInt(5, rev.getReview_id());
 			
 			result = st.executeUpdate();
@@ -135,6 +127,27 @@ public class ReviewDAO {
 		return result;
 	}
 
+	public int UpdateReview1(ReviewVO1 r) {
+		int result = 0;  
+		String sql="update review set review_comment=?"
+				 + "where review_id=?"; 
+
+		Connection conn = DBUtil.dbConnect();
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement(sql);
+			st.setString(1, r.getReview_comment());
+			st.setInt(2, r.getReview_id());
+			result = st.executeUpdate();
+			 conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbClose(conn, st, null);
+		}
+		return result;
+	}
 
 	//府轰累己
 	public int InsertReview(ReviewVO rev) {

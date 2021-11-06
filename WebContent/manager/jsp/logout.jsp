@@ -16,7 +16,8 @@
 		<a href="/Anakin/managerlogin">로그아웃</a><br>
 		<form action="managerdelete" method="get">
 		<input type="submit" value="탈퇴" >
-		</form>
+		</form><br>
+		<form action="managerupdate" method="get"><input type="submit" value="내 정보 수정"></form>
 	</div>
 </body>
 </html>

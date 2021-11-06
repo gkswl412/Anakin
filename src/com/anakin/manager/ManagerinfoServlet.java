@@ -21,10 +21,11 @@ public class ManagerinfoServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("manager_id");
+		
 		session.getAttribute("managerlist");
 		CottageService cs = new CottageService();
 		List<CottageVO> ctlist = cs.selectAllByManager_idService(mid);
-		session.setAttribute("cottagelist", ctlist);
+		request.setAttribute("cottagelist", ctlist);
 		RequestDispatcher rd = request.getRequestDispatcher("manager/jsp/manager.jsp");
 		rd.forward(request, response);
 	}

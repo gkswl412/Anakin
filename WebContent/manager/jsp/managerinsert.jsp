@@ -47,9 +47,9 @@
 				<td><input type="text" name="manager_email" required="required"></td>
 			</tr>
 			<tr>
-				<td colspan='2'><input type="submit" value="입력하기"> <input
-					type="reset" value="다시"> <input type="button" value="돌아가기"
-					onclick="location.href='/Anakin/managerlogin'"></td>
+				<td colspan='2'><input type="submit" value="입력하기"> 
+				<input type="reset" value="다시"> 
+				<input type="button" value="돌아가기" onclick="location.href='/Anakin/managerlogin'"></td>
 			</tr>
 		</table>
 	</form>

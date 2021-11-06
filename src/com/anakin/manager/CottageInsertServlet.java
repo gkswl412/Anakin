@@ -39,7 +39,7 @@ public class CottageInsertServlet extends HttpServlet {
 		
 		CottageVO c = new CottageVO(mid, cid, cnm, cl, cpn, cd, cc, clx, cly);
 		int result = cs.CottageInsertService(c);
-		System.out.println("여기1");
+		
 		request.setAttribute("message", result>0?"입력 성공":"입력 실패");
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("manager/jsp/result3.jsp");
