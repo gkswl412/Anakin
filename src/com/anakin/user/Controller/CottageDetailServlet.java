@@ -40,12 +40,12 @@ public class CottageDetailServlet extends HttpServlet {
 		double cottage_latitude_y = Double.valueOf(request.getParameter("cottage_latitude_y"));
 		String checkIndate = request.getParameter("checkInDate");
 		String checkOutdate = request.getParameter("checkOutDate");
-		
+		HttpSession session = request.getSession();
 		//Cottage 상세정보 request scope에 저장
 		SearchResultVO cottageDetailInfo = new SearchResultVO(
 				cottage_id,cottage_name,cottage_cat,cottage_location,
 				photo_url,0,0,cottage_longitude_x,cottage_latitude_y,reviewCount);
-		request.setAttribute("cottageDetailInfo", cottageDetailInfo);
+		session.setAttribute("cottageDetailInfo", cottageDetailInfo);
 		//request.setAttribute("reviewCount", reviewCount);
 		
 		//Cottage Room 정보 request scope에 저장
@@ -53,7 +53,6 @@ public class CottageDetailServlet extends HttpServlet {
 		GetRoomInfoService service = new GetRoomInfoService();
 		List<Cottage_roomVO> roomList = service.selectRoomByCottageId(scVO, cottage_id);
 		roomList = service.selectRoomByCottageId(scVO, cottage_id);
-		HttpSession session = request.getSession();
 		session.setAttribute("roomList", roomList);
 		RequestDispatcher rd = request.getRequestDispatcher("jsp/cottageDetailInfo.jsp");
 		rd.forward(request, response);

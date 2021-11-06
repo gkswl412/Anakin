@@ -63,7 +63,7 @@
 								
 								    	</div>
 									</div>
-								</div>	
+								</div>
 								<form action="/Anakin/reservation" method="post">
 									<input type="hidden" value="${cottageDetailInfo.cottage_name}" name="cottageName">
 									<input type="hidden" value="${item.room_name}" name="roomName">
