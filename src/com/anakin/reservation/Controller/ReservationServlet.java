@@ -19,9 +19,7 @@ import com.anakin.reservation.VO.CottageRoomVO;
 /**
  * Servlet implementation class ReservationServlet
  */
-@WebServlet("/reservation") // searchResultList(park, <form><action = "reservationServlet.java") 
-							// -> ReservationServlet -> reservation.jsp
-
+@WebServlet("/reservation") 
 public class ReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,34 +30,35 @@ public class ReservationServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//**********get variables from client**********
-		
+		int cottageId = Integer.parseInt(request.getParameter("cottageId"));
 		String cottageName = request.getParameter("cottageName"); // from searchResult
 		String roomName = request.getParameter("roomName");
-		//Date checkInDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("checkInDate"));
-		//Date checkOutDate = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("checkOutDate"));
+		String checkInDate = request.getParameter("checkInDate");
+		String checkOutDate = request.getParameter("checkOutDate");
+		int price = Integer.parseInt(request.getParameter("price"));
+		
 		
 		//**********declare variable in server**********
-		// int price;
-		// int roomCount;
-		// int bathroomCount;
-		// String balconyOption;
-		// int tvCount;
-		// String description;
-
+		CottageRoomService roomService;
+		CottageRoomVO roomVO;
+		
+		
 		//**********do business logic in server**********
-		CottageRoomService roomService = new CottageRoomService();
-		CottageRoomVO roomVO = roomService.selectRoomByNamesService(cottageName, roomName);
+		roomService = new CottageRoomService();
+		roomVO = roomService.selectRoomByNamesService(cottageName, roomName);
 		
 		
 		//**********set variables for client in server**********
+		request.setAttribute("cottageId", cottageId);
 		request.setAttribute("cottageName", cottageName);
 		request.setAttribute("roomVO", roomVO);
-		//request.setAttribute("checkInDate", checkInDate);
-		//request.setAttribute("checkOutDate", checkOutDate);
+		request.setAttribute("checkInDate", checkInDate);
+		request.setAttribute("checkOutDate", checkOutDate);
+		request.setAttribute("price", price);
 
 		
 		//**********forward to next page in server**********

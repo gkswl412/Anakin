@@ -1,33 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="/reservation/css/reservation_style.css">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-<title>Room reservation page</title>
-
+<meta charset="EUC-KR">
+<title>Cancel reservation</title>
 </head>
 <body>
 
@@ -71,23 +48,21 @@
 			<form style="text-align: center; padding: 20px; display: block"
 				method="get" action="reservationConfirm">
 				
-				<input type="hidden" name="cottageId" value="${cottageId}">
-				<input type="hidden" name="roomId" value="${roomVO.getRoom_id()}">
 				<input type="hidden" name="cottageName" value="${cottageName}">
-				<input type="hidden" name="roomName" value="${roomVO.getRoom_name()}">
+				<input type="hidden" name="roomName" value="${roomName}">
 				<input type="hidden" name="checkInDate" value="${checkInDate}">
 				<input type="hidden" name="checkOutDate" value="${checkOutDate}">
-				<input type="hidden" name="price" value="${price}">
-				
 				
 				이름 : <input type="text" name="user_name" required="required">
-				전화번호 : <input type="text" name="user_phone_number" required="required">
-				입실인원 수 : <input type="number" name="reservation_people_count" required="required">
+				전화번호 : <input type="text" name="User_phone_number" required="required">
+				입실인원 수 : <input type="number" name="Reservation_people_count" required="required">
 				
 				<input type="submit" value="Submit">
 			</form>
 		</div>
 	</div>
+
+
 
 	<div class="Room_info_box">
 		<div class="Room_info_photo_box"></div>
@@ -96,7 +71,7 @@
 				<strong>펜션 이름</strong> ${cottageName}
 			</p>
 			<p>
-				<strong>객실 이름</strong> ${roomVO.getRoom_name()}
+				<strong>객실 이름</strong> ${roomVO.room_name}
 			</p>
 			<p>
 				<strong>체크인 날짜</strong> ${checkInDate}
@@ -111,22 +86,23 @@
 		</div>
 		<div class="Room_info_sub_details_box">
 			<p>
-				<strong>방 갯수</strong> ${roomVO.getRoom_count()}
+				<strong>방 갯수</strong> ${roomVO.RoomCount}
 			</p>
 			<p>
-				<strong>화장실 숫자</strong> ${roomVO.getRoom_bathroom_count()}
+				<strong>화장실 숫자</strong> ${roomVO.room_bathroom_count}
 			</p>
 			<p>
-				<strong>발코니 여부</strong> ${roomVO.getRoom_balcony_option()}
+				<strong>발코니 여부</strong> ${roomVO.balcony_option}
 			</p>
 			<p>
-				<strong>TV 갯수</strong> ${roomVO.getRoom_tv_count()}
+				<strong>TV 갯수</strong> ${roomVO.tv_count}
 			</p>
 			<p>
-				<strong>추가 정보</strong> ${roomVO.getRoom_description()}
+				<strong>추가 정보</strong> ${roomVO.room_description}
 			</p>
 		</div>
 	</div>
+
 
 	<footer
 		style="line-height: 18px; font-size: 12px; color: gray; position: absolute; width: 100%">

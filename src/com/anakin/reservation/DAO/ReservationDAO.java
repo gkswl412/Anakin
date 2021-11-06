@@ -18,17 +18,10 @@ public class ReservationDAO {
 	static final String INSERT_RESERVATION = "insert into RESERVATION " + "values(?,?,?,?,?,?,?);";
 	static final String SELECT_ALL_RESERVATION = "select * from RESERVATION;";
 	static final String SELECT_RESERVATION_BY_ID = "select * from RESERVATION where RESERVATION_ID=?;";
-	//static final String SQL_SELECT_BY_NAME = "select * from RESERVATION where DEPARTMENT_NAME=?";
-	//static final String SQL_SELECT_BY_LOC = "select * from RESERVATION where LOCATION_ID=?";
 	static final String UPDATE_RESERVATION = "update RESERVATION set " +
-			"COTTAGE_ID=?, " +
-			"ROOM_Id=?, " +
 			"USER_NAME=?, " +
 			"USER_PHONE_NUMBER=?, " +
-			"RESERVATION_CHECKIN_DATE=?, " +
-			"RESERVATION_CHECKOUT_DATE=?, " +
-			"RESERVATION_people_count=? " +
-			"where RESERVATION_id=? commit;";
+			"where RESERVATION_id=?;";
 	static final String DELETE_RESERVATION = "delete from RESERVATION where RESERVATION_ID=?;";
 	
 	// Create methods---------------------------------------------------------------------------------------
@@ -43,8 +36,8 @@ public class ReservationDAO {
 			st.setLong(2, reservation.getRoom_id());
 			st.setString(3, reservation.getUser_name());
 			st.setString(4, reservation.getUser_phone_number());
-			st.setDate(5, reservation.getReservation_checkin_date());
-			st.setDate(6, reservation.getReservation_checkout_date());
+			st.setString(5, reservation.getReservation_checkin_date());
+			st.setString(6, reservation.getReservation_checkout_date());
 			st.setInt(7, reservation.getReservation_people_count());
 
 			result = st.executeUpdate();
@@ -66,8 +59,8 @@ public class ReservationDAO {
 		reservation.setRoom_id(rs.getInt("Room_id"));
 		reservation.setUser_name(rs.getString("User_name"));
 		reservation.setUser_phone_number(rs.getString("User_phone_number"));
-		reservation.setReservation_checkin_date(rs.getDate("Reservation_checkin_date"));
-		reservation.setReservation_checkout_date(rs.getDate("Reservation_checkout_date"));
+		reservation.setReservation_checkin_date(rs.getString("Reservation_checkin_date"));
+		reservation.setReservation_checkout_date(rs.getString("Reservation_checkout_date"));
 		reservation.setReservation_people_count(rs.getInt("Reservation_people_count"));
 		return reservation;
 	}
@@ -119,22 +112,16 @@ public class ReservationDAO {
 	}
 	
 	// Update methods ---------------------------------------------------------------------------------
-	public int updateReservationById(ReservationVO reservation, int reservation_id) {
+	public int updateReservationById(ReservationVO reservationVO) {
 		int result = 0;  //update °Ç¼ö			 
-		 
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
+		
 		try {
 			st = conn.prepareStatement(UPDATE_RESERVATION);
-			//reservation id is the primary key.
-			st.setInt(1, reservation.getCottage_id());
-			st.setLong(2, reservation.getRoom_id());
-			st.setString(3, reservation.getUser_name());
-			st.setString(4, reservation.getUser_phone_number());
-			st.setDate(5, reservation.getReservation_checkin_date());
-			st.setDate(6, reservation.getReservation_checkout_date());
-			st.setInt(7, reservation.getReservation_people_count());
-			st.setInt(8, reservation_id);
+			st.setString(1, reservationVO.getUser_name());
+			st.setString(2, reservationVO.getUser_phone_number());
+			st.setInt(3, reservationVO.getCottage_id());
 			
 			result = st.executeUpdate();
 			conn.commit();

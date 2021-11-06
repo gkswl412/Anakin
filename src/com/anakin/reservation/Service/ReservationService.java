@@ -10,32 +10,27 @@ public class ReservationService {
 	ReservationDAO dao;
 	
 	// insert
-	public int insertReservation(ReservationVO reservation) {
-		System.out.println("insertReservation execute.");
-		return insertReservation(reservation);
+	public int insertReservationService(ReservationVO reservationVO) {
+		return dao.insertReservation(reservationVO);
 	}
 	
 	// select all
-	public List<ReservationVO> selectAllReservation() {
-		System.out.println("selectAllReservation service execute.");
+	public List<ReservationVO> selectAllReservationService() {
 		return dao.selectAllReservation();
 	}
 	
 	// select by id
-//	public List<ReservationVO> selectReservationById(int reservation_id) {
-//		System.out.println("selectReservationById service execute.");
-//		return dao.selectReservationById(reservation_id);
-//	}
+	public ReservationVO selectReservationById(int reservation_id) {
+		return dao.selectReservationById(reservation_id);
+	}
 	
 	// update
-//	public int updateReservationById(ReservationVO reservation) {
-//		System.out.println();
-//		return dao.updateReservationById(reservation);
-//	}
+	public int updateReservationById(ReservationVO reservationVO) {
+		return dao.updateReservationById(reservationVO);
+	}
 	
 	//delete
-	public int deleteReservationById(int reservation_id) {
-		System.out.println("delete Reservation service execute.");
+	public int deleteReservationByIdService(int reservation_id) {
 		return dao.deleteReservationById(reservation_id);
 	}
 	
