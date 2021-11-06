@@ -54,6 +54,7 @@
 	     data-reviewdescription="${rev.review_description}"
 	     data-reviewdate="${rev.review_date}"  
 	     data-reviewtitle="${rev.review_title}"
+	     data-reviewtitle="${cottage_id}"
 	     href="#myModal">수정 </a> 
 	 
 	      
@@ -107,6 +108,7 @@
         <div class="modal-body">
         <form id="writefrm" action="write"  method="post">
 		<input type="hidden" name="review_id" value="${rev.review_id}">
+		<input type="hidden" name="cottage_id" value="${cottage_id}">
 	  <div class="form-group">
            <label for="usr">작성자:</label>
            <input type="text" class="form-control"  name="review_writer" value="">
@@ -154,7 +156,7 @@
         <form action="updatePost"  method="post">
 
 	<input type="hidden" id="review_id2" name="review_id" value="${rev.review_id}">
-	
+	<input type="hidden" id="cottage_id" name="cottage_id" value="${cottage_id}">
 	
 	
 	
@@ -204,7 +206,8 @@
             <input type="text" class="form-control"    id="review_pw_confirm2" value="">
                </div>
              <input type="hidden"  id="review_pw_confirm1" value=""> 
-               <input type="hidden"  name="review_id" id="review_id" value=""> 
+             <input type="hidden"  name="review_id" id="review_id" value=""> 
+             
           </form>
         </div>
          
@@ -267,7 +270,7 @@
             $("#review_description2").val($(event.relatedTarget).data("reviewdescription"));
             $("#review_writer2").val($(event.relatedTarget).data("reviewwriter"));
             $("#review_date2").val($(event.relatedTarget).data("reviewdate"));
-            
+            $("#cottage_id").val($(event.relatedTarget).data("cottageid"));
             
             
     	});

@@ -13,8 +13,8 @@ public class ReviewService {
 	
 	
 	
-	public List<ReviewVO> SelectList() {
-		return dao.selectList();
+	public List<ReviewVO> SelectList(int cottage_id) {
+		return dao.selectList(cottage_id);
 	}
 	
 	public ReviewVO  SelectById(int reviewid) {

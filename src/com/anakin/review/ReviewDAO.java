@@ -19,14 +19,15 @@ public class ReviewDAO {
 	
 	
 	//¸®ºä¸®½ºÆ®
-	public List<ReviewVO> selectList() {
+	public List<ReviewVO> selectList(int cottage_id) {
 		List<ReviewVO> reviewlist = new ArrayList<>();
-		String sql = "select * from review order by 2";
+		String sql = "select * from review where cottage_id=? order by 2";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
 			st = conn.prepareStatement(sql);
+			st.setInt(1, cottage_id);
 			rs = st.executeQuery();
 			while (rs.next()) {
 				ReviewVO review = new ReviewVO();
