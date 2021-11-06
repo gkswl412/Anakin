@@ -54,7 +54,6 @@ public class CottageDetailServlet extends HttpServlet {
 		roomList = service.selectRoomByCottageId(scVO, cottage_id);
 		HttpSession session = request.getSession();
 		session.setAttribute("roomList", roomList);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("jsp/cottageDetailInfo.jsp");
 		rd.forward(request, response);
 	}
