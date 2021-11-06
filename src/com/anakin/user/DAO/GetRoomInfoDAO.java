@@ -25,6 +25,23 @@ public class GetRoomInfoDAO {
 				+ "and cottage_id = ?) using(room_id)";
 		String checkIn = scVO.getCheckinDate() + " 15:00:00.0";
 		String checkOut = scVO.getCheckoutDate() + " 12:00:00.0";
+		
+		
+		if(checkIn==null) {
+			checkIn="";
+		}
+		Timestamp ckIn;
+		if(!checkIn.equals("")) {
+			ckIn = java.sql.Timestamp.valueOf(checkIn);
+		}
+		
+		if(checkOut==null) {
+			checkOut="";
+		}
+		Timestamp ckOut;
+		if(!checkOut.equals("")) {
+			ckOut = java.sql.Timestamp.valueOf(checkOut);
+		}
 		Timestamp checkInDate = java.sql.Timestamp.valueOf(checkIn);
 		Timestamp checkOutDate = java.sql.Timestamp.valueOf(checkOut);
 		Connection conn = DBUtil.dbConnect();
