@@ -27,6 +27,7 @@
 	     data-reviewdescription="${rev.review_description}"
 	     data-reviewdate="${rev.review_date}"  
 	     data-reviewtitle="${rev.review_title}"
+	     data-reviewtitle="${cottage_id}"
 	     href="#myModal3" style="float: right;">리뷰 작성</a> 
 
 <!--<a href="write" >리뷰작ㄴ성</a>-->
@@ -53,8 +54,7 @@
 	     data-reviewwriter="${rev.review_writer}"  
 	     data-reviewdescription="${rev.review_description}"
 	     data-reviewdate="${rev.review_date}"  
-	     data-reviewtitle="${rev.review_title}"
-	     data-reviewtitle="${cottage_id}"
+	     data-reviewtitle="${rev.review_title}" 
 	     href="#myModal">수정 </a> 
 	 
 	      
@@ -106,9 +106,9 @@
           <h4 class="modal-title">리뷰 작성</h4>
         </div>
         <div class="modal-body">
-        <form id="writefrm" action="write"  method="post">
+        <form id="writefrm" action="/Anakin/review/write"  method="post">
 		<input type="hidden" name="review_id" value="${rev.review_id}">
-		<input type="hidden" name="cottage_id" value="${cottage_id}">
+		<input type="hidden" name="cottage_id" id="cottage_id" value="${cottage_id}">
 	  <div class="form-group">
            <label for="usr">작성자:</label>
            <input type="text" class="form-control"  name="review_writer" value="">
@@ -203,7 +203,7 @@
            
             <div class="form-group">
            <label for="pwd2">비밀번호:</label>
-            <input type="text" class="form-control"    id="review_pw_confirm2" value="">
+            <input type="text" class="form-control"  id="review_pw_confirm2" value="">
                </div>
              <input type="hidden"  id="review_pw_confirm1" value=""> 
              <input type="hidden"  name="review_id" id="review_id" value=""> 
@@ -232,7 +232,7 @@
           <h4 class="modal-title">삭제</h4>
         </div>
         <div class="modal-body">
-           <form id="deletefrm" action="delete" method="post" >
+           <form id="deletefrm" action="/Anakin/review/list" method="get" >
             <div class="form-group">
                 <label for="pwd2">비밀번호:</label>
                 <input type="text" class="form-control"  name="review_pw2" id="review_pw4" value="">
