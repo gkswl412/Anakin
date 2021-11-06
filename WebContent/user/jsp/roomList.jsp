@@ -11,8 +11,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	<b>check in:</b> <input type="date" name="checkinDate" id="checkinDate" value="${scVO.checkinDate}" required="required"> 
-	<b>check out:</b> <input type="date" name="checkoutDate" id="checkoutDate" value="${scVO.checkoutDate}" required="required">
+	<b>check in:</b> <input type="date" name="checkinDate" id="checkinDate" value="${scVO.checkinDate}" required="required" readonly="readonly"> 
+	<b>check out:</b> <input type="date" name="checkoutDate" id="checkoutDate" value="${scVO.checkoutDate}" required="required" readonly="readonly">
 	<c:forEach var="item" items="${roomList}">
 		  			<div style="margin-bottom:20px; border:1px solid rgba(0,0,0,0.08); height:300px; padding:20px; border-radius:5px">
 		  				<div style="width:48%; height:100%; margin:0; float:left">
