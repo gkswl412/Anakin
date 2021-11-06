@@ -46,15 +46,38 @@ public class CottageDetailServlet extends HttpServlet {
 		
 		String cottage_location = request.getParameter("cottage_location");
 		String photo_url = request.getParameter("photo_url");
-		double cottage_longitude_x = Double.valueOf(request.getParameter("cottage_longitude_x"));
-		double cottage_latitude_y = Double.valueOf(request.getParameter("cottage_latitude_y"));
+		
+		
+		String cottage_longitude_x = request.getParameter("cottage_longitude_x");
+		if(cottage_longitude_x==null) {
+			cottage_longitude_x="";
+		}
+		double x = 0;
+		if(!cottage_longitude_x.equals("")) {
+			 x = Double.parseDouble(cottage_longitude_x);
+		}else {
+			x=0;
+		}
+		
+		String cottage_latitude_y = request.getParameter("cottage_latitude_y");
+		if(cottage_latitude_y==null) {
+			cottage_latitude_y="";
+		}
+		double y = 0;
+		if(!cottage_latitude_y.equals("")) {
+			 y = Double.parseDouble(cottage_latitude_y);
+		}else {
+			y=0;
+		}
+		
+		
 		String checkIndate = request.getParameter("checkInDate");
 		String checkOutdate = request.getParameter("checkOutDate");
 		
 		//Cottage 상세정보 request scope에 저장
 		SearchResultVO cottageDetailInfo = new SearchResultVO(
 				cottage_id,cottage_name,cottage_cat,cottage_location,
-				photo_url,0,0,cottage_longitude_x,cottage_latitude_y,rcount);
+				photo_url,0,0,x,y,rcount);
 		request.setAttribute("cottageDetailInfo", cottageDetailInfo);
 		//request.setAttribute("reviewCount", reviewCount);
 		
