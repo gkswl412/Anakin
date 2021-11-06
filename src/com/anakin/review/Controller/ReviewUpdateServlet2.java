@@ -40,7 +40,7 @@ public class ReviewUpdateServlet2 extends HttpServlet {
 		ReviewService service = new ReviewService();
 		int result = service.UpdateReview(rev);
 	    request.setAttribute("message", result > 0 ? "성공" : "실패");
-		response.sendRedirect("list");
+		response.sendRedirect("/Anakin/user/cottageDetail");
 		
 	}
 
@@ -51,7 +51,7 @@ public class ReviewUpdateServlet2 extends HttpServlet {
 		String review_pw = request.getParameter("review_pw");
 		String review_writer= request.getParameter("review_writer");
 		String review_description = request.getParameter("review_description");
-		
+		//int cottage_id = Integer.parseInt(request.getParameter("cottage_id"));
 		
 		
 		ReviewVO rev = new ReviewVO();
@@ -60,7 +60,7 @@ public class ReviewUpdateServlet2 extends HttpServlet {
 		rev.setReview_pw(review_pw);
 		rev.setReview_writer(review_writer);
 		rev.setReview_description(review_description);
-	
+		//rev.setCottage_id(cottage_id);
 	
 		
 		return rev;

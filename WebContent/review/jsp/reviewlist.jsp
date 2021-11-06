@@ -27,7 +27,6 @@
 	     data-reviewdescription="${rev.review_description}"
 	     data-reviewdate="${rev.review_date}"  
 	     data-reviewtitle="${rev.review_title}"
-	     data-reviewtitle="${cottage_id}"
 	     href="#myModal3" style="float: right;">리뷰 작성</a> 
 
 <!--<a href="write" >리뷰작ㄴ성</a>-->
@@ -45,7 +44,7 @@
 	     
 	     
 	   <div class="button">
-	      <a href="comment?reviewid=${rev.review_id}">답변</a>
+	      <%-- <a href="comment?reviewid=${rev.review_id}">답변</a> --%>
         
 	  
 	     <a type="submit" class="btn btn-default"  data-toggle="modal" data-target="#myModal" 
@@ -55,6 +54,7 @@
 	     data-reviewdescription="${rev.review_description}"
 	     data-reviewdate="${rev.review_date}"  
 	     data-reviewtitle="${rev.review_title}" 
+	    
 	     href="#myModal">수정 </a> 
 	 
 	      
@@ -103,7 +103,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">리뷰 작성</h4>
+          <h4 class="modal-title" >리뷰 작성</h4>
         </div>
         <div class="modal-body">
         <form id="writefrm" action="/Anakin/review/write"  method="post">
@@ -153,10 +153,10 @@
           <h4 class="modal-title">리뷰 수정</h4>
         </div>
         <div class="modal-body">
-        <form action="updatePost"  method="post">
+        <form action="/Anakin/review/updatePost"  method="post">
 
 	<input type="hidden" id="review_id2" name="review_id" value="${rev.review_id}">
-	<input type="hidden" id="cottage_id" name="cottage_id" value="${cottage_id}">
+	
 	
 	
 	
@@ -177,7 +177,7 @@
              <textarea name="review_description" class="form-control" id="review_description2" cols="50" rows="10"></textarea>
             
        </div>
-           <input type="submit" class="btn btn-default" value="작성">
+           <input type="submit" class="btn btn-default"  value="작성" >
            <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 	</form>
         </div>
@@ -199,14 +199,14 @@
           <h4 class="modal-title">수정</h4>
         </div>
         <div class="modal-body">
-           <form id="updatefrm" action="updateGet" method="post">
+           <form id="updatefrm" action="/Anakin/review/updateGet"  method="post">
            
             <div class="form-group">
            <label for="pwd2">비밀번호:</label>
-            <input type="text" class="form-control"  id="review_pw_confirm2" value="">
+         <input type="text"  id="review_pw_confirm1" value="">  
                </div>
-             <input type="hidden"  id="review_pw_confirm1" value=""> 
-             <input type="hidden"  name="review_id" id="review_id" value=""> 
+            <input type="hidden" class="form-control"  id="review_pw_confirm2" value="">
+           <input type="hidden"  name="review_id" id="review_id" value=""> 
              
           </form>
         </div>
@@ -232,7 +232,7 @@
           <h4 class="modal-title">삭제</h4>
         </div>
         <div class="modal-body">
-           <form id="deletefrm" action="/Anakin/review/list" method="get" >
+           <form id="deletefrm" action="/Anakin/review/delete" method="post" >
             <div class="form-group">
                 <label for="pwd2">비밀번호:</label>
                 <input type="text" class="form-control"  name="review_pw2" id="review_pw4" value="">
@@ -262,9 +262,10 @@
     $(function(){
     	$("#myModal").on("show.bs.modal", function(event){
     		
-    		 $("#review_pw_confirm1").val($(event.relatedTarget).data("reviewpw"));
+    		
              $("#review_id").val($(event.relatedTarget).data("reviewid"));
             $("#review_pw_confirm2").val($(event.relatedTarget).data("reviewpw"));
+            $("#review_pw2").val($(event.relatedTarget).data("reviewpw"));
             $("#review_id2").val($(event.relatedTarget).data("reviewid"));
             $("#review_title2").val($(event.relatedTarget).data("reviewtitle"));
             $("#review_description2").val($(event.relatedTarget).data("reviewdescription"));
@@ -276,7 +277,7 @@
     	});
     	
     	
-    	$("#myModal2").on("show.bs.modal", function(event){
+    	    $("#myModal2").on("show.bs.modal", function(event){
             $("#review_pw3").val($(event.relatedTarget).data("reviewpw"));
           
     	});
@@ -317,8 +318,7 @@
     	
     		$("#writefrm").submit();
     }
-    
-    
+  
   </script>
 </body>
 </html>
