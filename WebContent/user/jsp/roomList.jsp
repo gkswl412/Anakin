@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
+	<b>check in:</b> <input type="date" name="checkinDate" id="checkinDate" value="${scVO.checkinDate}" required="required"> 
+	<b>check out:</b> <input type="date" name="checkoutDate" id="checkoutDate" value="${scVO.checkoutDate}" required="required">
 	<c:forEach var="item" items="${roomList}">
 		  			<div style="margin-bottom:20px; border:1px solid rgba(0,0,0,0.08); height:300px; padding:20px; border-radius:5px">
 		  				<div style="width:48%; height:100%; margin:0; float:left">
@@ -61,7 +64,13 @@
 								    	</div>
 									</div>
 								</div>	
-								<button id="selectBtn" class="btn btn-primary btn-block" style="width:100%; padding:7px">예약</button>
+								<form action="/Anakin/reservation" method="post">
+									<input type="hidden" value="${cottageDetailInfo.cottage_id}" name="cottageName">
+									<input type="hidden" value="${item.room_name}" name="roomName">
+									<input type="hidden" value="${scVO.checkinDate}" name="checkInDate">
+									<input type="hidden" value="${scVO.checkoutDate}" name="checkOutDate">
+									<button id="selectBtn" class="btn btn-primary btn-block" style="width:100%; padding:7px">예약</button>
+								</form>
 		  					</div>
 		  				</div>
 		  			</div>
