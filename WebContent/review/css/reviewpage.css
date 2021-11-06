@@ -6,6 +6,11 @@ h1{
 	
 }
 
+.modal-title{
+	
+	float:center;
+}
+
 a{
 	
 	text-align: left;

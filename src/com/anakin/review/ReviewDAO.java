@@ -21,7 +21,7 @@ public class ReviewDAO {
 	//¸®ºä¸®½ºÆ®
 	public List<ReviewVO> selectList(int cottage_id) {
 		List<ReviewVO> reviewlist = new ArrayList<>();
-		String sql = "select * from review where cottage_id=? ";
+		String sql = "select * from review where cottage_id=? order by 1 desc ";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		ResultSet rs = null;
@@ -111,7 +111,7 @@ public class ReviewDAO {
 	public int UpdateReview(ReviewVO rev) {
 		int result = 0;  
 		String sql="update review set review_title=?,review_pw=?,review_writer=?,review_description=?"
-				 + "where review_id=?"; 
+				 + " where review_id=?"; 
 
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
@@ -121,8 +121,8 @@ public class ReviewDAO {
 			st.setString(2, rev.getReview_pw());
 			st.setString(3, rev.getReview_writer());
 			st.setString(4, rev.getReview_description());
+		
 			st.setInt(5, rev.getReview_id());
-			
 			
 			result = st.executeUpdate();
 			 conn.commit();

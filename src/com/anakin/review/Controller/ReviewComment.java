@@ -37,7 +37,7 @@ public class ReviewComment extends HttpServlet {
 		ReviewService service = new ReviewService();
 		int result = service.CommentReview(rev);
 	    request.setAttribute("message", result > 0 ? "성공" : "실패");
-		response.sendRedirect("list");
+		response.sendRedirect("/Anakin/user/cottageDetail");
 		
 	}
 
