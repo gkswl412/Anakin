@@ -23,8 +23,8 @@ public class GetRoomInfoDAO {
 				+ "where reservation_checkin_date between ? and ? \r\n"
 				+ "or reservation_checkout_date between ? and ?) "
 				+ "and cottage_id = ?) using(room_id)";
-		String checkIn = scVO.getCheckinDate() + " 15:00:00";
-		String checkOut = scVO.getCheckoutDate() + " 12:00:00";
+		String checkIn = scVO.getCheckinDate() + " 15:00:00.0";
+		String checkOut = scVO.getCheckoutDate() + " 12:00:00.0";
 		Timestamp checkInDate = java.sql.Timestamp.valueOf(checkIn);
 		Timestamp checkOutDate = java.sql.Timestamp.valueOf(checkOut);
 		Connection conn = DBUtil.dbConnect();
