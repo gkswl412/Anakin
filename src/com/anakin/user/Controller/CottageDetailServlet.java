@@ -32,7 +32,6 @@ public class CottageDetailServlet extends HttpServlet {
 		int cottage_id = Integer.parseInt(request.getParameter("cottage_id"));
 		String cottage_cat = request.getParameter("cottage_cat");
 		String cottage_name = request.getParameter("cottage_name");
-		
 		int reviewCount = Integer.parseInt(request.getParameter("reviewCount"));
 		String cottage_location = request.getParameter("cottage_location");
 		String photo_url = request.getParameter("photo_url");
@@ -41,14 +40,16 @@ public class CottageDetailServlet extends HttpServlet {
 		String checkIndate = request.getParameter("checkInDate");
 		String checkOutdate = request.getParameter("checkOutDate");
 		HttpSession session = request.getSession();
-		//Cottage 상세정보 request scope에 저장
+		
+		
+		//Cottage 상세정보 session scope에 저장
 		SearchResultVO cottageDetailInfo = new SearchResultVO(
 				cottage_id,cottage_name,cottage_cat,cottage_location,
 				photo_url,0,0,cottage_longitude_x,cottage_latitude_y,reviewCount);
 		session.setAttribute("cottageDetailInfo", cottageDetailInfo);
-		//request.setAttribute("reviewCount", reviewCount);
+
 		
-		//Cottage Room 정보 request scope에 저장
+		//Cottage Room 정보 session scope에 저장
 		SearchConditionVO scVO = new SearchConditionVO();
 		scVO.setCheckinDate(checkIndate);
 		scVO.setCheckoutDate(checkOutdate);

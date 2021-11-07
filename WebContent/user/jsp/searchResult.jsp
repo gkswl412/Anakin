@@ -156,7 +156,7 @@
 						<strong><span style="font-size:15px">
 							<c:choose>
 								<c:when test="${item.availableRoomCount==0}">
-									업소에 직접 문의
+									업체에 직접 문의
 								</c:when>
 								<c:otherwise>
 									남은 객실 ${item.availableRoomCount}
