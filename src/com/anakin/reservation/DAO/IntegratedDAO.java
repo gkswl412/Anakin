@@ -16,7 +16,7 @@ public class IntegratedDAO {
 			+ "from reservation "
 			+ "inner join cottage using(cottage_id) "
 			+ "inner join cottage_room using(room_id) "
-			+ "where RESERVATION_ID=?;";
+			+ "where RESERVATION_ID=?";
 	
 	public IntegratedVO selectIntegratedByReservationId(long reservation_id) {
 		

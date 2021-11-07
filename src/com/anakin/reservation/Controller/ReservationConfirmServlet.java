@@ -26,6 +26,7 @@ import com.anakin.reservation.VO.ReservationVO;
 @WebServlet("/reservationConfirm")
 public class ReservationConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	long reservationId = 100000;
        
     public ReservationConfirmServlet() {
         super();
@@ -51,17 +52,14 @@ public class ReservationConfirmServlet extends HttpServlet {
 		//**********declare variable in server**********
 		ReservationVO reservationVO = null;
 		IntegratedVO integratedVO = null;
-		long reservationId = 0;
+		reservationId *= Math.random();
 		ReservationService reservationService = new ReservationService();
 		IntegratedService integratedService = new IntegratedService();
 		
 		//**********do business logic in server**********
 		reservationVO = new ReservationVO(reservationId, cottageId, roomId, userName, userPhoneNumber, checkInDate, checkOutDate, reservationPeopleCount, reservationDescription);
-		System.out.println("reservationVO created");
 		reservationService.insertReservationService(reservationVO);
-		
 		integratedVO = integratedService.selectIntegratedByReservationIdService(reservationId);
-		
 		
 		//**********set variables for client in server**********
 		request.setAttribute("integratedVO", integratedVO);
