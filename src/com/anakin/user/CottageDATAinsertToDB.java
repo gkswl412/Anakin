@@ -67,8 +67,10 @@ public class CottageDATAinsertToDB {
 				st2 = conn.prepareStatement(sql2);
 				
 				//cottage_id = (지역코드) + (시군구코드) + i
-				String str = String.valueOf(cottage.get("areacode")) + String.valueOf(cottage.get("sigungucode")); 
-				int cottage_id = str.equals("nullnull")? 115:Integer.parseInt(str);
+				String str = String.valueOf(cottage.get("areacode")) 
+						+ String.valueOf(cottage.get("sigungucode")); 
+				int cottage_id = 
+						str.equals("nullnull")? 115:Integer.parseInt(str);
 				cottage_id *= 10000;
 				cottage_id += (i+1);
 				
