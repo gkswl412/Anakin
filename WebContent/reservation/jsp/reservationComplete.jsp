@@ -26,7 +26,7 @@ head>
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-<title>예약 내용 확인</title>
+<title>예약 성공 및 예약 내역 확인</title>
 
 </head>
 <body>
@@ -58,6 +58,9 @@ head>
 
 
 	<div class="Reservation_result_box" style="margin-top:150px">
+		<p>
+			<strong>예약이 완료되었습니다.</strong>
+		</p>
 		<p>
 			<strong>예약 결과</strong>
 		</p>
