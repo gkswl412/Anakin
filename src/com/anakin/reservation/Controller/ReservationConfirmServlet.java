@@ -26,8 +26,7 @@ import com.anakin.reservation.VO.ReservationVO;
 @WebServlet("/reservationConfirm")
 public class ReservationConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	long reservationId = 100000;
-       
+
     public ReservationConfirmServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -35,7 +34,7 @@ public class ReservationConfirmServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("EUC-KR");
 		
 		//**********get variables from client**********
 		int cottageId = Integer.parseInt(request.getParameter("cottageId"));
@@ -48,8 +47,11 @@ public class ReservationConfirmServlet extends HttpServlet {
 		String userPhoneNumber = request.getParameter("user_phone_number");
 		int reservationPeopleCount = Integer.parseInt(request.getParameter("reservation_people_count"));
 		String reservationDescription = request.getParameter("reservation_description");
+		System.out.println(userName);
+		System.out.println(reservationDescription);
 		
 		//**********declare variable in server**********
+		long reservationId = 100000;
 		ReservationVO reservationVO = null;
 		IntegratedVO integratedVO = null;
 		reservationId *= Math.random();
@@ -57,6 +59,8 @@ public class ReservationConfirmServlet extends HttpServlet {
 		IntegratedService integratedService = new IntegratedService();
 		
 		//**********do business logic in server**********
+		checkInDate += " 15:00:00";
+		checkOutDate += " 12:00:00";
 		reservationVO = new ReservationVO(reservationId, cottageId, roomId, userName, userPhoneNumber, checkInDate, checkOutDate, reservationPeopleCount, reservationDescription);
 		reservationService.insertReservationService(reservationVO);
 		integratedVO = integratedService.selectIntegratedByReservationIdService(reservationId);
@@ -67,7 +71,7 @@ public class ReservationConfirmServlet extends HttpServlet {
 		
 		
 		//**********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationCheck.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationComplete.jsp");
 		rd.forward(request, response);
 	}
 
