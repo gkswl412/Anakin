@@ -33,7 +33,7 @@ public class ReservationServlet extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("utf-8");
 		
 		//**********get variables from client**********
 		int cottageId = Integer.parseInt(request.getParameter("cottageId"));
@@ -43,8 +43,6 @@ public class ReservationServlet extends HttpServlet {
 		String checkOutDate = request.getParameter("checkOutDate");
 		int price = Integer.parseInt(request.getParameter("price"));
 		
-		System.out.println(cottageName);
-		System.out.println(roomName);
 		//**********declare variable in server**********
 		CottageRoomService roomService;
 		CottageRoomVO roomVO;

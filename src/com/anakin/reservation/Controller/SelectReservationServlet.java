@@ -9,55 +9,52 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.anakin.reservation.Service.CottageRoomService;
-import com.anakin.reservation.Service.CottageService;
 import com.anakin.reservation.Service.ReservationService;
-import com.anakin.reservation.VO.CottageRoomVO;
-import com.anakin.reservation.VO.CottageVO;
 import com.anakin.reservation.VO.ReservationVO;
 
 /**
- * Servlet implementation class ReservationCancelServlet
+ * Servlet implementation class SelectReservationServlet
  */
-@WebServlet("/reservationCancel")
-public class ReservationCancelServlet extends HttpServlet {
+@WebServlet("/selectReservation")
+public class SelectReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReservationCancelServlet() {
+    public SelectReservationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("utf-8");
+		
 		//**********get variables from client**********
 		long reservationId = Integer.parseInt(request.getParameter("reservation_id"));
-	
 		
 		//**********declare variable in server**********
 		ReservationVO reservationVO;
 		ReservationService reservationService;
-		int deleteResult;
-				
-				
+		
+		
 		//**********do business logic in server**********
 		reservationVO = new ReservationVO();
 		reservationService = new ReservationService();
-		deleteResult = reservationService.deleteReservationByIdService(reservationId);
+		reservationVO = reservationService.selectReservationById(reservationId);
+		
 		
 		//**********set variables for client in server**********
-		
+		request.setAttribute("reservationVO", reservationVO);
+
+
 		
 		//**********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("reservation/jsp/reservationCancelComplete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationComplete.jsp");
 		rd.forward(request, response);
 	}
 

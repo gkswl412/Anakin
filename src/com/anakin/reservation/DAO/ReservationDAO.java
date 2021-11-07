@@ -137,13 +137,13 @@ public class ReservationDAO {
 		return result;
 	}
 	// Delete methods ---------------------------------------------------------------------------------
-	public int deleteReservationById(int reservation_id) {
+	public int deleteReservationById(long reservation_id) {
 		int result = 0;  //delete°Ç¼ö
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(DELETE_RESERVATION);
-			st.setInt(1, reservation_id);
+			st.setLong(1, reservation_id);
 			result = st.executeUpdate();
 			conn.commit();
 		} catch (SQLException e) {

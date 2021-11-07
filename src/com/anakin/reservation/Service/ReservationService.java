@@ -20,8 +20,8 @@ public class ReservationService {
 	}
 	
 	// select by id
-	public ReservationVO selectReservationById(int reservation_id) {
-		return dao.selectReservationById(reservation_id);
+	public ReservationVO selectReservationById(long reservationId) {
+		return dao.selectReservationById(reservationId);
 	}
 	
 	// update
@@ -30,7 +30,7 @@ public class ReservationService {
 	}
 	
 	//delete
-	public int deleteReservationByIdService(int reservation_id) {
+	public int deleteReservationByIdService(long reservation_id) {
 		return dao.deleteReservationById(reservation_id);
 	}
 	

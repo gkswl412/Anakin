@@ -32,16 +32,17 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-			<!-- Brand -->
-		<a class="navbar-brand" href="#"
+		<!-- Brand -->
+		<a class="navbar-brand" href="/Anakin"
 			style="margin-left: 20%; font-size: 35px">Anakin</a>
 
 		<!-- Links -->
 		<ul class="navbar-nav" style="margin-left: 20%">
 			<li class="nav-item"><a class="nav-link" href="#"
 				style="font-size: 25px; margin: 15px">내 예약 정보</a></li>
-			<li class="nav-item"><a class="nav-link" href="#"
-				style="font-size: 25px; margin: 15px">I'm Manager</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/Anakin/managerlogin" style="font-size: 25px; margin: 15px">I'm
+					Manager</a></li>
 
 			<!-- Dropdown -->
 			<li class="nav-item dropdown" style="font-size: 25px; margin: 15px">
@@ -56,17 +57,8 @@
 		</ul>
 	</nav>
 
-	
+
 	<div class="Reservation_info_box">
-		<!--   
-		<div class="Reservation_date_box">
-			<form style="text-align: center; padding: 20px; display: block"
-				method="get" action="user/search">
-				체크인 날짜 : <input type="date" name="Reservation_checkin_date" required="required">
-				체크아웃 날짜 : <input type="date" name="Reservation_checkout_date" required="required">
-			</form>
-		</div>
-		-->
 		<div class="User_info_box" style="margin-top:150px">
 			<form style="text-align: center; padding: 20px; display: block"
 				method="post" action="reservationConfirm">

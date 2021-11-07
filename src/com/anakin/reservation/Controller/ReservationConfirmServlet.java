@@ -47,8 +47,7 @@ public class ReservationConfirmServlet extends HttpServlet {
 		String userPhoneNumber = request.getParameter("user_phone_number");
 		int reservationPeopleCount = Integer.parseInt(request.getParameter("reservation_people_count"));
 		String reservationDescription = request.getParameter("reservation_description");
-		System.out.println(userName);
-		System.out.println(reservationDescription);
+
 		
 		//**********declare variable in server**********
 		long reservationId = 100000;
