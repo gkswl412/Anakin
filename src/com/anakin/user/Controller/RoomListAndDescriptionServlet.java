@@ -21,8 +21,9 @@ public class RoomListAndDescriptionServlet extends HttpServlet {
     
 	//roomList 출력 위한 Servlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List roomList = (List) request.getAttribute("roomList");
-		request.setAttribute("roomList",roomList);
+		HttpSession session = request.getSession();
+		List roomList = (List) session.getAttribute("roomList");
+		session.setAttribute("roomList",roomList);
 		RequestDispatcher rd = request.getRequestDispatcher("jsp/roomList.jsp");
 		rd.forward(request, response);
 	}

@@ -142,7 +142,7 @@
 					<input type="hidden" value="${item.cottage_location}" name="cottage_location">
 					<input type="hidden" value="${item.photo_url}" name="photo_url">
 					<input type="hidden" value="${scVO.checkinDate}" name="checkInDate">
-					<input type="hidden" value="${scVO.checkinDate}" name="checkOutDate">
+					<input type="hidden" value="${scVO.checkoutDate}" name="checkOutDate">
 					<input type="hidden" value="${item.cottage_longitude_X}" name="cottage_longitude_x">
 					<input type="hidden" value="${item.cottage_latitude_Y}" name="cottage_latitude_y">
 				<div style="border:solid 1px lightgray; width:43%; height:280px; margin:0 auto; overflow:hidden">

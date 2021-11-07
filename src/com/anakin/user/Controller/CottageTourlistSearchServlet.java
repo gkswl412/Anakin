@@ -25,7 +25,6 @@ public class CottageTourlistSearchServlet extends HttpServlet {
 		String focus = request.getParameter("focus");
 		String checkinDate = request.getParameter("checkinDate");
 		String checkoutDate = request.getParameter("checkoutDate");
-		System.out.println(sido + gugun + focus + checkinDate + checkoutDate);
 		
 		SearchConditionVO scVO = new SearchConditionVO(sido,gugun,focus,checkinDate,checkoutDate);
 		HttpSession session = request.getSession();
@@ -46,7 +45,6 @@ public class CottageTourlistSearchServlet extends HttpServlet {
 		String checkinDate = request.getParameter("checkinDate");
 		String checkoutDate = request.getParameter("checkoutDate");
 		String whatSort = request.getParameter("sort");
-		System.out.println(sido + gugun + focus + checkinDate + checkoutDate + whatSort);
 		
 		SearchConditionVO scVO = new SearchConditionVO(sido,gugun,focus,checkinDate,checkoutDate);
 		
