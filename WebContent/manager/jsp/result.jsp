@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+	text-align: center;
+}
+</style>
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content ="2; url=managerlogin">
 <title>수정,입력,삭제 결과보기</title>

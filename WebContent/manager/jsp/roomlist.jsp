@@ -7,10 +7,32 @@
 <head>
 <meta charset="UTF-8">
 <style>
+table {
+	margin : auto;
+	padding: 20px;
+	border-spacing: 30px;
+}
+h1 {
+	color: lightblue;
+	text-align: center;
+}
+body {
+	text-align: center;
+}
+th {
+	border-collapse: collapse;
+}
+button{
+width:80px;height:40px;font-size:20px;
+}
+span {
+margin : auto;
+}
   #toc-content {
     display: none;
   }
   #toc-toggle {
+ margin: auto;
     cursor: pointer;
     color: #2962ff;
   }
@@ -21,6 +43,7 @@
     display: none;
   }
   #toc-toggle1 {
+ margin: auto;
     cursor: pointer;
     color: #2962ff;
   }
@@ -31,44 +54,45 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${mlist.manager_name}님의 <span id="cottage_name">${param.cottage_name}</span>의 객실 리스트
+	<h1>${mlist.manager_name}님의 <span id="cottage_name">${param.cottage_name}</span>의 객실 리스트
+	</h1>
 	<%@ include file="logout.jsp" %>
-	
 	<table>
-		<tr>
-			<td>
-				<form name="cottage" action="insertroom" method="get">
+	<tr>
+	<td colspan="3">
+	<form name="cottage" action="insertroom" method="get">
 				<input type="hidden" name="cottage_name" value="${param.cottage_name}"> 
 				<input type="hidden" name="cottage_id" value="${param.cottage_id}"> 
-				
-				<input type="submit" value="Room 등록">
+				<input type="submit" value="Room 등록"  style="width:200px;height:40px;font-size:20px;">
 				</form>
-			</td>
-			<td>
-				<a href="managerinfo">My Cottage List</a>
-			</td>
-		</tr>
-	</table>
-	<table border="1">
+				</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td colspan="2"><a href="managerinfo"  style='font-size:20px;'>My Cottage List</a></td>
+	</tr>
 		<tr>
-			<td>방_ID</td>
-			<td>방이름</td>
-			<td>방_갯수</td>
-			<td>수용인원</td>
-			<td>평일 가격</td>
-			<td>휴일 가격</td>
-			<td>성수기 가격</td>
-			<td>TV_갯수</td>
-			<td>화장실 갯수</td>
-			<td>발코니 유무</td>
-			<td>예약 상태확인</td>
-			<td>방 설명</td>
-			<td>수정</td>
-			<td>삭제</td>
+			<th>방_ID</th>
+			<th>방이름</th>
+			<th>방_갯수</th>
+			<th>수용인원</th>
+			<th>평일 가격</th>
+			<th>휴일 가격</th>
+			<th>성수기 가격</th>
+			<th>TV_갯수</th>
+			<th>화장실 갯수</th>
+			<th>발코니 유무</th>
+			<th>방 설명</th>
+			<th>수정</th>
+			<th>삭제</th>
 		</tr>
 		<c:forEach items="${roomlist}" var="crv">
 		<tr>
-		
 			<td>${crv.room_id}</td>
 			<td>${crv.room_name}</td>
 			<td>${crv.room_count}</td>
@@ -79,22 +103,20 @@
 			<td>${crv.room_tv_count}</td>
 			<td>${crv.room_bathroom_count}</td>
 			<td>${crv.room_balcony_option}</td>
-			<td>${crv.room_status}</td>
 			<td>${crv.room_description}</td>
 			<td>
 			<form action="roomupdateget" method="post">
 			<input type="hidden" name="room_id" value="${crv.room_id}">
 			<input type="hidden" name="cottage_name" value="${param.cottage_name}"> 
-			<input type="submit" value="수정">
+			<input type="submit" value="수정" style="width:80px;height:40px;font-size:20px;">
 			</form>
 			</td>
 			<td><button onclick="call( ${param.cottage_id }, '${param.cottage_name}', ${crv.room_id},'${crv.room_name}')">삭제</button></td>
 		</tr>
 		</c:forEach>
 	</table>
-	
 	리뷰 테이블 [<span id="toc-toggle" onclick="openCloseToc()">보이기</span>]
-	<table border="1" id="toc-content">
+	<table id="toc-content" style="text-align:center;">
 	<tr>
 	<td>순번</td>
 	<td>제목</td>
@@ -131,10 +153,12 @@
 	</td>
 	</tr>
 	</c:forEach>
-	</table><br>
+	</table>
+	
+	<br>
 	
 	예약 상태 확인[<span id="toc-toggle1" onclick="openCloseToc1()">보이기</span>]
-	<table border="1" id="toc-content1">
+	<table id="toc-content1">
 	<tr>
 	<td rowspan="2">예약번호</td>
 	<td rowspan="2">예약한 방 이름</td>
@@ -171,18 +195,22 @@
 	    if(document.getElementById('toc-content').style.display === 'block') {
 	      document.getElementById('toc-content').style.display = 'none';
 	      document.getElementById('toc-toggle').textContent = '보이기';
+	      document.getElementById('toc-content').style.textAlign = 'center';
 	    } else {
 	      document.getElementById('toc-content').style.display = 'block';
 	      document.getElementById('toc-toggle').textContent = '숨기기';
+	      document.getElementById('toc-content').style.textAlign = 'center';
 	    }
 	  }
 	function openCloseToc1() {
 	    if(document.getElementById('toc-content1').style.display === 'block') {
 	      document.getElementById('toc-content1').style.display = 'none';
 	      document.getElementById('toc-toggle1').textContent = '보이기';
+	      document.getElementById('toc-content1').style.textAlign = 'center';
 	    } else {
 	      document.getElementById('toc-content1').style.display = 'block';
 	      document.getElementById('toc-toggle1').textContent = '숨기기';
+	      document.getElementById('toc-content').style.textAlign = 'center';
 	    }
 	  }
 	</script>
