@@ -71,10 +71,10 @@
 			<form style="text-align: center; padding: 20px; display: block"
 				method="post" action="reservationConfirm">
 				
-				<input type="hidden" name="cottageId" value="${cottageId}">
-				<input type="hidden" name="roomId" value="${roomVO.room_id}">
-				<input type="hidden" name="checkInDate" value="${checkInDate}">
-				<input type="hidden" name="checkOutDate" value="${checkOutDate}">
+				<input type="hidden" name="cottageId" value="${cottageId}"><br>
+				<input type="hidden" name="roomId" value="${roomVO.room_id}"><br>
+				<input type="hidden" name="checkInDate" value="${checkInDate}"><br>
+				<input type="hidden" name="checkOutDate" value="${checkOutDate}"><br>
 				<input type="hidden" name="price" value="${price}">
 				
 				
@@ -83,7 +83,7 @@
 				입실인원 수 : <input type="number" name="reservation_people_count" required="required">
 				예약 세부사항 : <input type="text" name="reservation_description">
 				
-				<input type="submit" value="Submit">
+				<input type="submit" value="예약하기">
 			</form>
 		</div>
 	</div>

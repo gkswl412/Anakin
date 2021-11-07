@@ -15,7 +15,7 @@ import util.DBUtil;
 public class ReservationDAO {
 	
 	// ansi standard sql----------------------------------------------------------------------------
-	static final String INSERT_RESERVATION = "insert into RESERVATION values(?,?,?,?,?,?,?,?,?);";
+	static final String INSERT_RESERVATION = "insert into RESERVATION values(?,?,?,?,?,?,?,?,?)";
 	static final String SELECT_ALL_RESERVATION = "select * from RESERVATION;";
 	static final String SELECT_RESERVATION_BY_ID = "select * from RESERVATION where RESERVATION_ID=?;";
 	static final String UPDATE_RESERVATION = "update RESERVATION set " +
@@ -25,39 +25,30 @@ public class ReservationDAO {
 	static final String DELETE_RESERVATION = "delete from RESERVATION where RESERVATION_ID=?;";
 	
 	// Create methods (insert into DB) ----------------------------------------------------------------
-	public int insertReservation(ReservationVO reservation) {
+	public int insertReservation(ReservationVO reservationVO) {
+		
 		int result = 0;  //insert°Ç¼ö
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
+		
 		try {
 			st = conn.prepareStatement(INSERT_RESERVATION);
 			
-			System.out.println(reservation.getReservation_id());
-			System.out.println(reservation.getCottage_id());
-			System.out.println(reservation.getRoom_id());
-			System.out.println(reservation.getUser_name());
-			System.out.println(reservation.getUser_phone_number());
-			System.out.println(reservation.getReservation_checkin_date());
-			System.out.println(reservation.getReservation_checkout_date());
-			System.out.println(reservation.getReservation_people_count());
-			System.out.println(reservation.getReservation_description());
-			
-			st.setLong(1, reservation.getReservation_id());
-			st.setInt(2, reservation.getCottage_id());
-			st.setLong(3, reservation.getRoom_id());
-			st.setString(4, reservation.getUser_name());
-			st.setString(5, reservation.getUser_phone_number());
-			st.setString(6, reservation.getReservation_checkin_date());
-			st.setString(7, reservation.getReservation_checkout_date());
-			st.setInt(8, reservation.getReservation_people_count());
-			st.setString(9, reservation.getReservation_description());
+			st.setLong(1, reservationVO.getReservation_id());
+			st.setInt(2, reservationVO.getCottage_id());
+			st.setLong(3, reservationVO.getRoom_id());
+			st.setString(4, reservationVO.getUser_name());
+			st.setString(5, reservationVO.getUser_phone_number());
+			st.setString(6, reservationVO.getReservation_checkin_date());
+			st.setString(7, reservationVO.getReservation_checkout_date());
+			st.setInt(8, reservationVO.getReservation_people_count());
+			st.setString(9, reservationVO.getReservation_description());
 
 			result = st.executeUpdate();
 			conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			
 			DBUtil.dbClose(conn, st, null);
 		}
 		return result;
@@ -100,7 +91,7 @@ public class ReservationDAO {
 		return reservationList;
 	}
 	
-	public ReservationVO selectReservationById(int reservation_id) {
+	public ReservationVO selectReservationById(long reservation_id) {
 		
 		ReservationVO reservation = new ReservationVO();
 		Connection conn = DBUtil.dbConnect();
@@ -109,7 +100,7 @@ public class ReservationDAO {
 		
 		try {
 			st = conn.prepareStatement(SELECT_RESERVATION_BY_ID);
-			st.setInt(1,  reservation_id);
+			st.setLong(1,  reservation_id);
 			rs = st.executeQuery();
 			
 			while(rs.next()){
