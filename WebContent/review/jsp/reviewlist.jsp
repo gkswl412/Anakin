@@ -19,33 +19,29 @@
 
 
 <div class="box2">
-<h1>리뷰</h1>
-<a type="submit" class="btn btn-default"  data-toggle="modal" data-target="#myModal3" 
-	     data-reviewpw="${rev.review_pw}"  
-	     data-reviewid="${rev.review_id}"
-	     data-reviewwriter="${rev.review_writer}"  
-	     data-reviewdescription="${rev.review_description}"
-	     data-reviewdate="${rev.review_date}"  
-	     data-reviewtitle="${rev.review_title}"
-	     href="#myModal3" style="float: right;">리뷰 작성</a> 
 
-<!--<a href="write" >리뷰작ㄴ성</a>-->
-<br>
-<hr>
+<h1>리뷰</h1>
+
+<a type="submit" class="btn btn-default"  data-toggle="modal" data-target="#myModal3" 
+	     data-reviewreservationid="${reslist.reservation_id}"
+	    
+	     href="#myModal3" style="float: right;">리뷰 작성</a>
+
 </div>
-  
+  <hr>
 
 <br>
 
 
 <c:forEach items="${reviewlist}" var="rev">
 
+
+
 <div class="box">	     
 	     
 	     
 	   <div class="button">
-	      <%-- <a href="comment?reviewid=${rev.review_id}">답변</a> --%>
-        
+	      
 	  
 	     <a type="submit" class="btn btn-default"  data-toggle="modal" data-target="#myModal" 
 	     data-reviewpw="${rev.review_pw}"  
@@ -81,7 +77,7 @@
         <div class="media-left">
         </div>
         <div class="media-body2">
-        <div style="background-color:#F5F5F5">
+        <div style="background-color:#F5F5F5" >
           <h4 class="media-heading2">매니저</h4>
           <p>${rev.review_comment }</p>
          </div>
@@ -94,16 +90,54 @@
 </c:forEach>
 
 
+<!-- 예약번호 조회-->
+<div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header"> 
+        <br><h4 class="modal-title">예약번호 입력</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body">
+           <form id="reservationidfrm" action="/Anakin/review/selectreservationid" method="post">
+           
+            <div class="form-group">
+           <label for="pwd2">예약번호:</label>
+         <input type="text"  id="reservation_id" value="" required/>  	
+               </div>
+            <input type="text" class="form-control"  id="reservation_id2" value="">
+            <input type="text" class="form-control"  id="cottage_id2" value="">
+   
+          </form>
+        </div>
+         
+        <div class="modal-footer">
+           <button type="button" class="btn btn-default" onclick="call4()" data-dismiss="modal">확인</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+
+
+
 
 <!-- 작성 -->
-  <div class="modal fade" id="myModal3" role="dialog">
+  <div class="modal fade" id="myModal_write" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
+         <h4 class="modal-title" >리뷰 작성</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" >리뷰 작성</h4>
+       
         </div>
         <div class="modal-body">
         <form id="writefrm" action="/Anakin/review/write"  method="post">
@@ -149,8 +183,9 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
+         <h4 class="modal-title">리뷰 수정</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">리뷰 수정</h4>
+         
         </div>
         <div class="modal-body">
         <form action="/Anakin/review/updatePost"  method="post">
@@ -195,11 +230,12 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
+        <h4 class="modal-title">수정</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">수정</h4>
+        
         </div>
         <div class="modal-body">
-           <form id="updatefrm" action="/Anakin/review/updateGet"  method="post">
+           <form id="updatefrm" method="post">
            
             <div class="form-group">
            <label for="pwd2">비밀번호:</label>
@@ -228,8 +264,9 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">삭제</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">삭제</h4>
         </div>
         <div class="modal-body">
            <form id="deletefrm" action="/Anakin/review/delete" method="post" >
@@ -251,11 +288,7 @@
   </div>
   
   
-  
-  
-  
-  
-  
+
   
   
   <script>
@@ -281,6 +314,11 @@
             $("#review_pw3").val($(event.relatedTarget).data("reviewpw"));
           
     	});
+    	    $("#myModal3").on("show.bs.modal", function(event){
+                $("#reservation_id2").val($(event.relatedTarget).data("reservationid"));
+                
+               
+        	})
     	
   	
     
@@ -319,6 +357,22 @@
     		$("#writefrm").submit();
     }
   
+    
+    function call4(){
+    	var id1 = $("#reservation_id").val();
+    	var id2 = $("#reservation_id2").val();
+    
+    	if(id1==id2){
+            $("#myModal_write").modal();
+    		
+    	   
+    	}else{
+    		alert("예약번호가 틀립니다.");
+    	}
+    }
+    
+    
+    
   </script>
 </body>
 </html>
