@@ -30,7 +30,7 @@
   <!-- Links -->
   <ul class="navbar-nav" style="margin-left:20%">
     <li class="nav-item">
-      <a class="nav-link" href="#" style="font-size:25px; margin:15px">내 예약 정보</a>
+      <a class="nav-link" href="/Anakin/reservation/jsp/reservationSearch.jsp" style="font-size:25px; margin:15px">내 예약 확인/예약 취소</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" style="font-size:25px; margin:15px">I'm Manager</a>
