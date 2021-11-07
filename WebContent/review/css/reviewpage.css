@@ -7,13 +7,12 @@ h1{
 }
 
 .modal-title{
-	
-	float:center;
+	text-align: center;
 }
 
 a{
 	
-	text-align: left;
+	 text-align: left; 
 	
 }
 
@@ -25,13 +24,15 @@ a{
       height:200px; /* 높이 */
       margin:0 auto; 
  padding: 0 auto;
-   text-align: left;
+    text-align: left;
+ 
 	}
 	
 .box2{
 	
 		width:760px; /* 너비 */
       height:120px; /* 높이 */
+       text-align: center;
     margin:0 auto; 
    padding: 0 auto;
 
@@ -50,7 +51,7 @@ a{
 		
 .button{
 
-	float: right;
+	float: right; 
 	}
 	
 .media-heading{
@@ -67,6 +68,6 @@ a{
   padding: 0 auto;
   
 }
-	
+
 	
 	

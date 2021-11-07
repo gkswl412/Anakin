@@ -3,6 +3,7 @@ package com.anakin.review.Service;
 import java.util.List;
 
 import com.anakin.review.ReviewDAO;
+import com.anakin.review.VO.ReviewReservationIdVO;
 import com.anakin.review.VO.ReviewVO;
 
 
@@ -48,7 +49,11 @@ public class ReviewService {
 		
 	}
 	
-	
+	public  List<ReviewReservationIdVO> SelectReservationId(int cottage_id){
+		
+		return dao.SelectReservationId(cottage_id);
+		
+	}
 	
 	
 }

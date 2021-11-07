@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.anakin.review.VO.ReviewReservationIdVO;
 import com.anakin.review.VO.ReviewVO;
 
 import util.DBUtil;
@@ -16,6 +16,44 @@ import util.DBUtil;
 
 public class ReviewDAO {
    
+	
+	
+	
+	//리뷰 페이지 예약번호 입력
+			public List<ReviewReservationIdVO>  SelectReservationId(int cottage_id) {
+				List<ReviewReservationIdVO> review2 = new ArrayList<>();
+	String sql = " select reservation_id from reservation where cottage_id = ? and reservation_checkout_date < sysdate";
+						
+				Connection conn = DBUtil.dbConnect();
+				PreparedStatement st = null;
+				ResultSet rs = null;
+				try {
+					st = conn.prepareStatement(sql);
+					st.setInt(1, cottage_id);
+					rs = st.executeQuery();
+					while (rs.next()) {
+						ReviewReservationIdVO vo = new ReviewReservationIdVO();
+						vo.setReservation_id(rs.getInt(1));
+						review2.add(vo);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					DBUtil.dbClose(conn, st, rs);
+				}
+				return review2;
+			}
+			
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	//리뷰리스트
@@ -68,7 +106,7 @@ public class ReviewDAO {
 				st.setInt(1, reviewid);
 				rs = st.executeQuery();
 				if (rs.next()) {
-					review = new ReviewVO();
+					 review = new ReviewVO();
 					review.setReview_id(rs.getInt(1));
 					review.setReview_title(rs.getString(2));
 					review.setReview_pw(rs.getString(3));

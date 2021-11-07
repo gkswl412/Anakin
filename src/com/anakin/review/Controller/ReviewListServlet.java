@@ -34,12 +34,6 @@ public class ReviewListServlet extends HttpServlet {
 		 */
 		
 		 
-		 
-			/*
-			 * System.out.println(cottage_id ); System.out.println(cottage_id +100); int
-			 * cotid = Integer.parseInt(cottage_id); System.out.println(cotid );
-			 * System.out.println(cotid +100);
-			 */
 	int cottage_id =Integer.parseInt(request.getParameter("cottage_id"));
 		 
 			 
