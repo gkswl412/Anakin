@@ -32,15 +32,15 @@ public class SearchDAO {
 				+ "where cottage_location like ?\r\n"
 				+ "order by case when availableRoomCount is null then 1 else 0 end";
 		String sidoGugun = scVO.getSido() + " " + scVO.getGugun() + "%";
-		String checkIn = scVO.getCheckinDate() + " 15:00:00";
-		String checkOut = scVO.getCheckoutDate() + " 12:00:00";
-		Timestamp checkInDate = java.sql.Timestamp.valueOf(checkIn);
-		Timestamp checkOutDate = java.sql.Timestamp.valueOf(checkOut);
-		System.out.println(sidoGugun);
-		System.out.println(checkIn);
-		System.out.println(checkOut);
-		System.out.println(checkInDate);
-		System.out.println(checkOutDate);
+		String checkIn = scVO.getCheckinDate() + " 15:00:00.0";
+		String checkOut = scVO.getCheckoutDate() + " 12:00:00.0";
+		//Timestamp checkInDate = java.sql.Timestamp.valueOf(checkIn);
+		//Timestamp checkOutDate = java.sql.Timestamp.valueOf(checkOut);
+		//System.out.println(sidoGugun);
+		//System.out.println(checkIn);
+		//System.out.println(checkOut);
+		//System.out.println(checkInDate);
+		//System.out.println(checkOutDate);
 		
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st  = null;
@@ -48,10 +48,10 @@ public class SearchDAO {
 		
 		try {
 			st = conn.prepareStatement(sql);
-			st.setTimestamp(1, checkInDate);
-			st.setTimestamp(2, checkOutDate);
-			st.setTimestamp(3, checkInDate);
-			st.setTimestamp(4, checkOutDate);
+			st.setString(1, checkIn);
+			st.setString(2, checkOut);
+			st.setString(3, checkIn);
+			st.setString(4, checkOut);
 			st.setString(5, sidoGugun);
 			rs = st.executeQuery();
 			while(rs.next()) {
@@ -127,15 +127,15 @@ public class SearchDAO {
 				+ "order by case when availableRoomCount is null then 1 else 0 end,reviewCount desc nulls last";
 		
 		String sidoGugun = scVO.getSido() + " " + scVO.getGugun() + "%";
-		String checkIn = scVO.getCheckinDate() + " 15:00:00";
-		String checkOut = scVO.getCheckoutDate() + " 12:00:00";
-		Timestamp checkInDate = java.sql.Timestamp.valueOf(checkIn);
-		Timestamp checkOutDate = java.sql.Timestamp.valueOf(checkOut);
-		System.out.println(sidoGugun);
-		System.out.println(checkIn);
-		System.out.println(checkOut);
-		System.out.println(checkInDate);
-		System.out.println(checkOutDate);
+		String checkIn = scVO.getCheckinDate() + " 15:00:00.0";
+		String checkOut = scVO.getCheckoutDate() + " 12:00:00.0";
+		//Timestamp checkInDate = java.sql.Timestamp.valueOf(checkIn);
+		//Timestamp checkOutDate = java.sql.Timestamp.valueOf(checkOut);
+		//System.out.println(sidoGugun);
+		//System.out.println(checkIn);
+		//System.out.println(checkOut);
+		//System.out.println(checkInDate);
+		//System.out.println(checkOutDate);
 
 		
 		Connection conn = DBUtil.dbConnect();
@@ -152,10 +152,10 @@ public class SearchDAO {
 			}else if(whatSort.equals("¸®ºä ¸¹Àº ¼ø")) {
 				st = conn.prepareStatement(sql_sortByManyReview);
 			}
-			st.setTimestamp(1, checkInDate);
-			st.setTimestamp(2, checkOutDate);
-			st.setTimestamp(3, checkInDate);
-			st.setTimestamp(4, checkOutDate);
+			st.setString(1, checkIn);
+			st.setString(2, checkOut);
+			st.setString(3, checkIn);
+			st.setString(4, checkOut);
 			st.setString(5, sidoGugun);
 			rs = st.executeQuery();
 			while(rs.next()) {

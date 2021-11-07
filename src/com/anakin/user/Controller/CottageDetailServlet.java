@@ -49,10 +49,11 @@ public class CottageDetailServlet extends HttpServlet {
 		//request.setAttribute("reviewCount", reviewCount);
 		
 		//Cottage Room 정보 request scope에 저장
-		SearchConditionVO scVO = new SearchConditionVO("","","",checkIndate,checkOutdate);
+		SearchConditionVO scVO = new SearchConditionVO();
+		scVO.setCheckinDate(checkIndate);
+		scVO.setCheckoutDate(checkOutdate);
 		GetRoomInfoService service = new GetRoomInfoService();
 		List<Cottage_roomVO> roomList = service.selectRoomByCottageId(scVO, cottage_id);
-		roomList = service.selectRoomByCottageId(scVO, cottage_id);
 		session.setAttribute("roomList", roomList);
 		RequestDispatcher rd = request.getRequestDispatcher("jsp/cottageDetailInfo.jsp");
 		rd.forward(request, response);
