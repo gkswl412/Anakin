@@ -22,6 +22,10 @@ public class IntegratedVO {
 		this.reservation_checkout_date = reservation_checkout_date;
 	}
 
+	public IntegratedVO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getUser_name() {
 		return user_name;
 	}

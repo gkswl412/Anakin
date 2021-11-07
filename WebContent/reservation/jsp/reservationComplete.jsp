@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-head>
+<head>
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,14 +60,14 @@ head>
 
 	<div class="Reservation_result_box" style="margin-top: 150px">
 		<p>
-			<strong>예약 결과</strong>
+			<strong>예약 완료</strong>
 		</p>
 		<p>
 			<strong>예약자 이름</strong> ${integratedVO.user_name}
 		</p>
 		<p>
 			<strong>예약 번호</strong> ${integratedVO.reservation_id}
-			
+
 		</p>
 		<p>
 			<strong>펜션 이름</strong> ${integratedVO.cottage_name}
@@ -82,15 +82,9 @@ head>
 			<strong>체크아웃 날짜</strong> ${integratedVO.reservation_checkout_date}
 		</p>
 		<p>
-			<strong>가격</strong> ${price}
+			<a style="text-align: center; padding: 20px; display: block"
+			href="http://localhost:9999/Anakin/">메인 화면으로 돌아가기</a>
 		</p>
-		<p>
-			<a href="http://localhost:9999/Anakin/">메인 화면으로 돌아가기</a>
-		</p>
-		<p>
-			<a href="http://localhost:9999/Anakin/reservation/jsp/reservationCancel.jsp">예약 취소하기</a>
-		</p>
-
 
 	</div>
 
