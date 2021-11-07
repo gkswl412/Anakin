@@ -14,6 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5c81e7431dbb2bd1ff2b9efe4091a459"></script>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>  
@@ -101,7 +102,7 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Brand -->
-  <a class="navbar-brand" href="#" style="margin-left:20%; font-size:35px">Anakin</a>
+  <a class="navbar-brand" href="/Anakin" style="margin-left:20%; font-size:35px">Anakin</a>
 
   <!-- Links -->
   <ul class="navbar-nav" style="margin-left:20%">

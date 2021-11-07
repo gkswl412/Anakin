@@ -8,6 +8,8 @@
 </head>
 <body>
 	${description}
+	<br>
+	<br>
 	<div id="map" style="width:500px;height:400px;"></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5c81e7431dbb2bd1ff2b9efe4091a459"></script>
 	<script>
@@ -19,7 +21,7 @@
 
 		var map = new kakao.maps.Map(container, options);
 		
-		var markerPosition  = new kakao.maps.LatLng(${y}, ${x}); 
+		var markerPosition = new kakao.maps.LatLng(${y}, ${x}); 
 		
 		// 마커를 생성합니다
 		var marker = new kakao.maps.Marker({
