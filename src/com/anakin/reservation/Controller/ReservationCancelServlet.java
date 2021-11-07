@@ -9,12 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.anakin.reservation.Service.CottageRoomService;
-import com.anakin.reservation.Service.CottageService;
 import com.anakin.reservation.Service.ReservationService;
-import com.anakin.reservation.VO.CottageRoomVO;
-import com.anakin.reservation.VO.CottageVO;
-import com.anakin.reservation.VO.ReservationVO;
 
 /**
  * Servlet implementation class ReservationCancelServlet
@@ -39,25 +34,25 @@ public class ReservationCancelServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		//**********get variables from client**********
-		long reservationId = Integer.parseInt(request.getParameter("reservation_id"));
-	
+		long reservationId = Long.parseLong(request.getParameter("reservationId"));
+		System.out.println("parameter pass");
 		
 		//**********declare variable in server**********
-		ReservationVO reservationVO;
 		ReservationService reservationService;
 		int deleteResult;
 				
 				
 		//**********do business logic in server**********
-		reservationVO = new ReservationVO();
 		reservationService = new ReservationService();
 		deleteResult = reservationService.deleteReservationByIdService(reservationId);
+		System.out.println("deleted");
 		
 		//**********set variables for client in server**********
+		request.setAttribute("deleteResult", deleteResult);
 		
 		
 		//**********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("reservation/jsp/reservationCancelComplete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationCancelComplete.jsp");
 		rd.forward(request, response);
 	}
 

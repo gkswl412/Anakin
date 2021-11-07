@@ -16,13 +16,13 @@ public class ReservationDAO {
 	
 	// ansi standard sql----------------------------------------------------------------------------
 	static final String INSERT_RESERVATION = "insert into RESERVATION values(?,?,?,?,?,?,?,?,?)";
-	static final String SELECT_ALL_RESERVATION = "select * from RESERVATION;";
-	static final String SELECT_RESERVATION_BY_ID = "select * from RESERVATION where RESERVATION_ID=?;";
+	static final String SELECT_ALL_RESERVATION = "select * from RESERVATION";
+	static final String SELECT_RESERVATION_BY_ID = "select * from RESERVATION where RESERVATION_ID=?";
 	static final String UPDATE_RESERVATION = "update RESERVATION set " +
 			"USER_NAME=?, " +
 			"USER_PHONE_NUMBER=?, " +
 			"where RESERVATION_id=?;";
-	static final String DELETE_RESERVATION = "delete from RESERVATION where RESERVATION_ID=?;";
+	static final String DELETE_RESERVATION = "delete from RESERVATION where RESERVATION_ID=?";
 	
 	// Create methods (insert into DB) ----------------------------------------------------------------
 	public int insertReservation(ReservationVO reservationVO) {

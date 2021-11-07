@@ -59,13 +59,13 @@
 
 
 	<div class="Reservation_Search_box">
-		<div class="User_info_box" style="margin-top:150px">
-			<p>예약 번호를 입력하세요.</p>
+		<div class="User_info_box" style="margin-top: 150px">
+			<p style="text-align: center; padding: 20px; display: block">
+			예약번호를 입력하세요.</p>
 			<form style="text-align: center; padding: 20px; display: block"
-				method="post" action="selectReservation">
-				
-				 예약 번호 : <input type="number" name="reservation_id" required="required">
-				
+				method="post" action="../../selectReservation">
+
+				예약 번호 : <input type="number" name="reservation_id" required="required">
 				<input type="submit" value="검색하기">
 			</form>
 		</div>
