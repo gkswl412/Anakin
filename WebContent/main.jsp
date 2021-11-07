@@ -102,7 +102,7 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Brand -->
-  <a class="navbar-brand" href="#" style="margin-left:20%; font-size:35px">Anakin</a>
+  <a class="navbar-brand" href="/Anakin" style="margin-left:20%; font-size:35px">Anakin</a>
 
   <!-- Links -->
   <ul class="navbar-nav" style="margin-left:20%">
