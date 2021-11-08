@@ -35,7 +35,9 @@ h1{
 
 <h1>리뷰</h1>
 <a type="submit" class="btn btn-default"  data-toggle="modal" data-target="#myModal3" 
-	     data-reviewreservationid="${reslist.reservation_id}"
+	     data-reviewreservationid="${reservation_id}"
+	     data-cottageid="${cottage_id}"
+	     
 	     href="#myModal3" style="float: right;">리뷰 작성</a>
 <br>
 <br>
@@ -63,7 +65,7 @@ h1{
 	     data-reviewdescription="${rev.review_description}"
 	     data-reviewdate="${rev.review_date}"  
 	     data-reviewtitle="${rev.review_title}" 
-	    
+	  
 	     href="#myModal">수정 </a> 
 	 
 	      
@@ -155,6 +157,7 @@ h1{
 				</div>
 				<div class="modal-body">
 					<form id="writefrm" action="/Anakin/review/write" method="post">
+					     <input type="text" name="cottage_id" id="cottage_id" value="">
 						<input type="hidden" name="review_id" value="${rev.review_id}">
 
 						<div class="form-group">
@@ -334,8 +337,8 @@ h1{
 								$(event.relatedTarget).data("reviewwriter"));
 						$("#review_date2").val(
 								$(event.relatedTarget).data("reviewdate"));
-						$("#cottage_id").val(
-								$(event.relatedTarget).data("cottageid"));
+						/* $("#cottage_id").val(
+								$(event.relatedTarget).data("cottageid")); */
 
 					});
 
@@ -348,6 +351,10 @@ h1{
 					function(event) {
 						$("#reservation_id2").val(
 								$(event.relatedTarget).data("reservationid"));
+						alert($(event.relatedTarget).data("cottageid"));
+						$("#cottage_id").val(
+								$(event.relatedTarget).data("cottageid"));
+
 
 					})
 

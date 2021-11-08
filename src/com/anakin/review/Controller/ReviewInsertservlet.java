@@ -39,7 +39,7 @@ public class ReviewInsertservlet extends HttpServlet {
 		ReviewService service = new ReviewService();
 		int result = service.InsertReview(rev);
 		request.setAttribute("message", result > 0 ? "성공" : "실패");
-		 response.sendRedirect("/Anakin/user/cottageDetail");
+		 response.sendRedirect("/Anakin");
 			/*
 			 * RequestDispatcher rd = request.getRequestDispatcher("../user/cottageDetail");
 			 * rd.forward(request, response);
