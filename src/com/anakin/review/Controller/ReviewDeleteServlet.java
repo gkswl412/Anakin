@@ -38,7 +38,7 @@ public class ReviewDeleteServlet extends HttpServlet {
 		ReviewService service = new ReviewService();
 		
 		 request.setAttribute("message", service.DeleteReview(review_pw)>0?"삭제성공":"삭제실패");
-		 response.sendRedirect("/Anakin/user/cottageDetail");
+		 response.sendRedirect("/Anakin");
 		 
 		
 		

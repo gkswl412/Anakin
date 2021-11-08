@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>    
-    
+    <!-- 1 -->
     
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <!--  <link href="../review/css/reviewpage.css" rel="stylesheet" > -->
+ 
 </head>
 <style>
 h1{
@@ -157,7 +157,7 @@ h1{
 				</div>
 				<div class="modal-body">
 					<form id="writefrm" action="/Anakin/review/write" method="post">
-					     <input type="text" name="cottage_id" id="cottage_id" value="">
+					     <input type="hidden" name="cottage_id" id="cottage_id" value="">
 						<input type="hidden" name="review_id" value="${rev.review_id}">
 
 						<div class="form-group">
@@ -351,7 +351,6 @@ h1{
 					function(event) {
 						$("#reservation_id2").val(
 								$(event.relatedTarget).data("reservationid"));
-						alert($(event.relatedTarget).data("cottageid"));
 						$("#cottage_id").val(
 								$(event.relatedTarget).data("cottageid"));
 
