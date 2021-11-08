@@ -31,31 +31,32 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-		<!-- Brand -->
-		<a class="navbar-brand" href="/Anakin"
-			style="margin-left: 20%; font-size: 35px">Anakin</a>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <!-- Brand -->
+  <a class="navbar-brand" href="/Anakin" style="margin-left:20%; font-size:35px">Anakin</a>
 
-		<!-- Links -->
-		<ul class="navbar-nav" style="margin-left: 20%">
-			<li class="nav-item"><a class="nav-link" href="#"
-				style="font-size: 25px; margin: 15px">내 예약 정보</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="/Anakin/managerlogin" style="font-size: 25px; margin: 15px">I'm
-					Manager</a></li>
+  <!-- Links -->
+  <ul class="navbar-nav" style="margin-left:20%">
+    <li class="nav-item">
+      <a class="nav-link" href="/Anakin/reservation/jsp/reservationSearch.jsp" style="font-size:25px; margin:15px">내 예약 확인/예약 취소</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Anakin/managerlogin" style="font-size:25px; margin:15px">I'm Manager</a>
+    </li>
 
-			<!-- Dropdown -->
-			<li class="nav-item dropdown" style="font-size: 25px; margin: 15px">
-				<a class="nav-link dropdown-toggle" href="#" id="navbardrop"
-				data-toggle="dropdown"> 더 보기 </a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">공지사항</a> <a class="dropdown-item"
-						href="#">자주 묻는 질문</a> <a class="dropdown-item" href="#">약관 및
-						정책</a>
-				</div>
-			</li>
-		</ul>
-	</nav>
+    <!-- Dropdown -->
+    <li class="nav-item dropdown" style="font-size:25px; margin:15px">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        더 보기
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">공지사항</a>
+        <a class="dropdown-item" href="#">자주 묻는 질문</a>
+        <a class="dropdown-item" href="#">약관 및 정책</a>
+      </div>
+    </li>
+  </ul>
+</nav>
 
 
 	<div class="Reservation_result_box" style="margin-top: 150px">
