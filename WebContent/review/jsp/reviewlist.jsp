@@ -121,7 +121,7 @@ h1{
 
 						<div class="form-group">
 							<label for="pwd2">예약번호:</label> <input type="text"
-								id="reservation_id" value="" required>
+								id="reservation_id" value="">
 
 						</div>
 					</form>
@@ -286,7 +286,7 @@ h1{
 				<div class="modal-header">
 					<h4 class="modal-title">삭제</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">삭제</h4>
+					
 				</div>
 				<div class="modal-body">
 					<form id="deletefrm" action="/Anakin/review/delete" method="post">
