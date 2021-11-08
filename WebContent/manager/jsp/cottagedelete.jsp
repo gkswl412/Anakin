@@ -32,11 +32,12 @@ table {
 		<br>
 		<table>
 			<tr>
+			<td><input type="submit" value="삭제하기"
+					style="width: 150px; height: 40px; font-size: 15px;"></td>
 				<td><input type="button" value="돌아가기"
 					style="width: 150px; height: 40px; font-size: 15px;"
 					onclick="history.back()"></td>
-				<td><input type="submit" value="삭제하기"
-					style="width: 150px; height: 40px; font-size: 15px;"></td>
+				
 			</tr>
 		</table>
 	</form>

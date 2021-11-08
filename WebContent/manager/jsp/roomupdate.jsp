@@ -39,31 +39,31 @@ width:80px;height:40px;font-size:20px;
 		<table>
 			<tr>
 				<td>Room이름:</td>
-				<td><input type="text" name="room_name" value="${room.room_name}" style="width:300px;height:60px;font-size:20px;" required="required"></td>
+				<td><input type="text" name="room_name" value="${room.room_name}" style="width:400px;height:60px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
 				<td>Room의 방 갯수:</td>
-				<td><input type="text" name="room_count" value="${room.room_count}" style="width:300px;height:60px;font-size:20px;" required="required"></td>
+				<td><input type="text" name="room_count" value="${room.room_count}" style="width:400px;height:60px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
 				<td>최대수용인원:</td>
-				<td><input type="text" name="room_occupancy" value="${room.room_occupancy}" style="width:300px;height:60px;font-size:20px;" ></td>
+				<td><input type="text" name="room_occupancy" value="${room.room_occupancy}" style="width:400px;height:60px;font-size:20px;" ></td>
 			</tr>
 			<tr>
 				<td>예약가:</td>
 				<td>
-				<input type="text" name="room_price1" value="평일:${room.room_standard_price}" style="width:150px;height:60px;font-size:20px;">
-				<input type="text" name="room_price2" value="휴일:${room.room_holiday_price}" style="width:150px;height:60px;font-size:20px;">
-				<input type="text" name="room_price3" value="성수기:${room.room_peak_season_price}" style="width:150px;height:60px;font-size:20px;">
+				<input type="text" name="room_price1" value="평일:${room.room_standard_price}" style="width:200px;height:60px;font-size:20px;">
+				<input type="text" name="room_price2" value="휴일:${room.room_holiday_price}" style="width:200px;height:60px;font-size:20px;">
+				<input type="text" name="room_price3" value="성수기:${room.room_peak_season_price}" style="width:200px;height:60px;font-size:20px;">
 				</td>
 			</tr>
 			<tr>
 				<td>TV 갯수:</td>
-				<td><input type="text" name="room_tv_count" value="${room.room_tv_count}" style="width:300px;height:60px;font-size:20px;"></td>
+				<td><input type="text" name="room_tv_count" value="${room.room_tv_count}" style="width:400px;height:60px;font-size:20px;"></td>
 			</tr>
 			<tr>
 				<td>화장실 갯수:</td>
-				<td><input type="text" name="room_bathroom_count" value="${room.room_bathroom_count}" style="width:300px;height:60px;font-size:20px;"></td>
+				<td><input type="text" name="room_bathroom_count" value="${room.room_bathroom_count}" style="width:400px;height:60px;font-size:20px;"></td>
 			</tr>
 			<tr>
 				<td>발코니:</td>
@@ -79,11 +79,11 @@ width:80px;height:40px;font-size:20px;
 			</tr>
 			<tr>
 				<td>방 설명:</td>
-				<td><textarea  name="room_description" placeholder="방 설명" style="width:500px;height:80px;font-size:20px;">${room.room_description}</textarea></td>
+				<td><textarea  name="room_description" placeholder="방 설명" style="width:1200px;height:350px;font-size:20px;">${room.room_description}</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-				<input type="submit" value="입력하기" style="width:150px;height:40px;font-size:20px;"> 
+				<input type="submit" value="수정하기" style="width:150px;height:40px;font-size:20px;"> 
 				<input type="reset" value="다시" style="width:150px;height:40px;font-size:20px;"> 
 				<input type="button" value="돌아가기" onclick="history.back()" style="width:150px;height:40px;font-size:20px;"></td>
 			</tr>

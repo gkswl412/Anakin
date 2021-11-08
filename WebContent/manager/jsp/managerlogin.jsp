@@ -26,7 +26,7 @@ margin : auto;
 				<td colspan="2"><input type="password" name="manager_pw" style="width:300px;height:60px;font-size:20px;" placeholder="ManagerPW"></td>
 			<tr>
 				<td><input type="submit" style="width:150px;height:50px;font-size:20px;" value="로그인"></td>
-				<td><input type="button" style="width:150px;height:50px;font-size:20px;" value="돌아가기" onclick="location.href='/Anakin/managerlogin' "></td>
+				<td><input type="button" style="width:150px;height:50px;font-size:20px;" value="돌아가기" onclick="location.href='/Anakin/' "></td>
 			</tr>
 		</table>
 	</form>
