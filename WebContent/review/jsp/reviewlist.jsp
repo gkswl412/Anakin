@@ -157,7 +157,7 @@ h1{
 				</div>
 				<div class="modal-body">
 					<form id="writefrm" action="/Anakin/review/write" method="post">
-					     <input type="text" name="cottage_id" id="cottage_id" value="">
+					     <input type="hidden" name="cottage_id" id="cottage_id" value="">
 						<input type="hidden" name="review_id" value="${rev.review_id}">
 
 						<div class="form-group">
@@ -351,7 +351,6 @@ h1{
 					function(event) {
 						$("#reservation_id2").val(
 								$(event.relatedTarget).data("reservationid"));
-						alert($(event.relatedTarget).data("cottageid"));
 						$("#cottage_id").val(
 								$(event.relatedTarget).data("cottageid"));
 
