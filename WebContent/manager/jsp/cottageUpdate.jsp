@@ -20,13 +20,12 @@ table {
 	text-align: center;
 	margin : auto;
 	padding: 20px;
-	border-spacing: 30px;
 }
 </style>
 <meta charset="UTF-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>Cottage 수정 화면</title>
 </head>
 <body>
 	<form action="cotupdata" method="post">
@@ -38,26 +37,26 @@ table {
 		<table>
 			<tr>
 				<td>Cottage이름:</td>
-				<td><input type="text" name="cottage_name" value="${cv.cottage_name }" style="width:600px;height:80px;font-size:20px;" required="required"></td>
+				<td><input type="text" name="cottage_name" value="${cv.cottage_name }" style="width:600px;height:60px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
 				<td>Cottage주소:</td>
-				<td><input type="text" name="cottage_location" value="${cv.cottage_location }" style="width:600px;height:80px;font-size:15px;" required="required"></td>
+				<td><input type="text" name="cottage_location" value="${cv.cottage_location }" style="width:600px;height:60px;font-size:15px;" required="required"></td>
 			</tr>
 			<tr>
 				<td>Cottage대표전화:</td>
-				<td><input type="text" name="cottage_phone_number" value="${cv.cottage_phone_number }" style="width:600px;height:80px;font-size:20px;"></td>
+				<td><input type="text" name="cottage_phone_number" value="${cv.cottage_phone_number }" style="width:600px;height:60px;font-size:20px;"></td>
 			</tr>
 			<tr>
 				<td>Cottage설명:</td>
 				<td>
-				<textarea cols="50" rows="10" name="cottage_description" style="width:1400px;height:300px;font-size:20px;">${cv.cottage_description }</textarea>
+				<textarea cols="50" rows="10" name="cottage_description" style="width:900px;height:300px;font-size:20px;">${cv.cottage_description }</textarea>
 				</td>
 			</tr>
 
 			<tr>
 				<td>CottageCat:</td>
-				<td><select name="cottage_cat" style="width:400px;height:60px;font-size:20px;">
+				<td><select name="cottage_cat" style="width:400px;height:40px;font-size:20px;">
 						<option value="${cv.cottage_cat }">${cv.cottage_cat }</option>
 						<option value="펜션">펜션</option>
 						<option value="콘도">콘도</option>

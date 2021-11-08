@@ -21,7 +21,7 @@ margin:auto;
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>Manager 정보 수정 화면</title>
 </head>
 <body>
 	<form action="managerupdate" method="post">
@@ -50,7 +50,7 @@ margin:auto;
 			</tr>
 			<tr>
 				<td>
-				<input type="submit" value="입력하기" style="width:100px;height:40px;font-size:15px;"> 
+				<input type="submit" value="수정하기" style="width:100px;height:40px;font-size:15px;"> 
 				<input type="reset" value="다시" style="width:100px;height:40px;font-size:15px;"> 
 				<input type="button" value="돌아가기" onclick="history.back()" style="width:100px;height:40px;font-size:15px;">
 				</td>

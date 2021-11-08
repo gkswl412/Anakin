@@ -30,7 +30,7 @@ public class CottageDeleteServlet extends HttpServlet {
 		CottageService cs = new CottageService();
 		
 		int cid = Integer.parseInt(request.getParameter("cottage_id"));
-	    System.out.println(cid);
+	    
 	
 		int result = cs.CottageDeleteService(cid);
 		request.setAttribute("message", result>0?"삭제 되었습니다.":"삭제 실패했습니다.");

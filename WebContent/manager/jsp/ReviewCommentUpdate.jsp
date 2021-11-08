@@ -43,7 +43,7 @@ p {
 }
 </style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Review 답변 화면</title>
 </head>
 <body>
 	<h1>${review_writer}님의답변을 입력 합니다.</h1>
@@ -59,11 +59,11 @@ p {
 			</tr>
 			<tr>
 				<td colspan="5" style="font-size:20px;">내용<br>
-				<textarea cols="50" rows="10" name="review_comment" style="width:500px;height:150px;font-size:20px;">${review_description}</textarea> 
+				<p style="width:1000px;height:400px;font-size:20px;">${review_description}</p> <br>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="5"><textarea cols="50" rows="10" name="review_comment" style="width:500px;height:150px;font-size:20px;">여기 입력 하세요.</textarea></td>
+				<td colspan="5"><textarea cols="50" rows="10" name="review_comment" placeholder="여기에 입력 하세요." style="width:500px;height:150px;font-size:20px;"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="5">

@@ -26,23 +26,22 @@ table {
 	<form name="manager_id" action="insertcottage" method="post">
 		<table>
 			<tr>
-				<td><input type="number" name="cottage_id" placeholder="CottageID" style="width:400px;height:80px;font-size:20px;" required="required"></td>
+				<td><input type="number" name="cottage_id" placeholder="CottageID" style="width:600px;height:50px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="cottage_name" placeholder="Cottage이름" style="width:400px;height:80px;font-size:20px;" required="required"></td>
+				<td><input type="text" name="cottage_name" placeholder="Cottage이름" style="width:600px;height:50px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="cottage_location" placeholder="Cottage주소" style="width:400px;height:80px;font-size:20px;" required="required"></td>
+				<td><input type="text" name="cottage_location" placeholder="Cottage주소" style="width:600px;height:50px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
-				<td><input type="text" value="010-1111-1111" placeholder="Cottage대표전화" style="width:400px;height:80px;font-size:20px;" onfocus="this.value='';" name="cottage_phone_number"></td>
+				<td><input type="text" value="010-1111-1111" placeholder="Cottage대표전화" style="width:600px;height:50px;font-size:20px;" onfocus="this.value='';" name="cottage_phone_number"></td>
 			</tr>
 			<tr>
-				<td><textarea name="cottage_description" placeholder="Cottage설명" style="width:1550px;height:400px;font-size:20px;" ></textarea></td>
+				<td><textarea name="cottage_description" placeholder="Cottage설명" style="width:1000px;height:300px;font-size:20px;" ></textarea></td>
 			</tr>
 			<tr>
-				
-				<td><select name="cottage_cat" style="width:400px;height:60px;font-size:20px;" >
+				<td><select name="cottage_cat" style="width:600px;height:60px;font-size:20px;" >
 						<option value="Cottage분류">Cottage분류</option>
 						<option value="펜션">펜션</option>
 						<option value="콘도">콘도</option>
