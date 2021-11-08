@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib  prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>    
-    
+    <!-- 1 -->
     
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <!--  <link href="../review/css/reviewpage.css" rel="stylesheet" > -->
+ 
 </head>
 <style>
 h1{
@@ -22,11 +22,9 @@ h1{
 	
 }
 .button{
-
 	 float: right;  
 	}
 	
-
 </style>
 <body>
 
@@ -157,7 +155,7 @@ h1{
 				</div>
 				<div class="modal-body">
 					<form id="writefrm" action="/Anakin/review/write" method="post">
-					     <input type="text" name="cottage_id" id="cottage_id" value="">
+					     <input type="hidden" name="cottage_id" id="cottage_id" value="">
 						<input type="hidden" name="review_id" value="${rev.review_id}">
 
 						<div class="form-group">
@@ -319,7 +317,6 @@ h1{
 			$("#myModal").on(
 					"show.bs.modal",
 					function(event) {
-
 						$("#review_id").val(
 								$(event.relatedTarget).data("reviewid"));
 						$("#review_pw_confirm2").val(
@@ -339,59 +336,43 @@ h1{
 								$(event.relatedTarget).data("reviewdate"));
 						/* $("#cottage_id").val(
 								$(event.relatedTarget).data("cottageid")); */
-
 					});
-
 			$("#myModal2").on("show.bs.modal", function(event) {
 				$("#review_pw3").val($(event.relatedTarget).data("reviewpw"));
-
 			});
 			$("#myModal3").on(
 					"show.bs.modal",
 					function(event) {
 						$("#reservation_id2").val(
 								$(event.relatedTarget).data("reservationid"));
-						alert($(event.relatedTarget).data("cottageid"));
 						$("#cottage_id").val(
 								$(event.relatedTarget).data("cottageid"));
-
-
 					})
-
 		});
-
 		function call() {
 			var pw1 = $("#review_pw_confirm1").val();
 			var pw2 = $("#review_pw_confirm2").val();
-
 			if (pw1 == pw2) {
 				$("#myModal_update").modal();
-
 			} else {
 				alert("비밀번호가 틀립니다.");
 			}
 		}
-
 		function call2() {
 			var pw1 = $("#review_pw3").val();
 			var pw2 = $("#review_pw4").val();
 			if (pw1 == pw2) {
-
 				$("#deletefrm").submit();
 				alert("삭제 성공.");
 			} else {
 				alert("비밀번호가 틀립니다.");
-
 			}
-
 		}
 		
 		
 		function call3() {
-
 			$("#writefrm").submit();
 		}
-
 		
 		
 		
@@ -405,15 +386,12 @@ h1{
 					"cattage_id" : $("#cattage_id").val()
 				},
 				success : function(responseData) {
-
 					if (responseData == "1")
 						$("#myModal_write").modal();
 					else
-
 						alert("리뷰작성시 주의사항\n1.체크아웃 날짜가 지나야 리뷰작성 가능\n2.해당펜션의 예약번호 일치여부");
 				}
 			});
-
 		}
 	</script>
 </body>
