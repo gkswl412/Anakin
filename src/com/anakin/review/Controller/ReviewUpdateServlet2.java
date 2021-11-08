@@ -40,7 +40,7 @@ public class ReviewUpdateServlet2 extends HttpServlet {
 		ReviewService service = new ReviewService();
 		int result = service.UpdateReview(rev);
 	    request.setAttribute("message", result > 0 ? "성공" : "실패");
-		response.sendRedirect("/Anakin/user/cottageDetail");
+		response.sendRedirect("/Anakin");
 		
 	}
 
