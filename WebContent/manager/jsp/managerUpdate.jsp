@@ -6,46 +6,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+h1 {
+	color: lightblue;
+	text-align: center;
+}
+body {
+	text-align: center;
+}
+table {
+margin:auto;
+	text-align: center;
+}
+</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 	<form action="managerupdate" method="post">
-		<h2>
+		<h1>
 			<br>
 			<input type="hidden" name="cottage_id" value="${cv.cottage_id}">
 			<input type="hidden" name="manager_id" value="${mlist.manager_id}">
 			${message}<br>
 			${mlist.manager_name}님의 정보를 수정합니다.
-		</h2>
+		</h1>
 		<table>
 			<tr>
-				<td>Manager이름:</td>
-				<td><input type="text" name="manager_name" value="${mlist.manager_name}" required="required"></td>
+				<td><input type="text" name="manager_name" value="${mlist.manager_name}" placeholder="Manager이름" style="width:300px;height:60px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
-				<td>Manager비밀번호:</td>
-				<td><input type="text" name="manager_pw1" value="${mlist.manager_pw}" required="required"></td>
-			</tr>
-
-			<tr>
-				<td>Manager비밀번호 확인:</td>
-				<td><input type="text" name="manager_pw2" value="${mlist.manager_pw}" required="required"></td>
+				<td><input type="password" name="manager_pw1" value="${mlist.manager_pw}" placeholder="Manager비밀번호" style="width:300px;height:60px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
-				<td>Manager핸드폰 번호:</td>
-				<td><input type="text" name="manager_phone" value="${mlist.manager_phone}"></td>
+				<td><input type="password" name="manager_pw2" value="${mlist.manager_pw}" placeholder="Manager비밀번호확인" style="width:300px;height:60px;font-size:20px;"required="required"></td>
 			</tr>
 			<tr>
-				<td>Manager이메일:</td>
-				<td><input type="text" name="manager_email" value="${mlist.manager_email}"></td>
+				<td><input type="text" name="manager_phone" value="${mlist.manager_phone}" placeholder="Manager핸드폰번호" style="width:300px;height:60px;font-size:20px;"></td>
 			</tr>
 			<tr>
-				<td colspan="2">
-				<input type="submit" value="입력하기"> 
-				<input type="reset" value="다시"> 
-				<input type="button" value="돌아가기" onclick="location.href='/Anakin/managerinfo'">
+				<td><input type="text" name="manager_email" value="${mlist.manager_email}" placeholder="Manager이메일" style="width:300px;height:60px;font-size:20px;"></td>
+			</tr>
+			<tr>
+				<td>
+				<input type="submit" value="입력하기" style="width:100px;height:40px;font-size:15px;"> 
+				<input type="reset" value="다시" style="width:100px;height:40px;font-size:15px;"> 
+				<input type="button" value="돌아가기" onclick="history.back()" style="width:100px;height:40px;font-size:15px;">
 				</td>
 			</tr>
 		</table>

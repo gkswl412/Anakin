@@ -17,15 +17,18 @@ a{
 }
 
 
+
+
+
 .box{
 	
 	padding:10px;
 	width:700px; /* 너비 */
       height:200px; /* 높이 */
-      margin:0 auto; 
- padding: 0 auto;
+    /*  margin:0 auto; 
+ padding: 0 auto;  */
     text-align: left;
- 
+/*  overflow: hidden; */
 	}
 	
 .box2{
@@ -51,7 +54,7 @@ a{
 		
 .button{
 
-	float: right; 
+	 float: right;  
 	}
 	
 .media-heading{

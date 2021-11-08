@@ -14,35 +14,25 @@ import com.anakin.review.Service.ReviewService;
 import com.anakin.review.VO.ReviewReservationIdVO;
 import com.anakin.review.VO.ReviewVO;
 
-
 /**
  * Servlet implementation class InsertReservationIdServlet
  */
-@WebServlet("/review/selectreservationid")
+@WebServlet("/review/reservedCheckForReview")
 public class SelectReservationIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
- 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		request.setCharacterEncoding("utf-8");
-	   
 
-      int cottage_id =Integer.parseInt(request.getParameter("cottage_id"));
-  	
-   	ReviewService service = new ReviewService();
- 
-	List<ReviewReservationIdVO> reslist = service.SelectReservationId(cottage_id);
-	request.setAttribute("reslist", reslist);
-   	request.setAttribute("cottage_id",cottage_id);
+		int reservedId = Integer.parseInt(request.getParameter("reservedId"));
+		int cattage_id = Integer.parseInt(request.getParameter("cattage_id"));
+		ReviewService service = new ReviewService();
 
-	  RequestDispatcher rd = request.getRequestDispatcher("jsp/reviewlist.jsp");
-   	  rd.forward(request, response);
-   
-   
-   
-       
+		String result = service.SelectReservationId(reservedId,cattage_id);
+		response.getWriter().append(result);
+
 	}
 
 }

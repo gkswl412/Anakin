@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+	text-align: center;
+}
+</style>
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content ="4; url=managerinsert">
 <!-- <script>

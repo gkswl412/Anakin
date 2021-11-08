@@ -13,11 +13,15 @@
 </head>
 <body>
 	<div class="right">
-		<a href="/Anakin/managerlogin">로그아웃</a><br>
+		<form action="logout" method="post">
+		<input type="submit" value="로그 아웃">
+		</form>
+		<br>
 		<form action="managerdelete" method="get">
 		<input type="submit" value="탈퇴" >
 		</form><br>
-		<form action="managerupdate" method="get"><input type="submit" value="내 정보 수정"></form>
+		<form action="managerupdate" method="get">
+		<input type="submit" value="내 정보 수정"></form>
 	</div>
 </body>
 </html>
