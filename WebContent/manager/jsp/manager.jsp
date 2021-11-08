@@ -64,9 +64,8 @@ p {
 			<th>Cottag 이름</th>
 			<th>Cottag 위치</th>
 			<th>Cottag 대표번호</th>
-			<th>Cottag 설명</th>
 			<th>Cottag 분류</th>
-			<th>수정</th>
+			<th>상세보기</th>
 			<th>삭제</th>
 		</tr>
 		<c:forEach items="${cottagelist}" var="cot">
@@ -76,12 +75,11 @@ p {
 				<td>${cot.cottage_name}</td>
 				<td>${cot.cottage_location}</td>
 				<td>${cot.cottage_phone_number}</td>
-				<td>${cot.cottage_description}</td>
 				<td>${cot.cottage_cat}</td>
 				<td><form action="cotupdata" method="get">
 						<input type="hidden" name="cottage_id" value="${cot.cottage_id }">
 						<input type="hidden" name="manager_id" value="${mlist.manager_id}">
-						<input type="submit" value="수정" style="width:80px;height:40px;font-size:20px;">
+						<input type="submit" value="상세보기" style="width:100px;height:40px;font-size:20px;">
 					</form></td>
 				<td><button onclick="call1(${cot.cottage_id})">삭제</button></td>
 			</tr>
