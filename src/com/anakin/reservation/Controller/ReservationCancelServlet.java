@@ -35,7 +35,6 @@ public class ReservationCancelServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//**********get variables from client**********
 		long reservationId = Long.parseLong(request.getParameter("reservationId"));
-		System.out.println("parameter pass");
 		
 		//**********declare variable in server**********
 		ReservationService reservationService;
@@ -45,8 +44,7 @@ public class ReservationCancelServlet extends HttpServlet {
 		//**********do business logic in server**********
 		reservationService = new ReservationService();
 		deleteResult = reservationService.deleteReservationByIdService(reservationId);
-		System.out.println("deleted");
-		
+
 		//**********set variables for client in server**********
 		request.setAttribute("deleteResult", deleteResult);
 		
