@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>예약 실패</title>
+<title>예약 검색 실패</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
@@ -33,19 +33,19 @@
     </li>
   </ul>
 </nav>
-	
-	
+
+
 	<div class="Room_info_box">
 		<div class="Room_info_details_box">
 			<p>
-			예약 실패
+			예약 검색 실패
 			</p>
 			<a style="text-align: center; padding: 20px; display: block"
 			href="http://localhost:9999/Anakin/">메인 화면으로 돌아가기</a>
 		</div>
 	</div>
-	
-	
+
+
 	<footer
 		style="line-height: 18px; font-size: 12px; color: gray; position: absolute; width: 100%">
 		<div
