@@ -14,7 +14,7 @@ body {
 </style>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>ID 체크 화면</title>
 </head>
 <body>
 	<h1>ID 체크</h1>

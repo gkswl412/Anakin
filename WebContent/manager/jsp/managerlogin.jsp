@@ -14,7 +14,7 @@ margin : auto;
 }
 </style>
 <meta charset="UTF-8">
-<title>Manager 로그인창</title>
+<title>Manager 로그인 화면</title>
 </head>
 <body>
 	<h1>관리자 LoginPage</h1>

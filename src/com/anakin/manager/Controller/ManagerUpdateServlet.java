@@ -38,20 +38,18 @@ public class ManagerUpdateServlet extends HttpServlet {
 			ManagerVO mv = new ManagerVO(mid, mp2, mn, mp, me);
 			int result = ms.ManagerUpdate(mv);
 			if (result == 1) {
-				System.out.println("수정 성공");
+				
 				request.setAttribute("message", "수정이 성공했습니다. 다시 로그인 해주세요.");
 				RequestDispatcher rd;
 				rd = request.getRequestDispatcher("manager/jsp/result.jsp");
 				rd.forward(request, response);
 			} else {
-				System.out.println("수정 실패");
 				request.setAttribute("message", "수정이 실패했습니다. 다시 확인해주세요.");
 				RequestDispatcher rd;
 				rd = request.getRequestDispatcher("manager/jsp/managerUpdate.jsp");
 				rd.forward(request, response);
 			}
 		} else {
-			System.out.println("비밀번호 확인 실패");
 			request.setAttribute("message", "비밀번호를 다시 확인 바랍니다.");
 			RequestDispatcher rd;
 			rd = request.getRequestDispatcher("manager/jsp/managerUpdate.jsp");

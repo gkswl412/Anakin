@@ -20,7 +20,7 @@ text-align: center;
 }
 </style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Manager 삭제 화면</title>
 </head>
 <body>
 	<h1>회원 탈퇴</h1>

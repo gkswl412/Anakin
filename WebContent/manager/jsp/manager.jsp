@@ -10,6 +10,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
+tbody tr:nth-child(even)  { background-color: lightgray; }
+           /*  tbody tr:nth-child(odd)   { background-color: #d4e9ff; } */
 h1 {
 	color: lightblue;
 	text-align: center;
@@ -26,7 +28,6 @@ th {
 table {
 	margin : auto;
 	padding: 20px;
-	border-spacing: 30px;
 }
 button{
 width:80px;height:40px;font-size:20px;

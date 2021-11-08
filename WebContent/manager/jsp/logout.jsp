@@ -14,14 +14,14 @@
 <body>
 	<div class="right">
 		<form action="logout" method="post">
-		<input type="submit" value="로그 아웃">
+		<input type="submit" value="로그 아웃" style="width:100px;height:30px">
 		</form>
 		<br>
 		<form action="managerdelete" method="get">
-		<input type="submit" value="탈퇴" >
+		<input type="submit" value="탈퇴" style="width:100px;height:30px">
 		</form><br>
 		<form action="managerupdate" method="get">
-		<input type="submit" value="내 정보 수정"></form>
+		<input type="submit" value="내 정보 수정" style="width:100px;height:30px"></form>
 	</div>
 </body>
 </html>

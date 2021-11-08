@@ -120,7 +120,6 @@ public class ReviewDAO1 {
 			result = st.executeUpdate();
 			 conn.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBUtil.dbClose(conn, st, null);
@@ -142,7 +141,6 @@ public class ReviewDAO1 {
 			result = st.executeUpdate();
 			 conn.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBUtil.dbClose(conn, st, null);
@@ -174,7 +172,6 @@ public class ReviewDAO1 {
 			result = st.executeUpdate();
 	        conn.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBUtil.dbClose(conn, st, null);
@@ -207,7 +204,6 @@ public class ReviewDAO1 {
 			result = st.executeUpdate();
 		 conn.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 	e.printStackTrace();
 		} finally {
 		DBUtil.dbClose(conn, st, null);

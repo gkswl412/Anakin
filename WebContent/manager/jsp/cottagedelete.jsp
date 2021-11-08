@@ -20,7 +20,7 @@ table {
 <meta charset="UTF-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>Cottage 삭제 화면</title>
 </head>
 <body>
 	<form action="cotdelete" method="post">

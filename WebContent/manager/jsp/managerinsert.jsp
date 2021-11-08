@@ -20,7 +20,6 @@ table {
 </style>
 <meta charset="UTF-8">
 <title>Manager 신규 등록 화면</title>
-
 </head>
 <!-- onclick="location.href='/manager/jsp/IDCheck.jsp'" -->
 <body>

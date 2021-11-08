@@ -55,14 +55,11 @@ public class ManagerDAO {
 			if(rs.next()) {
 				mpw = rs.getString("manager_pw");
 				if(mpw.equals(manager_pw)) {
-					System.out.println("로그인 성공");
 					x=1; 
 				}else {
-					System.out.println("비밀번호 틀림");
 					x=0; 
 				}
 			}else {
-				System.out.println("해당 아이디 존재 안함");
 				x=-1;
 			}
 		} catch (SQLException e) {
