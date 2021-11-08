@@ -25,16 +25,19 @@ public class CottageTourlistSearchServlet extends HttpServlet {
 		String focus = request.getParameter("focus");
 		String checkinDate = request.getParameter("checkinDate");
 		String checkoutDate = request.getParameter("checkoutDate");
-		
-		SearchConditionVO scVO = new SearchConditionVO(sido,gugun,focus,checkinDate,checkoutDate);
-		HttpSession session = request.getSession();
-		session.setAttribute("scVO", scVO);
-		
-		SearchService searchService = new SearchService();
-		List<SearchResultVO> searchList = searchService.selectByArea(scVO);
-		request.setAttribute("searchList", searchList);
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/searchResult.jsp");
-		rd.forward(request, response);
+		if(sido==null) {
+			response.sendRedirect("/Anakin");
+		}else {
+			SearchConditionVO scVO = new SearchConditionVO(sido,gugun,focus,checkinDate,checkoutDate);
+			HttpSession session = request.getSession();
+			session.setAttribute("scVO", scVO);
+			
+			SearchService searchService = new SearchService();
+			List<SearchResultVO> searchList = searchService.selectByArea(scVO);
+			request.setAttribute("searchList", searchList);
+			RequestDispatcher rd = request.getRequestDispatcher("jsp/searchResult.jsp");
+			rd.forward(request, response);
+		}	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

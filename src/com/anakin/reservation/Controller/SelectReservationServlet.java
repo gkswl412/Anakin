@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.anakin.reservation.Service.ReservationService;
-import com.anakin.reservation.VO.ReservationVO;
+import com.anakin.reservation.Service.IntegratedService;
+import com.anakin.reservation.VO.IntegratedVO;
 
 /**
  * Servlet implementation class SelectReservationServlet
@@ -38,23 +38,20 @@ public class SelectReservationServlet extends HttpServlet {
 		long reservationId = Integer.parseInt(request.getParameter("reservation_id"));
 		
 		//**********declare variable in server**********
-		ReservationVO reservationVO;
-		ReservationService reservationService;
+		IntegratedVO integratedVO;
+		IntegratedService integratedService;
 		
 		
 		//**********do business logic in server**********
-		reservationVO = new ReservationVO();
-		reservationService = new ReservationService();
-		reservationVO = reservationService.selectReservationById(reservationId);
+		integratedService = new IntegratedService();
+		integratedVO = integratedService.selectIntegratedByReservationIdService(reservationId);
 		
 		
 		//**********set variables for client in server**********
-		request.setAttribute("reservationVO", reservationVO);
+		request.setAttribute("integratedVO", integratedVO);
 
-
-		
 		//**********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationComplete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationCheck.jsp");
 		rd.forward(request, response);
 	}
 
