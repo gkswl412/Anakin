@@ -22,9 +22,9 @@ public class ReviewDAO {
 	//리뷰 페이지 예약번호 입력
 			public String  SelectReservationId(int reservedId, int cattage_id) {
 				String result="0";
-				String sql = " select reservation_id "
-						+ "from reservation "
-						+ "where reservation_id = ? and cattage_id = ? and reservation_checkout_date <= sysdate";
+				String sql = " select reservation_id"
+						+ " from reservation"
+						+ " where reservation_id = ? and cottage_id = ? and reservation_checkout_date <= sysdate";
 						
 				Connection conn = DBUtil.dbConnect();
 				PreparedStatement st = null;
