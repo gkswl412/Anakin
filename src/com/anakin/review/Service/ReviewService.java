@@ -49,9 +49,9 @@ public class ReviewService {
 		
 	}
 	
-	public  List<ReviewReservationIdVO> SelectReservationId(int cottage_id){
+	public  String SelectReservationId(int reservedId,int cattage_id){
 		
-		return dao.SelectReservationId(cottage_id);
+		return dao.SelectReservationId(reservedId,cattage_id);
 		
 	}
 	

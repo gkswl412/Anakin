@@ -20,28 +20,29 @@ public class ReviewDAO {
 	
 	
 	//리뷰 페이지 예약번호 입력
-			public List<ReviewReservationIdVO>  SelectReservationId(int cottage_id) {
-				List<ReviewReservationIdVO> review2 = new ArrayList<>();
-	String sql = " select reservation_id from reservation where cottage_id = ? and reservation_checkout_date < sysdate";
+			public String  SelectReservationId(int reservedId, int cattage_id) {
+				String result="0";
+				String sql = " select reservation_id "
+						+ "from reservation "
+						+ "where reservation_id = ? and cattage_id = ? and reservation_checkout_date <= sysdate";
 						
 				Connection conn = DBUtil.dbConnect();
 				PreparedStatement st = null;
 				ResultSet rs = null;
 				try {
 					st = conn.prepareStatement(sql);
-					st.setInt(1, cottage_id);
+					st.setInt(1, reservedId);
+					st.setInt(2, cattage_id);
 					rs = st.executeQuery();
 					while (rs.next()) {
-						ReviewReservationIdVO vo = new ReviewReservationIdVO();
-						vo.setReservation_id(rs.getInt(1));
-						review2.add(vo);
+						result="1";
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} finally {
 					DBUtil.dbClose(conn, st, rs);
 				}
-				return review2;
+				return result;
 			}
 			
 		
