@@ -153,6 +153,7 @@
   					<button id="review" style="padding:10px 15px 10px 15px; color:#0000006F; background-color:white; border:1px solid white; font-size:21px">리뷰</button>				
   				</div>
   			</nav>
+  			<input type="hidden" id="cattage_id" value="${cottageDetailInfo.cottage_id}">
   			<div id="here">
 	  			
   			</div>

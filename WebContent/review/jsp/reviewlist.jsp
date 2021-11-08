@@ -13,24 +13,37 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="../review/css/reviewpage.css" rel="stylesheet" >
+ <!--  <link href="../review/css/reviewpage.css" rel="stylesheet" > -->
 </head>
+<style>
+h1{
+	
+	text-align: center;
+	
+}
+.button{
+
+	 float: right;  
+	}
+	
+
+</style>
 <body>
 
 
 <div class="box2">
 
 <h1>리뷰</h1>
-
 <a type="submit" class="btn btn-default"  data-toggle="modal" data-target="#myModal3" 
 	     data-reviewreservationid="${reslist.reservation_id}"
-	    
 	     href="#myModal3" style="float: right;">리뷰 작성</a>
+<br>
+<br>
 
 </div>
-  <hr>
+ 
+<hr>
 
-<br>
 
 
 <c:forEach items="${reviewlist}" var="rev">
@@ -106,7 +119,8 @@
            
             <div class="form-group">
            <label for="pwd2">예약번호:</label>
-         <input type="text"  id="reservation_id" value="" required/>  	
+         <input type="text"  id="reservation_id" value="">  	
+        
                </div>
             <input type="text" class="form-control"  id="reservation_id2" value="">
             <input type="text" class="form-control"  id="cottage_id2" value="">
@@ -142,7 +156,7 @@
         <div class="modal-body">
         <form id="writefrm" action="/Anakin/review/write"  method="post">
 		<input type="hidden" name="review_id" value="${rev.review_id}">
-		<input type="hidden" name="cottage_id" id="cottage_id" value="${cottage_id}">
+		 
 	  <div class="form-group">
            <label for="usr">작성자:</label>
            <input type="text" class="form-control"  name="review_writer" value="">
@@ -359,16 +373,21 @@
   
     
     function call4(){
-    	var id1 = $("#reservation_id").val();
-    	var id2 = $("#reservation_id2").val();
-    
-    	if(id1==id2){
-            $("#myModal_write").modal();
-    		
-    	   
-    	}else{
-    		alert("예약번호가 틀립니다.");
-    	}
+    	 
+    	var id1 = $("#reservation_id").val();//입력한값 
+        $.ajax({
+        	url:"/Anakin/review/reservedCheckForReview",
+        	data:{"reservedId":id1, "cattage_id":$("#cattage_id").val() },
+        	success:function(responseData){
+        		
+        		if(responseData=="1")
+        			 $("#myModal_write").modal();
+        		else
+        			alert("예약번호가 틀립니다.");
+        	}
+        });
+
+        
     }
     
     
