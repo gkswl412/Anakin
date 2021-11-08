@@ -40,7 +40,6 @@ public class Cottage_RoomUpdateServlet2 extends HttpServlet {
 		
 		String cn = request.getParameter("cottage_name");
 		
-		
 		Cottage_RoomVO crv = new Cottage_RoomVO(cid, rid, rn, ro, rp1, rp2, rp3, rtc, rbc, rbo, rs, rd, rc);
 		
 		int result = crs.Cottage_RoomUpdateService(crv);

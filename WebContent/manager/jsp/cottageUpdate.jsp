@@ -38,26 +38,26 @@ table {
 		<table>
 			<tr>
 				<td>Cottage이름:</td>
-				<td><input type="text" name="cottage_name" value="${cv.cottage_name }" style="width:500px;height:60px;font-size:20px;" required="required"></td>
+				<td><input type="text" name="cottage_name" value="${cv.cottage_name }" style="width:600px;height:80px;font-size:20px;" required="required"></td>
 			</tr>
 			<tr>
 				<td>Cottage주소:</td>
-				<td><input type="text" name="cottage_location" value="${cv.cottage_location }" style="width:500px;height:60px;font-size:15px;" required="required"></td>
+				<td><input type="text" name="cottage_location" value="${cv.cottage_location }" style="width:600px;height:80px;font-size:15px;" required="required"></td>
 			</tr>
 			<tr>
 				<td>Cottage대표전화:</td>
-				<td><input type="text" name="cottage_phone_number" value="${cv.cottage_phone_number }" style="width:500px;height:60px;font-size:20px;"></td>
+				<td><input type="text" name="cottage_phone_number" value="${cv.cottage_phone_number }" style="width:600px;height:80px;font-size:20px;"></td>
 			</tr>
 			<tr>
 				<td>Cottage설명:</td>
 				<td>
-				<textarea cols="50" rows="10" name="cottage_description" style="width:500px;height:80px;font-size:20px;">${cv.cottage_description }</textarea>
+				<textarea cols="50" rows="10" name="cottage_description" style="width:1400px;height:300px;font-size:20px;">${cv.cottage_description }</textarea>
 				</td>
 			</tr>
 
 			<tr>
 				<td>CottageCat:</td>
-				<td><select name="cottage_cat" style="width:250px;height:40px;font-size:20px;">
+				<td><select name="cottage_cat" style="width:400px;height:60px;font-size:20px;">
 						<option value="${cv.cottage_cat }">${cv.cottage_cat }</option>
 						<option value="펜션">펜션</option>
 						<option value="콘도">콘도</option>
@@ -70,9 +70,9 @@ table {
 			</tr>
 			<tr>
 				<td colspan="2">
-				<input type="submit" value="입력하기" style="width:150px;height:40px;font-size:15px;"> 
-				<input type="reset" value="다시" style="width:150px;height:40px;font-size:15px;"> 
-				<input type="button" value="돌아가기" style="width:150px;height:40px;font-size:15px;" onclick="history.back()">
+				<input type="submit" value="수정하기" style="width:200px;height:40px;font-size:15px;"> 
+				<input type="reset" value="다시" style="width:200px;height:40px;font-size:15px;"> 
+				<input type="button" value="돌아가기" style="width:200px;height:40px;font-size:15px;" onclick="history.back()">
 				</td>
 			</tr>
 		</table>
