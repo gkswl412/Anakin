@@ -55,8 +55,13 @@ public class SelectReservationServlet extends HttpServlet {
 		request.setAttribute("integratedVO", integratedVO);
 
 		//**********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationCheck.jsp");
-		rd.forward(request, response);
+		if(integratedVO == null) {
+			RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationSearchFail.jsp");
+			rd.forward(request, response);
+		}else {
+			RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationreservationCheck.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 }

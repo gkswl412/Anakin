@@ -50,8 +50,14 @@ public class ReservationCancelServlet extends HttpServlet {
 		
 		
 		//**********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationCancelComplete.jsp");
-		rd.forward(request, response);
+		if(deleteResult == 1) {
+			RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationCancelComplete.jsp");
+			rd.forward(request, response);
+		}else {
+			RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationCancelFail.jsp");
+			rd.forward(request, response);
+		}
+		
 	}
 
 }

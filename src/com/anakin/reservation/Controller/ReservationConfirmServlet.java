@@ -67,8 +67,14 @@ public class ReservationConfirmServlet extends HttpServlet {
 		request.setAttribute("price", price);
 
 		// **********forward to next page in server**********
-		RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationComplete.jsp");
-		rd.forward(request, response);
+		if(integratedVO == null) {
+			RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationFail.jsp");
+			rd.forward(request, response);
+		}else {
+			RequestDispatcher rd = request.getRequestDispatcher("/reservation/jsp/reservationComplete.jsp");
+			rd.forward(request, response);
+		}
+		
 	}
 
 }
