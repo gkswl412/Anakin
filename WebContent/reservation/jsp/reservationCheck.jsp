@@ -77,7 +77,7 @@
 		</p>
 
 		<form style="text-align: center; padding: 20px; display: block"
-			method="post" action="reservationCancel">
+			method="post" action="/Anakin/reservationCancel">
 
 			<input type="hidden" value="${integratedVO.reservation_id}" name="reservationId">
 			<input type="submit" value="예약 취소하기">

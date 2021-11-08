@@ -63,7 +63,7 @@
 			<p style="text-align: center; padding: 20px; display: block">
 			예약번호를 입력하세요.</p>
 			<form style="text-align: center; padding: 20px; display: block"
-				method="post" action="../../selectReservation">
+				method="post" action="/Anakin/selectReservation">
 
 				예약 번호 : <input type="number" name="reservation_id" required="required">
 				<input type="submit" value="검색하기">
