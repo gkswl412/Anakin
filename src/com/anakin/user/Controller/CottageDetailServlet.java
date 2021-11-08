@@ -22,9 +22,9 @@ public class CottageDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	//cottageList 에서 사진 호버시 Cottage 근처 관광지 정보 나타내기 위한 부분
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	}
+	//}
 
 	//cottageList 에서 사진 클릭시 Cottage 상세 정보 들어가기 위한 부분
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

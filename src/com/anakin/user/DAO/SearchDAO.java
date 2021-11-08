@@ -183,8 +183,7 @@ public class SearchDAO {
 	
 	public String selectCottageDescriptionByCottageId(int cottage_id) {
 		String description = "";
-		String sql = "select cottage_description from cottage where cottage_id = ?";
-		
+		String sql = "select dbms_lob.substr(cottage_description) from cottage where cottage_id = ?";
 		Connection conn = DBUtil.dbConnect();
 		PreparedStatement st = null;
 		ResultSet rs = null;
